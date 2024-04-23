@@ -11,7 +11,9 @@ class ContactoController extends BaseController
     }*/
 
     public function index() {
-        return view('contacto/indexContacto'); //nombre de la carpeta/nombreArchivo.
+        return view('Templates/header')
+        . view('contact/indexContacto') //nombre de la carpeta/nombreArchivo.
+        . view('Templates/footer');
     }
 
 }
