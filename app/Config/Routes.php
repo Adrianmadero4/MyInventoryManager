@@ -12,3 +12,9 @@ $routes-> get('/pricing', 'PreciosController::precios');//Rutas para la página 
 
 //$routes-> get('/contact', 'Home::contact');//Rutas para la página de contacto
 $routes-> get('/contact', 'ContactoController::index');//Rutas para la página de contacto del Controlador ContactoController de la vista Precios
+
+
+//Rutas para el Login
+$routes-> get('/login', 'LoginController::formulario');
+
+$routes-> post('/login', 'LoginController::formulario');

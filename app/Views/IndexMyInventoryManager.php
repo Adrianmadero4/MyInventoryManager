@@ -1,10 +1,10 @@
 
     <div class="introd">
 
-        <h1>Bienvenid@ a My Inventory Manager </h1>
+        <h1>Bienvenid@ a <?php echo $nombreProyecto ?> </h1> <!--Este echo viene del controlador Home.php -->
 
         <h2>Aquí podrá tener el control de sus productos. <br>
-            En My Inventory Manager se puede tener las partes del hogar diferenciadas, 
+            En <?php echo $nombreProyecto ?> se puede tener las partes del hogar diferenciadas, 
             y en cada una de ellas, los distintos productos que la forman. 
         </h2>
 

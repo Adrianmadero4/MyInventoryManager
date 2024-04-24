@@ -12,7 +12,7 @@
               </tr>
               <tr>
                 <td></td>
-                <td>Mensual: 2.99€</td>
+                <td>Mensual: 1.99€</td>
               </tr>
               <tr>
                 <td></td>
