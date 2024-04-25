@@ -21,22 +21,18 @@ class LoginController extends BaseController
         $data = $this->request->getPost(array_keys($rules));
 
         if (! $this->validateData($data, $rules)) {
-            return view('formularioLogin');
+            return view('Login/formularioLogin');
         }
 
         // If you want to get the validated data.
         $validData = $this->validator->getValidated();
 
-        return view('success');
+        return view('Templates/menuHeader')
+        . view('Login/success')
+        . view('Templates/footer');
+
 
     }
-
-    //public function enviarLogin() {
-        //$valor1 = $_POST['valor1'];
-        //$valor2 = $_POST['valor2'];
-
-        //echo $valor1 + $valor2;
-    //}
 
     
 }

@@ -6,7 +6,7 @@
 
     <?= validation_list_errors() ?>
 
-    <?= form_open('LoginController') ?>
+    <?= form_open('form') ?>
 
         <h5>Username</h5>
         <input type="text" name="username" value="<?= set_value('username') ?>" size="50">
