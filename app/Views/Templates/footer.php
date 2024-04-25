@@ -12,80 +12,75 @@
       <div class="row mt-4">
         <!--Grid column-->
         <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-4">About company</h5>
+          <h5 class="text-uppercase mb-4">Sobre My Inventory Manager </h5>
 
           <p>
-            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-            voluptatum deleniti atque corrupti.
+            Nacemos desde la necesidad de registrar y almacenar productos y su documentación, de manera sencilla y rápida.
           </p>
 
           <p>
-            Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas
-            molestias.
+            Nos adaptamos a las necesidades de los clientes y siempre escuchamos posibles mejoras.
           </p>
 
-          <div class="mt-4">
-            <!-- Facebook -->
-            <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-facebook-f"></i></a>
-            <!-- Dribbble -->
-            <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-dribbble"></i></a>
-            <!-- Twitter -->
-            <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-twitter"></i></a>
-            <!-- Google + -->
-            <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-google-plus-g"></i></a>
-            <!-- Linkedin -->
-          </div>
         </div>
         <!--Grid column-->
 
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-4 pb-1">Search something</h5>
-
-          <div class="form-outline form-white mb-4">
-            <input type="text" id="formControlLg" class="form-control form-control-lg">
-            <label class="form-label" for="formControlLg" style="margin-left: 0px;">Search</label>
-          <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 48.8px;"></div><div class="form-notch-trailing"></div></div></div>
-
-          <ul class="fa-ul" style="margin-left: 1.65em;">
-            <li class="mb-3">
-              <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">New York, NY 10012, US</span>
-            </li>
-            <li class="mb-3">
-              <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">info@example.com</span>
-            </li>
-            <li class="mb-3">
-              <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+ 01 234 567 88</span>
-            </li>
-            <li class="mb-3">
-              <span class="fa-li"><i class="fas fa-print"></i></span><span class="ms-2">+ 01 234 567 89</span>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-4">Opening hours</h5>
+        <!--Ini Grid column Business hours-->
+        <div class="col-lg-4 col-md-6 mb-4 mb-md-0 text-center">
+          <h5 class="text-uppercase mb-4">Business hours</h5>
 
           <table class="table text-center text-white">
             <tbody class="font-weight-normal">
               <tr>
-                <td>Mon - Thu:</td>
-                <td>8am - 9pm</td>
+                <td>Mon - Wed:</td>
+                <td>8:00 - 12:00</td>
               </tr>
               <tr>
-                <td>Fri - Sat:</td>
-                <td>8am - 1am</td>
+                <td>Tue - Thu - Fri:</td>
+                <td>16:00 - 20:00</td>
+              </tr>
+              <tr>
+                <td>Saturday:</td>
+                <td>11:00 - 15:00</td>
               </tr>
               <tr>
                 <td>Sunday:</td>
-                <td>9am - 10pm</td>
+                <td>Closed</td>
               </tr>
             </tbody>
           </table>
+
+          
         </div>
-        <!--Grid column-->
+        <!--Fin Grid column Business hours-->
+
+        <!--Ini Grid column Contact Information-->
+        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-4 pb-1 text-center">Contact Information</h5>
+
+          
+          <ul class="fa-ul" style="margin-left: 1.65em;">
+            <li class="mb-3">
+              <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">Paiporta, Valencia, 46200, Spain</span>
+            </li>
+            <li class="mb-3">
+              <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">adrianmc1998@gmail.com</span>
+            </li>
+            <li class="mb-3">
+              <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+ 34 610 840 367</span>
+            </li>
+          </ul>
+
+          <div class="mt-4 text-center">
+            <!-- Facebook -->
+            <a type="button" class="btn btn-floating btn-warning btn-sm"><img src="<?php echo base_url('public/images/facebook.svg'); ?>" alt="MyLogo" ></a>
+            <!-- Dribbble -->
+            <a type="button" class="btn btn-floating btn-warning btn-sm"><img src="<?php echo base_url('public/images/instagram.svg'); ?>" alt="MyLogo" ></a>
+            <!-- Linkedin -->
+            <a type="button" class="btn btn-floating btn-warning btn-sm"><img src="<?php echo base_url('public/images/linkedin.svg'); ?>" alt="MyLogo" ></a>
+          </div>
+        </div>
+        <!--Fin Grid column Contact Information-->
       </div>
       <!--Grid row-->
     </div>
