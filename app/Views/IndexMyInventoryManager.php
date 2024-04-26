@@ -1,5 +1,5 @@
 
-    <div class="introd">
+    <div class="container mt-4 mb-4">
 
         <h1>Bienvenid@ a <?php echo $nombreProyecto ?> </h1> <!--Este echo viene del controlador Home.php -->
 

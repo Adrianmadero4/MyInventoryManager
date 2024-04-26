@@ -1,140 +1,192 @@
-<link href="<?php echo base_url('public/assets/bootstrap.min.css'); ?>" rel="stylesheet">
-<script src="<?php echo base_url('public/assets/bootstrap.min.js'); ?>"></script>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Pricing</title>
+    <link href="<?php echo base_url('public/assets/bootstrap.min.css'); ?>" rel="stylesheet">
+    <script src="<?php echo base_url('public/assets/bootstrap.min.js'); ?>"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/assets/stylePrecios.css'); ?>">
 
-<div class="container">
-    <h1>Pricing - Precios</h1>
-    <h2>Tabla de Precios</h2>
-    <table class="table text-center text-white">
-            <tbody class="font-weight-normal">
-              <tr>
-                <td>Free</td>
-                <td>Pro</td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>Mensual: 1.99€</td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>Semestral: 14.99€</td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>Anual: 19.99€</td>
-              </tr>
-            </tbody>
-          </table>
+
+    
+
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="pricing.css" rel="stylesheet">
+  </head>
+  <body class="vsc-initialized">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="check" viewBox="0 0 16 16">
+    <title>Check</title>
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
+  </symbol>
+</svg>
+
+
+  <div class="container-fluid py-3">
+
+    <div class="container pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">Conozca nuestros planes y precios</h1>
+      <p class="fs-5 text-muted">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
+      <div class="container text-center mt-4 ">
+    </div>
+    </div>
+
+  <main class="container">
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Gratis</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">0€<small class="text-muted fw-light">/mo</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>1 usuario incluido</li>
+              <li>2 secciones incluidas</li>
+              <li>25 elementos por sección
+                <small class="text-muted">(Total 50 artículos)</small> 
+              </li>
+              <li>Con anuncios</li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Registrate gratis </button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col">
+        <div class="card rounded-3 shadow-sm">
+          <div class="bgLim card-header py-3 ">
+            <h4 class="my-0 fw-normal">Limitado</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">1,99€<small class="text-muted fw-light">/mo</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>2 usuarios incluidos</li>
+              <li>5 secciones incluidas</li>
+              <li>30 elementos por sección
+                <small class="text-muted">(Total 150 artículos)</small> 
+              </li>
+              <li>Sin anuncios</li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Contratalo aquí</button>
+          </div>
+          <div class="py-3 col-12">
+            <button type="button" class="btn col-sm-5">Mensual</button>
+            <button type="button" class="btn col-sm-5 btn-info">1,99€</button>
+          </div>
+          <div class="py-3 ">
+            <button type="button" class="btn col-sm-5">Anual</button>
+            <button type="button" class="btn btn-info col-sm-5">1,99€</button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col">
+        <div class="card rounded-3 shadow-sm border-primary">
+          <div class="card-header py-3 text-white bg-primary border-primary">
+            <h4 class="my-0 fw-normal">Premium</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">3.99€<small class="text-muted fw-light">/mo</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>6 usuarios incluidas</li>
+              <li>10 secciones incluidas</li>
+              <li>Elementos ilimitados</li>
+              <li>Sin anuncios</li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-primary">Contratalo aquí</button>
+          </div>
+          <div class="py-3 col-12">
+            <button type="button" class="btn col-sm-5">Mensual</button>
+            <button type="button" class="btn col-sm-5 btn-primary">1,99€</button>
+          </div>
+          <div class="py-3 ">
+            <button type="button" class="btn col-sm-5">Anual</button>
+            <button type="button" class="btn btn-primary col-sm-5">1,99€</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="display-6 text-center mb-4">Compare plans</h2>
+
+    <div class="table-responsive">
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th style="width: 34%;"></th>
+            <th style="width: 22%;">Free</th>
+            <th style="width: 22%;">Pro</th>
+            <th style="width: 22%;">Enterprise</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" class="text-start">Public</th>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start">Private</th>
+            <td></td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <th scope="row" class="text-start">Permissions</th>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start">Sharing</th>
+            <td></td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start">Unlimited members</th>
+            <td></td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start">Extra security</th>
+            <td></td>
+            <td></td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
 </div>
 
-<!--- Bootstrap plantilla Card -->
-<div class="card-group container">
-  <div class="card">
-    <img src="assets/images/bs-images/img-2x1.png" class="card-img-top" alt="card-group-image">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-  <div class="card">
-    <img src="assets/images/bs-images/img-2x1.png" class="card-img-top" alt="card-group-image">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-  <div class="card">
-    <img src="assets/images/bs-images/img-2x1.png" class="card-img-top" alt="card-group-image">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-</div>
-
-<br>
-<h2>Pruebaaa</h2>
-<br>
-<div class="container-fluid d-flex justify-content-center">
-  <div class="row mt-5">
-    <div class="col-sm-4">
-      <div class="card">
-    <img src="https://imgur.com/edOjtEC.png" class="card-img-top" width="100%">
-    <div class="card-body pt-0 px-0">
-      <div class="d-flex flex-row justify-content-between mb-0 px-3">
-        <small class="text-muted mt-1">STARTING AT</small>
-        <h6>&dollar;22,495&ast;</h6>
-      </div>
-      <hr class="mt-2 mx-3">
-      <div class="d-flex flex-row justify-content-between px-3 pb-4">
-        <div class="d-flex flex-column"><span class="text-muted">Fuel Efficiency</span><small class="text-muted">L/100KM&ast;</small></div>
-        <div class="d-flex flex-column"><h5 class="mb-0">8.5/7.1</h5><small class="text-muted text-right">(city/Hwy)</small></div>
-      </div>
-      <div class="d-flex flex-row justify-content-between p-3 mid">
-        <div class="d-flex flex-column"><small class="text-muted mb-1">ENGINE</small><div class="d-flex flex-row"><img src="https://imgur.com/iPtsG7I.png" width="35px" height="25px"><div class="d-flex flex-column ml-1"><small class="ghj">1.4L MultiAir</small><small class="ghj">16V I-4 Turbo</small></div></div></div>
-        <div class="d-flex flex-column"><small class="text-muted mb-2">HORSEPOWER</small><div class="d-flex flex-row"><img src="https://imgur.com/J11mEBq.png"><h6 class="ml-1">135 hp&ast;</h6></div></div>
-      </div>
-      <small class="text-muted key pl-3">Standard key Features</small>
-      <div class="mx-3 mt-3 mb-2"><button type="button" class="btn btn-danger btn-block"><small>BUILD & PRICE</small></button></div>
-      <small class="d-flex justify-content-center text-muted">*Legal Disclaimer</small>
-    </div>
-  </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="card">
-    <img src="https://imgur.com/SKZolYE.png" class="card-img-top" width="100%">
-    <div class="card-body pt-0 px-0">
-      <div class="d-flex flex-row justify-content-between mb-0 px-3">
-        <small class="text-muted mt-1">STARTING AT</small>
-        <h6>&dollar;22,495&ast;</h6>
-      </div>
-      <hr class="mt-2 mx-3">
-      <div class="d-flex flex-row justify-content-between px-3 pb-4">
-        <div class="d-flex flex-column"><span class="text-muted">Fuel Efficiency</span><small class="text-muted">L/100KM&ast;</small></div>
-        <div class="d-flex flex-column"><h5 class="mb-0">8.5/7.1</h5><small class="text-muted text-right">(city/Hwy)</small></div>
-      </div>
-      <div class="d-flex flex-row justify-content-between p-3 mid">
-        <div class="d-flex flex-column"><small class="text-muted mb-1">ENGINE</small><div class="d-flex flex-row"><img src="https://imgur.com/iPtsG7I.png" width="35px" height="25px"><div class="d-flex flex-column ml-1"><small class="ghj">1.4L MultiAir</small><small class="ghj">16V I-4 Turbo</small></div></div></div>
-        <div class="d-flex flex-column"><small class="text-muted mb-2">HORSEPOWER</small><div class="d-flex flex-row"><img src="https://imgur.com/J11mEBq.png"><h6 class="ml-1">135 hp&ast;</h6></div></div>
-      </div>
-      <small class="text-muted key pl-3">Standard key Features</small>
-      <div class="mx-3 mt-3 mb-2"><button type="button" class="btn btn-danger btn-block"><small>BUILD & PRICE</small></button></div>
-      <small class="d-flex justify-content-center text-muted">*Legal Disclaimer</small>
-    </div>
-  </div>
-    </div>
-  <div class="col-sm-4">
-    <div class="card">
-    <img src="<?php echo base_url('public/images/premiumImage.png'); ?>" class="card-img-top" width="100%">
-    <h3 class="text-center"></h3>
-    <div class="card-body pt-0 px-0">
-      <div class="d-flex flex-row justify-content-between mb-0 px-3">
-        <small class="text-muted mt-1">PREMIUM</small>
-        <h6>&dollar;22,495&ast;</h6>
-      </div>
-      <hr class="mt-2 mx-3">
-      <div class="d-flex flex-row justify-content-between px-3 pb-4">
-        <div class="d-flex flex-column"><span class="text-muted">Fuel Efficiency</span><small class="text-muted">L/100KM&ast;</small></div>
-        <div class="d-flex flex-column"><h5 class="mb-0">8.5/7.1</h5><small class="text-muted text-right">(city/Hwy)</small></div>
-      </div>
-      <div class="d-flex flex-row justify-content-between p-3 mid">
-        <div class="d-flex flex-column"><small class="text-muted mb-1">ENGINE</small><div class="d-flex flex-row"><img src="https://imgur.com/iPtsG7I.png" width="35px" height="25px"><div class="d-flex flex-column ml-1"><small class="ghj">1.4L MultiAir</small><small class="ghj">16V I-4 Turbo</small></div></div></div>
-        <div class="d-flex flex-column"><small class="text-muted mb-2">HORSEPOWER</small><div class="d-flex flex-row"><img src="https://imgur.com/J11mEBq.png"><h6 class="ml-1">135 hp&ast;</h6></div></div>
-      </div>
-      <small class="text-muted key pl-3">Standard key Features</small>
-      <div class="mx-3 mt-3 mb-2"><button type="button" class="btn btn-danger btn-block"><small>BUILD & PRICE</small></button></div>
-      <small class="d-flex justify-content-center text-muted">*Legal Disclaimer</small>
-    </div>
-  </div>
-    </div>
-  
-  </div>
-</div>
+</body>
+</html>

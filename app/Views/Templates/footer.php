@@ -3,7 +3,7 @@
 
 <!-- El siguiente codigo es una plantilla de bootstrap -->
 <!-- Remove the container if you want to extend the Footer to full width. -->
-<div class="container my-5">
+<div class="container-fluid my-5">
 
   <footer class="text-white text-center text-lg-start" style="background-color: #23242a;">
     <!-- Grid container -->
@@ -73,11 +73,11 @@
 
           <div class="mt-4 text-center">
             <!-- Facebook -->
-            <a type="button" class="btn btn-floating btn-warning btn-sm"><img src="<?php echo base_url('public/images/facebook.svg'); ?>" alt="MyLogo" ></a>
+            <a type="button" class="btn btn-floating bgLim btn-sm"><img src="<?php echo base_url('public/images/facebook.svg'); ?>" alt="MyLogo" ></a>
             <!-- Dribbble -->
-            <a type="button" class="btn btn-floating btn-warning btn-sm"><img src="<?php echo base_url('public/images/instagram.svg'); ?>" alt="MyLogo" ></a>
+            <a type="button" class="btn btn-floating bgLim btn-sm"><img src="<?php echo base_url('public/images/instagram.svg'); ?>" alt="MyLogo" ></a>
             <!-- Linkedin -->
-            <a type="button" class="btn btn-floating btn-warning btn-sm"><img src="<?php echo base_url('public/images/linkedin.svg'); ?>" alt="MyLogo" ></a>
+            <a type="button" class="btn btn-floating bgLim btn-sm"><img src="<?php echo base_url('public/images/linkedin.svg'); ?>" alt="MyLogo" ></a>
           </div>
         </div>
         <!--Fin Grid column Contact Information-->

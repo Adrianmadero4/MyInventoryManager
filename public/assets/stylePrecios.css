@@ -1,0 +1,16 @@
+.definiciones { /*Para las características de los precios*/
+    font-size: x-large;
+}
+  
+.definiciones small {/*Para que small no se vea afectado por .definicioes en el x-large*/
+    font-size: initial;
+}
+
+.text-muted:hover {
+    color: #007bff; /* Cambia #007bff por el color deseado */
+    text-decoration: underline; /* Opcional: agregar subrayado al pasar el cursor */
+}
+
+.bgLim {
+    background-color: #b8e5ff !important;
+}
