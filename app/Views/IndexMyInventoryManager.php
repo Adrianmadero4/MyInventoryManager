@@ -13,98 +13,118 @@
 </header>
 
 <!-- CONTENT -->
+<div class="container">
+<div class="row">
+ <!-- Sección de Header -->
+ <header>
+  <!-- Sección de Nav -->
+  <nav class="navbar navbar-default" role="navigation">
+   <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+     </button>
+     <a class="navbar-brand" href="#">Proyecto Autogestión</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+     <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Inicio</a></li>
+      <li><a href="#">Nosotros</a></li>
+      <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Servicios <span class="caret"></span></a>
+       <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Desarrollos</a></li>
+        <li><a href="#">Diseño</a></li>
+        <li><a href="#">Publicidad</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Consultoria</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Otros</a></li>
+       </ul>
+      </li>
+      <li><a href="#">Contacto</a></li>
+     </ul>
+
+     <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+       <input type="text" class="form-control" placeholder="Buscador">
+      </div>
+      <button type="submit" class="btn btn-default">Buscar</button>
+     </form>
+     <ul class="nav navbar-nav navbar-right">
+      <li><a href="#">Usuario</a></li>
+      <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mi cuenta <span class="caret"></span></a>
+       <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Ingresar</a></li>
+        <li><a href="#">Registrarse</a></li>
+        <li><a href="#">Configuración</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Cerrar Sesión</a></li>
+       </ul>
+      </li>
+     </ul>
+    </div><!-- /.navbar-collapse -->
+   </div><!-- /.container-fluid -->
+  </nav><!-- Fin Sección de Nav -->
+ </header><!-- Fin Sección de Header -->
+</div>
+</div>
+
 
 <section>
-
-    <h1>About this page</h1>
-
-    <p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
-
-    <p>If you would like to edit this page you will find it located at:</p>
-
-    <pre><code>app/Views/welcome_message.php</code></pre>
-
-    <p>The corresponding controller for this page can be found at:</p>
-
-    <pre><code>app/Controllers/Home.php</code></pre>
+    
+<!-- Sección Jumbotron -->
+<div class="container">
+ <div class="row">
+  <div class="jumbotron">
+   <h1>Web Básica con Bootstrap 3</h1>
+   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus dolorem ad officiis nihil delectus quidem animi rerum, molestias sint natus ducimus quod, unde molestiae dolores laboriosam error facilis odio doloremque.</p>
+   <p><a class="btn btn-primary btn-lg" role="button">Leer mas</a></p>
+ </div>
+</div>
+</div><!-- Fin Sección Jumbotron -->
 
 </section>
 
-<div class="further">
+<!-- Sección de Artículos -->
+<div class="container" style="padding: 15px 10px;">
+   <div class="row">
+     <div class="col-xs-12 col-sm-6 col-md-4">
+       <h2>Titulo del articulo 1</h2>
+       <figure></figure><!-- Especificar contenido gráfico Ej: Una Imagen -->
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat distinctio illo rerum atque ducimus, laboriosam debitis eum deserunt ab libero quis voluptas, illum, perferendis numquam aut aliquam itaque qui magnam!</p>
+       <a href="#" class="btn btn-success">Leer mas</a>
+     </div>
 
-    <section>
+     <div class="col-xs-12 col-sm-6 col-md-4">
+       <h2>Titulo del articulo 2</h2>
+       <figure></figure><!-- Especificar contenido gráfico Ej: Una Imagen -->
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat distinctio illo rerum atque ducimus, laboriosam debitis eum deserunt ab libero quis voluptas, illum, perferendis numquam aut aliquam itaque qui magnam!</p>
+       <a href="#" class="btn btn-success">Leer mas</a>
+     </div>
 
-        <h1>Go further</h1>
+     <div class="col-xs-12 col-sm-6 col-md-4">
+       <h2>Titulo del articulo 3</h2>
+       <figure></figure><!-- Especificar contenido gráfico Ej: Una Imagen -->
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat distinctio illo rerum atque ducimus, laboriosam debitis eum deserunt ab libero quis voluptas, illum, perferendis numquam aut aliquam itaque qui magnam!</p>
+       <a href="#" class="btn btn-success">Leer mas</a>
+     </div>
+   
+   <!-- Puedes agregar más articulos ... -->
+   
+   </div>
+ </div><!-- Fin Sección de Artículos -->
 
-        <h2>
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect x='32' y='96' width='64' height='368' rx='16' ry='16' class="svg-stroke" /><line x1='112' y1='224' x2='240' y2='224' class="svg-stroke" /><line x1='112' y1='400' x2='240' y2='400' class="svg-stroke" /><rect x='112' y='160' width='128' height='304' rx='16' ry='16' class="svg-stroke" /><rect x='256' y='48' width='96' height='416' rx='16' ry='16' class="svg-stroke" /><path d='M422.46,96.11l-40.4,4.25c-11.12,1.17-19.18,11.57-17.93,23.1l34.92,321.59c1.26,11.53,11.37,20,22.49,18.84l40.4-4.25c11.12-1.17,19.18-11.57,17.93-23.1L445,115C443.69,103.42,433.58,94.94,422.46,96.11Z' class="svg-stroke"/></svg>
-            Learn
-        </h2>
 
-        <p>The User Guide contains an introduction, tutorial, a number of "how to"
-            guides, and then reference documentation for the components that make up
-            the framework. Check the <a href="https://codeigniter.com/user_guide/"
-            target="_blank">User Guide</a> !</p>
+<!-- FOOTER: DEBUG INFO + COPYRIGHTS (En plantilla footer) -->
 
-        <h2>
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path d='M431,320.6c-1-3.6,1.2-8.6,3.3-12.2a33.68,33.68,0,0,1,2.1-3.1A162,162,0,0,0,464,215c.3-92.2-77.5-167-173.7-167C206.4,48,136.4,105.1,120,180.9a160.7,160.7,0,0,0-3.7,34.2c0,92.3,74.8,169.1,171,169.1,15.3,0,35.9-4.6,47.2-7.7s22.5-7.2,25.4-8.3a26.44,26.44,0,0,1,9.3-1.7,26,26,0,0,1,10.1,2L436,388.6a13.52,13.52,0,0,0,3.9,1,8,8,0,0,0,8-8,12.85,12.85,0,0,0-.5-2.7Z' class="svg-stroke" /><path d='M66.46,232a146.23,146.23,0,0,0,6.39,152.67c2.31,3.49,3.61,6.19,3.21,8s-11.93,61.87-11.93,61.87a8,8,0,0,0,2.71,7.68A8.17,8.17,0,0,0,72,464a7.26,7.26,0,0,0,2.91-.6l56.21-22a15.7,15.7,0,0,1,12,.2c18.94,7.38,39.88,12,60.83,12A159.21,159.21,0,0,0,284,432.11' class="svg-stroke" /></svg>
-            Discuss
-        </h2>
-
-        <p>CodeIgniter is a community-developed open source project, with several
-             venues for the community members to gather and exchange ideas. View all
-             the threads on <a href="https://forum.codeigniter.com/"
-             target="_blank">CodeIgniter's forum</a>, or <a href="https://join.slack.com/t/codeigniterchat/shared_invite/zt-rl30zw00-obL1Hr1q1ATvkzVkFp8S0Q"
-             target="_blank">chat on Slack</a> !</p>
-
-        <h2>
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><line x1='176' y1='48' x2='336' y2='48' class="svg-stroke" /><line x1='118' y1='304' x2='394' y2='304' class="svg-stroke" /><path d='M208,48v93.48a64.09,64.09,0,0,1-9.88,34.18L73.21,373.49C48.4,412.78,76.63,464,123.08,464H388.92c46.45,0,74.68-51.22,49.87-90.51L313.87,175.66A64.09,64.09,0,0,1,304,141.48V48' class="svg-stroke" /></svg>
-             Contribute
-        </h2>
-
-        <p>CodeIgniter is a community driven project and accepts contributions
-             of code and documentation from the community. Why not
-             <a href="https://codeigniter.com/contribute" target="_blank">
-             join us</a> ?</p>
-
-    </section>
-
-</div>
-
-<!-- FOOTER: DEBUG INFO + COPYRIGHTS -->
-
-<footer>
-    <div class="environment">
-
-        <p>Page rendered in {elapsed_time} seconds</p>
-
-        <p>Environment: <?= ENVIRONMENT ?></p>
-
-    </div>
-
-    <div class="copyrights">
-
-        <p>&copy; <?= date('Y') ?> CodeIgniter Foundation. CodeIgniter is open source project released under the MIT
-            open source licence.</p>
-
-    </div>
-
-</footer>
-
-<!-- SCRIPTS -->
-
-<script {csp-script-nonce}>
-    document.getElementById("menuToggle").addEventListener('click', toggleMenu);
-    function toggleMenu() {
-        var menuItems = document.getElementsByClassName('menu-item');
-        for (var i = 0; i < menuItems.length; i++) {
-            var menuItem = menuItems[i];
-            menuItem.classList.toggle("hidden");
-        }
-    }
-</script>
-
-<!-- -->
 
 </body>
 </html>

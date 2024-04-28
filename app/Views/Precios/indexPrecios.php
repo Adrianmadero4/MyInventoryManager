@@ -68,14 +68,14 @@
               </li>
               <li>Con anuncios</li>
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Registrate gratis </button>
+            <a href="<?php echo base_url('login'); ?>" class="btn btn-lg btn-outline-primary w-100">Regístrate gratis</a>
           </div>
         </div>
       </div>
 
 
       <div class="col">
-        <div class="card rounded-3 shadow-sm">
+        <div class="card mb-4 rounded-3 shadow-sm">
           <div class="bgLim card-header py-3 ">
             <h4 class="my-0 fw-normal">Limitado</h4>
           </div>
@@ -89,22 +89,22 @@
               </li>
               <li>Sin anuncios</li>
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Contratalo aquí</button>
+            <a href="<?php echo base_url('login'); ?>" class="w-100 btn btn-lg btn-outline-primary" style="text-decoration: none;">Contrátalo aquí</a>
           </div>
           <div class="py-3 col-12">
             <button type="button" class="btn col-sm-5">Mensual</button>
-            <button type="button" class="btn col-sm-5 btn-info">1,99€</button>
+            <button type="button" class="btn col-sm-5 bgLim">1,99€</button>
           </div>
           <div class="py-3 ">
             <button type="button" class="btn col-sm-5">Anual</button>
-            <button type="button" class="btn btn-info col-sm-5">1,99€</button>
+            <button type="button" class="btn bgLim col-sm-5">15,99€</button>
           </div>
         </div>
       </div>
 
 
       <div class="col">
-        <div class="card rounded-3 shadow-sm border-primary">
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
           <div class="card-header py-3 text-white bg-primary border-primary">
             <h4 class="my-0 fw-normal">Premium</h4>
           </div>
@@ -120,17 +120,17 @@
           </div>
           <div class="py-3 col-12">
             <button type="button" class="btn col-sm-5">Mensual</button>
-            <button type="button" class="btn col-sm-5 btn-primary">1,99€</button>
+            <button type="button" class="btn col-sm-5 btn-primary">3,99€</button>
           </div>
           <div class="py-3 ">
             <button type="button" class="btn col-sm-5">Anual</button>
-            <button type="button" class="btn btn-primary col-sm-5">1,99€</button>
+            <button type="button" class="btn btn-primary col-sm-5">35,99€</button>
           </div>
         </div>
       </div>
     </div>
 
-    <h2 class="display-6 text-center mb-4">Compare plans</h2>
+    <h2 class="display-6 text-center mb-4">Comparador de planes</h2>
 
     <div class="table-responsive">
       <table class="table text-center">
@@ -144,14 +144,14 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row" class="text-start">Public</th>
+            <th scope="row" class="text-start">Secciones</th>
             <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
             <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
             <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
           </tr>
           <tr>
-            <th scope="row" class="text-start">Private</th>
-            <td></td>
+            <th scope="row" class="text-start">Productos</th>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
             <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
             <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
           </tr>
@@ -159,27 +159,21 @@
 
         <tbody>
           <tr>
-            <th scope="row" class="text-start">Permissions</th>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-          </tr>
-          <tr>
-            <th scope="row" class="text-start">Sharing</th>
+            <th scope="row" class="text-start">Sin Anuncios</th>
             <td></td>
             <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
             <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
           </tr>
           <tr>
-            <th scope="row" class="text-start">Unlimited members</th>
+            <th scope="row" class="text-start">Compartir</th>
             <td></td>
             <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
             <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
           </tr>
           <tr>
-            <th scope="row" class="text-start">Extra security</th>
+            <th scope="row" class="text-start">Elementos ilimitados</th>
             <td></td>
-            <td></td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
             <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
           </tr>
         </tbody>
