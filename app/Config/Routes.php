@@ -2,6 +2,7 @@
 
 use CodeIgniter\Router\RouteCollection;
 use App\Controllers\Categories; // Importa la clase Categories
+use App\Controllers\ProductsController; // Importa la clase Products
 
 
 /**
@@ -21,6 +22,13 @@ if (!empty($session->get('user'))){
     $routes->get('categories', [Categories::class, 'index']);   //Muestra todas las categorías  
 }else{
     $routes->get('categories', [Categories::class, 'noSession']); 
+}
+
+$session = session();
+if (!empty($session->get('user'))){
+    $routes->get('products', [ProductsController::class, 'index']);   //Muestra todos los productos  
+}else{
+    $routes->get('products', [ProductsController::class, 'noSession']); 
 }
 
 //Ruta para el login:
