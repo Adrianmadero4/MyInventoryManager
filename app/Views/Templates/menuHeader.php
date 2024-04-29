@@ -24,7 +24,7 @@
         <a class="me-3 py-2 text-dark text-decoration-none" href="<?php echo base_url(''); ?>">Inicio</a>
         <a class="me-3 py-2 text-dark text-decoration-none" href="<?php echo base_url('conocenos'); ?>">Conocenos</a>
         <a class="me-3 py-2 text-dark text-decoration-none" href="<?php echo base_url('pricing'); ?>">Precios</a>
-        <a class="me-3 py-2 text-dark text-decoration-none" href="<?php echo base_url('admin'); ?>">Admin</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="<?php echo base_url('admin'); ?>">Login</a>
         <?php
         $session = session();
         if (!empty($session->get('user'))) :

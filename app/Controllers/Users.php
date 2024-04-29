@@ -10,11 +10,11 @@ class Users extends BaseController
     {
         helper('form');
         if ($error == null){
-            return view('templates/menuHeader', ['title' => 'Private Access'])
+            return view('templates/menuHeader', ['title' => 'Acceso al área privada'])
             . view('users/login',['error' => ''])
             . view('templates/footer');
         }else{
-            return view('templates/menuHeader', ['title' => 'Private Access'])
+            return view('templates/menuHeader', ['title' => 'Acceso al área privada']) // Este campo luego va al login.php en la variable title
                 . view('users/login',  ['error' => 'Credenciales incorrectas'])
                 . view('templates/footer');
         }

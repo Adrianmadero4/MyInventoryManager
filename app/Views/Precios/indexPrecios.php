@@ -137,9 +137,9 @@
         <thead>
           <tr>
             <th style="width: 34%;"></th>
-            <th style="width: 22%;">Free</th>
-            <th style="width: 22%;">Pro</th>
-            <th style="width: 22%;">Enterprise</th>
+            <th style="width: 22%;">Gratis</th>
+            <th style="width: 22%;">Limitado</th>
+            <th style="width: 22%;">Premium</th>
           </tr>
         </thead>
         <tbody>

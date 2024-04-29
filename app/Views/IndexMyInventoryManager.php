@@ -95,32 +95,107 @@
 
 <!-- Sección de Artículos -->
 <div class="container" style="padding: 15px 10px;">
-   <div class="row">
-     <div class="col-xs-12 col-sm-6 col-md-4">
-       <h2>Titulo del articulo 1</h2>
-       <figure></figure><!-- Especificar contenido gráfico Ej: Una Imagen -->
-       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat distinctio illo rerum atque ducimus, laboriosam debitis eum deserunt ab libero quis voluptas, illum, perferendis numquam aut aliquam itaque qui magnam!</p>
-       <a href="#" class="btn btn-success">Leer mas</a>
-     </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <h2>Titulo del articulo 1</h2>
+      <figure></figure><!-- Especificar contenido gráfico Ej: Una Imagen -->
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat distinctio illo rerum atque ducimus, laboriosam debitis eum deserunt ab libero quis voluptas, illum, perferendis numquam aut aliquam itaque qui magnam!</p>
+      <a href="#" class="btn btn-success">Leer mas</a>
+    </div>
 
-     <div class="col-xs-12 col-sm-6 col-md-4">
-       <h2>Titulo del articulo 2</h2>
-       <figure></figure><!-- Especificar contenido gráfico Ej: Una Imagen -->
-       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat distinctio illo rerum atque ducimus, laboriosam debitis eum deserunt ab libero quis voluptas, illum, perferendis numquam aut aliquam itaque qui magnam!</p>
-       <a href="#" class="btn btn-success">Leer mas</a>
-     </div>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <h2>Titulo del articulo 2</h2>
+      <figure></figure><!-- Especificar contenido gráfico Ej: Una Imagen -->
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat distinctio illo rerum atque ducimus, laboriosam debitis eum deserunt ab libero quis voluptas, illum, perferendis numquam aut aliquam itaque qui magnam!</p>
+      <a href="#" class="btn btn-success">Leer mas</a>
+    </div>
 
-     <div class="col-xs-12 col-sm-6 col-md-4">
-       <h2>Titulo del articulo 3</h2>
-       <figure></figure><!-- Especificar contenido gráfico Ej: Una Imagen -->
-       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat distinctio illo rerum atque ducimus, laboriosam debitis eum deserunt ab libero quis voluptas, illum, perferendis numquam aut aliquam itaque qui magnam!</p>
-       <a href="#" class="btn btn-success">Leer mas</a>
-     </div>
-   
-   <!-- Puedes agregar más articulos ... -->
-   
-   </div>
- </div><!-- Fin Sección de Artículos -->
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <h2>Titulo del articulo 3</h2>
+      <figure></figure><!-- Especificar contenido gráfico Ej: Una Imagen -->
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat distinctio illo rerum atque ducimus, laboriosam debitis eum deserunt ab libero quis voluptas, illum, perferendis numquam aut aliquam itaque qui magnam!</p>
+      <a href="#" class="btn btn-success">Leer mas</a>
+    </div>
+  
+      <!-- Puedes agregar más articulos ... -->
+  </div>  
+
+
+  <div class="row mt-4">
+    <h2 class="text-center">Secciones y productos</h2>
+    <div class="col-md-1">
+    </div>
+
+    <div class="col-md-5">
+        <div class="card mt-3" style="max-width: 400px;">
+            <img src="public/images/publicComedor/comedorJysk.jpg" class="card-img-top" alt="...">
+            <div class="card-body text-center">
+                <h4 class="card-title">Comedor</h4>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <img src="public/images/publicComedor/MesaComedorMARKSKEL.jpg" alt="Imagen 1" style="max-width: 50px;" class="me-2">
+                    Mesa
+                </li>
+                <li class="list-group-item">
+                    <img src="public/images/publicComedor/MesaComedorMARKSKEL.jpg" alt="Imagen 2" style="max-width: 50px;" class="me-2">
+                    Silla
+                </li>
+                <li class="list-group-item">
+                    <img src="public/images/publicComedor/MesaComedorMARKSKEL.jpg" alt="Imagen 3" style="max-width: 50px;" class="me-2">
+                    Sofa
+                </li>
+                <li class="list-group-item">
+                    <img src="public/images/publicComedor/MesaComedorMARKSKEL.jpg" alt="Imagen 4" style="max-width: 50px;" class="me-2">
+                    Televisión
+                </li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Ver la lista completa</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1">
+    </div>
+    
+    <div class="col-md-5">
+        <div class="card mt-3" style="max-width: 400px;">
+            <img src="public/images/publicHab1/HabitacionPrincipal.jpg" class="card-img-top" alt="...">
+            <div class="card-body text-center">
+                <h4 class="card-title">Habitación principal</h4>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <img src="public/images/publicComedor/MesaComedorMARKSKEL.jpg" alt="Imagen 5" style="max-width: 50px;" class="me-2">
+                    Colchón
+                </li>
+                <li class="list-group-item">
+                    <img src="public/images/publicComedor/MesaComedorMARKSKEL.jpg" alt="Imagen 6" style="max-width: 50px;" class="me-2">
+                    Canapé
+                </li>
+                <li class="list-group-item">
+                    <img src="public/images/publicComedor/MesaComedorMARKSKEL.jpg" alt="Imagen 7" style="max-width: 50px;" class="me-2">
+                    Comoda
+                </li>
+                <li class="list-group-item">
+                    <img src="public/images/publicComedor/MesaComedorMARKSKEL.jpg" alt="Imagen 8" style="max-width: 50px;" class="me-2">
+                    Televisión
+                </li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Ver la lista completa</a>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
+
+
+</div>  <!-- Fin Sección de Artículos -->
+
+
 
 
 <!-- FOOTER: DEBUG INFO + COPYRIGHTS (En plantilla footer) -->
