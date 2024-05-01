@@ -5,7 +5,7 @@
     <title>Pricing</title>
     <link href="<?php echo base_url('public/assets/bootstrap.min.css'); ?>" rel="stylesheet">
     <script src="<?php echo base_url('public/assets/bootstrap.min.js'); ?>"></script>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/assets/stylePrecios.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/assets/generalStyle.css'); ?>">
 
 
     
@@ -49,7 +49,7 @@
       <p class="fs-5 text-muted">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
       <div class="container text-center mt-4 ">
     </div>
-    </div>
+  </div>
 
   <main class="container">
     <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">

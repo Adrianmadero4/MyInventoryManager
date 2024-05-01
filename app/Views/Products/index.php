@@ -1,40 +1,94 @@
+<link href="<?php echo base_url('public/assets/bootstrap.min.css'); ?>" rel="stylesheet">
+<script src="<?php echo base_url('public/assets/bootstrap.min.js'); ?>"></script>
+
 <h2><?= esc($nombreProducto) ?></h2> <!--Este title es el de la función index del controller-->
 <!-- -->
 <a href="./products/new">Añadir Producto</a>
 
 <?php if (! empty($products) && is_array($products)): ?> <!--Si el array no está vacío y se puede recorrer: -->
 
-    <?php foreach ($products as $new_product): ?> <!--Recorremos el array de productos y nos inventamos el new_product -->
-
-        <h4><?= esc($new_product['nombreProducto']) ?></h4> <!--Campo de la tabla -->
-
-        <div class="main">
-            <?= esc ($new_product['descripcion']) ?>
+    <div class="container mt-4 mb-4">
+        <!-- Primera fila con background gris claro -->
+        <div class="row bg-secondary text-center">
+            <!-- Columnas -->
+            <div class="col-2">
+                <h6>Nombre del Producto</h6>
+            </div>
+            <div class="col-2">
+                <h6>Descripción</h6>
+            </div>
+            <div class="col-1">
+                <h6>Tienes</h6>
+            </div>
+            <div class="col-2">
+                <h6>Guardado en</h6>
+            </div>
+            
+            <div class="col-2">
+                <h6>Imagen</h6>
+            </div>
+            <div class="col-3">
+                <h6>Acciones</h6>
+            </div>
+            <!-- Agrega más columnas según sea necesario -->
         </div>
-
-        <!--Ahora el enlace al producto en particular -->
-
-        <p>
-            <a href="./products/<?= esc($new_product['nombreProducto'], 'url')?>">Ver Producto</a>
-        </p>
-       
-        &nbsp;
-        <a  class="btn btn-outline-secondary" href="./products/del/<?= esc($new_product['id'], 'url') ?>">
-            Eliminar Producto
-            </a>
         
+        <?php foreach ($products as $new_product): ?> <!--Recorremos el array de productos y nos inventamos el new_product -->
+            <!-- Segunda fila sin fondo -->
+            <div class="row align-items-center text-center border">
+                <!-- Aquí puedes iterar sobre tus productos -->
+                <div class="col-2">
+                    <p><?= esc($new_product['nombreProducto']) ?></p> <!--['Nombre del campo de la BBDD'] -->
+                </div>
+                <div class="col-2">
+                    <p><?= esc($new_product['descripcion']) ?></p>
+                </div>
+                <div class="col-1">
+                    <p><?= esc($new_product['stock']) ?></p>
+                </div>
+                <div class="col-2">
+                    <p><?= esc($new_product['guardado_en']) ?></p>
+                </div>
+                <div class="col-2">
+                    <p><?= esc($new_product['imagen']) ?></p>
+                </div>
+                <div class="col-3">
+                    <!-- <button class="col-7.5 bg-light">Ver producto/Editar</button> 
+                    <button class="col-4 bg-light">Eliminar</button> -->
+                    <a class="btn col-7.5 bg-success" href="./products/<?= esc($new_product['nombreProducto'], 'url')?>">Ver producto/Editar</a>
+                    <a class="btn col-4 bg-danger" href="./products/del/<?= esc($new_product['nombreProducto'], 'url')?>">Eliminar</a>
+
+                </div>
+
+                <!-- Agrega más columnas según sea necesario -->
+            </div>
+        <?php endforeach ?>
+        
+        <!--Ahora el enlace al producto en particular -->
+        <!--
+            <p>
+                <a href="./products/<?= esc($new_product['nombreProducto'], 'url')?>">Ver Producto</a>
+            </p>
             &nbsp;
-        <a class="btn btn-warning" href="./products/update/<?= esc($new_product['id'], 'url') ?>">
-            Actualizar Producto
-            </a>
-        </p>
-        <br>
-    <?php endforeach ?>
+            <a  class="btn btn-outline-secondary" href="./products/del/<?= esc($new_product['id'], 'url') ?>">
+                Eliminar Producto
+                </a>
+            
+                &nbsp;
+            <a class="btn btn-warning" href="./products/update/<?= esc($new_product['id'], 'url') ?>">
+                Actualizar Producto
+                </a>
+            </p>
+            <br>
+        -->
+    </div>
+
 
 <?php else: ?>
 
-    <h3>No products</h3>
-
-    <p>Unable to find any product for you.</p>
+    <div class="container">
+        <h3>No hay productos</h3>
+        <a href="./products/new">CREATE PRODUCT</a>
+    </div>
 
 <?php endif ?>

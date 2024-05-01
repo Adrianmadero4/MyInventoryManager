@@ -1,2 +1,4 @@
-<h2><?= esc($products['products'])?></h2>
-<p><?= esc($products['nombreProducto'])?></p>
+<div class="container">
+    <h2><?= esc('Producto: '.$products['nombreProducto'])?></h2>
+    <p><?= esc('Descripción: '.$products['descripcion'])?></p>
+</div>

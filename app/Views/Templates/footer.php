@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('public/assets/generalStyle.css'); ?>">
 <link href="<?php echo base_url('public/assets/bootstrap.min.css'); ?>" rel="stylesheet">
 <script src="<?php echo base_url('public/assets/bootstrap.min.js'); ?>"></script>
 
@@ -75,7 +76,7 @@
             <!-- Facebook -->
             <a type="button" class="btn btn-floating bgLim btn-sm"><img src="<?php echo base_url('public/images/facebook.svg'); ?>" alt="MyLogo" ></a>
             <!-- Dribbble -->
-            <a type="button" class="btn btn-floating bgLim btn-sm"><img src="<?php echo base_url('public/images/instagram.svg'); ?>" alt="MyLogo" ></a>
+            <a type="button" class="btn btn-floating btblue btn-sm"><img src="<?php echo base_url('public/images/instagram.svg'); ?>" alt="MyLogo" ></a>
             <!-- Linkedin -->
             <a type="button" class="btn btn-floating bgLim btn-sm"><img src="<?php echo base_url('public/images/linkedin.svg'); ?>" alt="MyLogo" ></a>
           </div>
