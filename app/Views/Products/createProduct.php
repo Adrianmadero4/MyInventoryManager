@@ -31,6 +31,30 @@
         <input type="input" name="guardado_en" cols="45" rows="4"><?= set_value('guardado_en') ?></textarea>
         <br>
 
+        <label for="precio_compra">Precio de compra</label>
+        <input type="number" name="precio_compra" cols="45" rows="4"><?= set_value('precio_compra') ?></textarea>
+        <br>
+
+        <label for="precio_venta">Precio de venta</label>
+        <input type="number" name="precio_venta" cols="45" rows="4"><?= set_value('precio_venta') ?></textarea>
+        <br>
+
+        <label for="fecha_compra">Fecha de compra</label>
+        <input type="date" name="fecha_compra" cols="45" rows="4"><?= set_value('fecha_compra') ?></textarea>
+        <br>
+
+        <label for="fecha_venta">Fecha de venta</label>
+        <input type="date" name="fecha_venta" cols="45" rows="4"><?= set_value('fecha_venta') ?></textarea>
+        <br>
+
+        <label for="imagen">Imagen</label>
+        <input type="file" name="imagen" cols="45" rows="4"><?= set_value('imagen') ?></textarea>
+        <br>
+
+        <label for="documentos">Documentos</label>
+        <input type="file" name="documentos" cols="45" rows="4"><?= set_value('documentos') ?></textarea>
+        <br>
+
         <input type="submit" name="submit" value="Create products item">
     </form>
 </div>

@@ -1,19 +1,22 @@
-
-<?php $session = session()?>
-<?= "Bienvenid@ ". $session->get('user')?>
-<?php if (! empty($user) && is_array($user)): ?> <!--$User es un array que contiene los usuarios que hemos obtenido-->
-
-<?php foreach ($user as $get_user): ?>
-
-    <h3><?= esc($get_user['username']) ?></h3>
-
+<div class="container">
     
-<?php endforeach ?>
+    <?php $session = session()?>
+    <?= "Bienvenid@ ". $session->get('user')?>
+    <?php if (! empty($user) && is_array($user)): ?> <!--$User es un array que contiene los usuarios que hemos obtenido-->
 
-<?php else: ?>
+    <?php foreach ($user as $get_user): ?>
 
-<h3>No Users</h3>
+        <h3><?= esc($get_user['username']) ?></h3>
 
-<p>Unable to find any news for you.</p>
+        
+    <?php endforeach ?>
 
-<?php endif ?>
+    <?php else: ?>
+
+    <h3>No Users</h3>
+
+    <p>Unable to find any news for you.</p>
+
+    <?php endif ?>
+
+</div>

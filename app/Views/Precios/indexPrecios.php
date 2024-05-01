@@ -1,4 +1,5 @@
-<html lang="en"><head>
+<html lang="en">
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -6,37 +7,14 @@
     <link href="<?php echo base_url('public/assets/bootstrap.min.css'); ?>" rel="stylesheet">
     <script src="<?php echo base_url('public/assets/bootstrap.min.js'); ?>"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/assets/generalStyle.css'); ?>">
-
-
-    
-
-
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-
-    
     <!-- Custom styles for this template -->
-    <link href="pricing.css" rel="stylesheet">
   </head>
-  <body class="vsc-initialized">
-    
+<body class="vsc-initialized">
+
+<!--Importante para los Checks -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="check" viewBox="0 0 16 16">
-    <title>Check</title>
+    <title></title>
     <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
   </symbol>
 </svg>
@@ -46,7 +24,7 @@
 
     <div class="container pricing-header p-3 pb-md-4 mx-auto text-center">
       <h1 class="display-4 fw-normal">Conozca nuestros planes y precios</h1>
-      <p class="fs-5 text-muted">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
+      <p class="fs-5 ">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
       <div class="container text-center mt-4 ">
     </div>
   </div>
@@ -68,7 +46,7 @@
               </li>
               <li>Con anuncios</li>
             </ul>
-            <a href="<?php echo base_url('login'); ?>" class="btn btn-lg btn-outline-primary w-100">Regístrate gratis</a>
+            <a href="<?php echo base_url('admin'); ?>" class="btn btn-lg btn-outline-primary w-100">Regístrate gratis</a>
           </div>
         </div>
       </div>
@@ -89,7 +67,7 @@
               </li>
               <li>Sin anuncios</li>
             </ul>
-            <a href="<?php echo base_url('login'); ?>" class="w-100 btn btn-lg btn-outline-primary" style="text-decoration: none;">Contrátalo aquí</a>
+            <a href="<?php echo base_url('admin'); ?>" class="w-100 btn btn-lg btn-outline-primary" style="text-decoration: none;">Contrátalo aquí</a>
           </div>
           <div class="py-3 col-12">
             <button type="button" class="btn col-sm-5">Mensual</button>
@@ -116,7 +94,7 @@
               <li>Elementos ilimitados</li>
               <li>Sin anuncios</li>
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-primary">Contratalo aquí</button>
+            <a href="<?php echo base_url('admin'); ?>" class="w-100 btn btn-lg btn-primary" style="text-decoration: none;">Contrátalo aquí</a>
           </div>
           <div class="py-3 col-12">
             <button type="button" class="btn col-sm-5">Mensual</button>

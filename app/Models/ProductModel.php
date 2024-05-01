@@ -34,6 +34,12 @@ class ProductModel extends Model
     }
 
     /*
+    public function getById($id)
+    {
+        return $this->where(['id' => $id])->first();
+    }*/
+
+    /*
     public function getProducts($id = false)
     {
         if ($id === false) {

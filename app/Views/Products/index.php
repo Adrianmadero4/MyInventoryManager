@@ -58,6 +58,9 @@
                     <a class="btn col-7.5 bg-success" href="./products/<?= esc($new_product['nombreProducto'], 'url')?>">Ver producto/Editar</a>
                     <a class="btn col-4 bg-danger" href="./products/del/<?= esc($new_product['nombreProducto'], 'url')?>">Eliminar</a>
 
+                    <!--Falta modificar, que lo voy a meter dentro de ver producto, sería el siguiente enlance:
+                    <a class="btn col-7.5 bg-success" href="./products/update<?= esc($new_product['nombreProducto'], 'url')?>">Ver producto/Editar</a>  -->
+
                 </div>
 
                 <!-- Agrega más columnas según sea necesario -->
