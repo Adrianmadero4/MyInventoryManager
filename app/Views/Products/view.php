@@ -1,12 +1,14 @@
 <div class="container">
-    <h2><?= esc('Producto: '.$products['nombreProducto'])?></h2>
-    <p><?= esc('Descripción: '.$products['descripcion'])?></p>
-    <p><?= esc('Hay: '.$products['stock'])?></p>
-    <p><?= esc('Está guardado en: '.$products['guardado_en'])?></p>
-    <p><?= esc('Precio de compra: '.$products['precio_compra'])?></p>
-    <p><?= esc('Precio de venta: '.$products['precio_venta'])?></p>
-    <p><?= esc('Fecha de compra: '.$products['fecha_compra'])?></p>
-    <p><?= esc('Fecha de venta: '.$products['fecha_venta'])?></p>
-    <p><?= esc('Imagen: : '.$products['imagen'])?></p>
-    <p><?= esc('Documentos: '.$products['documentos'])?></p>
+    <a class="" href="<?php echo base_url('/products'); ?>">Volver al listado</a>
+
+    <h2><?= esc('Producto: '.$product['nombreProducto'])?></h2>
+    <p><?= esc('Descripción: '.$product['descripcion'])?></p>
+    <p><?= esc('Hay: '.$product['stock'])?></p>
+    <p><?= esc('Está guardado en: '.$product['guardado_en'])?></p>
+    <p><?= esc('Precio de compra: '.$product['precio_compra'])?></p>
+    <p><?= esc('Precio de venta: '.$product['precio_venta'])?></p>
+    <p><?= esc('Fecha de compra: '.$product['fecha_compra'])?></p>
+    <p><?= esc('Fecha de venta: '.$product['fecha_venta'])?></p>
+    <p><?= esc('Imagen: : '.$product['imagen'])?></p>
+    <p><?= esc('Documentos: '.$product['documentos'])?></p>
 </div>

@@ -28,21 +28,21 @@ class ProductsController extends BaseController
             . view('templates/footer');
     }
 
-    public function show($slug = null){
+    public function show($id = null){
         $model = model(ProductModel::class);
-        
-        // Decodificar el slug para obtener el nombre del producto sin espacios codificados
-        $decodedSlug = urldecode($slug);
-
-        $data['products'] = $model->getProducts($decodedSlug);
-        if (empty($data['products'])) {
-            throw new PageNotFoundException('Cannot find the product item: '.$decodedSlug);
+    
+        $products = $model->getById($id);
+    
+        if (empty($products)) {
+            throw new PageNotFoundException('No se puede encontrar el producto');
         }
-        $data['nombreProducto'] = $data['products']['nombreProducto'];
+    
+        $data['product'] = $products;
         return view('templates/menuHeader', $data)
             . view('Products/view')
             . view('templates/footer'); 
     }
+    
     public function noSession()
     {
 

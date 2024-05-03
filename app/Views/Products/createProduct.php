@@ -15,11 +15,11 @@
         <?= csrf_field() ?> <!--Genera una entrada oculta para ayudarnos a protegernos contra posibles ataques mediante al creación de un token adecuado. -->
 
         <label for="nombreProducto">Nombre del producto</label>
-        <input type="input" name="nombreProducto" value="<?= set_value('nombreProducto') ?>"> <!--El set value permite tener el registro escrito en caso de error, para no tener que escribir todo de nuevo -->
+        <input type="input" name="nombreProducto" value="<?= set_value('nombreProducto') ?>"></input> <!--El set value permite tener el registro escrito en caso de error, para no tener que escribir todo de nuevo -->
         <br>
 
         <label for="id_categoria">Sección</label>
-        <input type="input" name="id_categoria" value="<?= set_value('id_categoria') ?>">
+        <input type="input" name="id_categoria" value="<?= set_value('id_categoria') ?>"></input>
         <br>
 
         <label for="descripcion">Descripcion</label>
@@ -27,37 +27,37 @@
         <br>
 
         <label for="stock">Stock</label>
-        <input type="number" name="stock" cols="45" rows="4"><?= set_value('stock') ?></textarea>
+        <input type="number" name="stock" cols="45" rows="4"><?= set_value('stock') ?></input>
         <br>
 
         <label for="guardado_en">Guardado en</label>
-        <input type="input" name="guardado_en" cols="45" rows="4"><?= set_value('guardado_en') ?></textarea>
+        <input type="input" name="guardado_en" cols="45" rows="4"><?= set_value('guardado_en') ?></input>
         <br>
 
         <label for="precio_compra">Precio de compra</label>
-        <input type="number" name="precio_compra" cols="45" rows="4"><?= set_value('precio_compra') ?></textarea>
+        <input type="number" name="precio_compra" cols="45" rows="4"><?= set_value('precio_compra') ?></input>
         <br>
 
         <label for="precio_venta">Precio de venta</label>
-        <input type="number" name="precio_venta" cols="45" rows="4"><?= set_value('precio_venta') ?></textarea>
+        <input type="number" name="precio_venta" cols="45" rows="4"><?= set_value('precio_venta') ?></input>
         <br>
 
         <label for="fecha_compra">Fecha de compra</label>
-        <input type="date" name="fecha_compra" cols="45" rows="4"><?= set_value('fecha_compra') ?></textarea>
+        <input type="date" name="fecha_compra" cols="45" rows="4"><?= set_value('fecha_compra') ?></input>
         <br>
 
         <label for="fecha_venta">Fecha de venta</label>
-        <input type="date" name="fecha_venta" cols="45" rows="4"><?= set_value('fecha_venta') ?></textarea>
+        <input type="date" name="fecha_venta" cols="45" rows="4"><?= set_value('fecha_venta') ?></input>
         <br>
 
         <label for="imagen">Imagen</label>
-        <input type="file" name="imagen" cols="45" rows="4"><?= set_value('imagen') ?></textarea>
+        <input type="file" name="imagen" cols="45" rows="4"><?= set_value('imagen') ?></input>
         <br>
 
         <label for="documentos">Documentos</label>
-        <input type="file" name="documentos" cols="45" rows="4"><?= set_value('documentos') ?></textarea>
+        <input type="file" name="documentos" cols="45" rows="4"><?= set_value('documentos') ?></input>
         <br>
 
-        <input type="submit" name="submit" value="Create products item">
+        <input type="submit" name="submit" value="Create products item"></input>
     </form>
 </div>

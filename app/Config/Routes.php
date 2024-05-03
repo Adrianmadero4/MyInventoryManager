@@ -41,7 +41,7 @@ if (!empty($session->get('user'))){
 
     $routes->get('products/del/(:segment)', [ProductsController::class, 'delete']);   //Ejecuta eliminar productos  
 
-    $routes->get('products/(:segment)', [ProductsController::class, 'show']);   //Muestra un producto seleccionado  
+    $routes->get('products/(:num)', [ProductsController::class, 'show']); // Muestra un producto seleccionado por su ID
 
 }else{
     $routes->get('products', [ProductsController::class, 'noSession']); 
