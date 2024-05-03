@@ -20,7 +20,7 @@ $routes-> get('/pricing', 'PreciosController::precios');//Rutas para la página 
 //$routes-> get('/contact', 'Home::contact');//Rutas para la página de contacto
 $routes-> get('/conocenos', 'ContactoController::index');//Rutas para la página de contacto del Controlador ContactoController de la vista Precios
 
-
+//SESION DE CATEGORIES
 $session = session();
 if (!empty($session->get('user'))){
     $routes->get('categories', [Categories::class, 'index']);   //Muestra todas las categorías  
@@ -28,6 +28,7 @@ if (!empty($session->get('user'))){
     $routes->get('categories', [Categories::class, 'noSession']); 
 }
 
+//SESION DE PRODUCTS
 $session = session();
 if (!empty($session->get('user'))){
     $routes->get('products', [ProductsController::class, 'index']);   //Muestra todos los productos 

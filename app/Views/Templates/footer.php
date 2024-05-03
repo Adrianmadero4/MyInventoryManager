@@ -1,6 +1,6 @@
 <link href="<?php echo base_url('public/assets/bootstrap.min.css'); ?>" rel="stylesheet">
-    <script src="<?php echo base_url('public/assets/bootstrap.min.js'); ?>"></script>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/assets/generalStyle.css'); ?>">
+<script src="<?php echo base_url('public/assets/bootstrap.min.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('public/assets/generalStyle.css'); ?>">
 
 <!-- El siguiente codigo es una plantilla de bootstrap -->
 <!-- Remove the container if you want to extend the Footer to full width. -->

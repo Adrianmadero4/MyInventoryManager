@@ -56,7 +56,7 @@
                     <!-- <button class="col-7.5 bg-light">Ver producto/Editar</button> 
                     <button class="col-4 bg-light">Eliminar</button> -->
                     <a class="btn col-7.5 bg-success" href="./products/<?= esc($new_product['nombreProducto'], 'url')?>">Ver producto/Editar</a>
-                    <a class="btn col-4 bg-danger" href="./products/del/<?= esc($new_product['nombreProducto'], 'url')?>">Eliminar</a>
+                    <a class="btn col-4 bg-danger" href="./products/del/<?= esc($new_product['id'], 'url')?>">Eliminar</a>
 
                     <!--Falta modificar, que lo voy a meter dentro de ver producto, sería el siguiente enlance:
                     <a class="btn col-7.5 bg-success" href="./products/update<?= esc($new_product['nombreProducto'], 'url')?>">Ver producto/Editar</a>  -->

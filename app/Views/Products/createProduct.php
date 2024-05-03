@@ -1,3 +1,6 @@
+<link href="<?php echo base_url('public/assets/bootstrap.min.css'); ?>" rel="stylesheet">
+<script src="<?php echo base_url('public/assets/bootstrap.min.js'); ?>"></script>
+
 <div class="container">
     <h2><?= esc($title)?></h2> <!--Esto viene del controlador ProductsController -->
 

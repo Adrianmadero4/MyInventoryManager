@@ -30,9 +30,13 @@ class ProductsController extends BaseController
 
     public function show($slug = null){
         $model = model(ProductModel::class);
-        $data['products'] = $model->getProducts($slug);
+        
+        // Decodificar el slug para obtener el nombre del producto sin espacios codificados
+        $decodedSlug = urldecode($slug);
+
+        $data['products'] = $model->getProducts($decodedSlug);
         if (empty($data['products'])) {
-            throw new PageNotFoundException('Cannot find the product item: '.$slug);
+            throw new PageNotFoundException('Cannot find the product item: '.$decodedSlug);
         }
         $data['nombreProducto'] = $data['products']['nombreProducto'];
         return view('templates/menuHeader', $data)
@@ -59,13 +63,14 @@ class ProductsController extends BaseController
         if (! $this->validate ([
             'nombreProducto' => 'required|max_length[50]|min_length[2]',
             'descripcion'  => 'required|max_length[250]|min_length[5]',
-            /*'guardado_en',
-            'precio_compra',
-            'precio_venta',
-            'fecha_compra',
-            'fecha_venta',
-            'imagen',
-            'documentos',*/
+            'stock' =>'min_length[0]',
+            'guardado_en' => 'max_length[50]|min_length[0]',
+            'precio_compra' => 'min_length[0]',
+            'precio_venta' => 'min_length[0]',
+            'fecha_compra' => 'min_length[0]',
+            'fecha_venta' => 'min_length[0]',
+            /*'imagen' => 'max_size[imagen,50000]',
+            'documentos' => 'max_size[documentos,50000]'*/
         ])) {
             // The validation fails, so returns the form.
             return $this->new();
@@ -80,13 +85,13 @@ class ProductsController extends BaseController
             'nombreProducto' => $post['nombreProducto'], //Esto viene del name del input en el formulario
             'slug'  => url_title($post['nombreProducto'], '-', true), //Generamos el slug automaticamente a partir del nombre del producto
             'descripcion'  => $post['descripcion'],
-            /*'stock'  => $post['stock'],
             'guardado_en'  => $post['guardado_en'],
+            'stock'  => $post['stock'],
             'precio_compra'  => $post['precio_compra'],
             'precio_venta'  => $post['precio_venta'],
             'fecha_compra'  => $post['fecha_compra'],
             'fecha_venta'  => $post['fecha_venta'],
-            'imagen'  => $post['imagen'],
+            /*'imagen'  => $post['imagen'],
             'documentos'  => $post['documentos'],*/
         ]);
 
