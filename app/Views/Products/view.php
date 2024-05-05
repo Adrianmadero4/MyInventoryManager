@@ -1,6 +1,8 @@
 <div class="container">
     <a class="btn col-7.5 bgLim text-light" href="<?php echo base_url('/products'); ?>">Volver al listado</a>
     <a class="btn col-7.5 bgLim text-light" href="./products/new">Editar producto</a>
+    <a class="btn col-7.5 bg-success" href="<?= base_url("products/update/{$product['id']}") ?>">Editar producto</a>
+
 
     <h2 class="text-center"><?= esc('Producto: '.$product['nombreProducto'])?></h2>
 

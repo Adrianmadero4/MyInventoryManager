@@ -56,12 +56,12 @@
 
     </section>
 
+    <div class="container mt-4">
+    <h2 class="text-center">Secciones y productos</h2>
     <div class="row mt-4">
-        <h2 class="text-center">Secciones y productos</h2>
-        <div class="col-md-1">
-        </div>
+        <div class="col-lg-1"></div>
 
-        <div class="col-md-5">
+        <div class="col-lg-5 col-md-6 col-sm-12">
             <div class="card mt-3" style="max-width: 400px;">
                 <img src="public/images/publicComedor/comedorJysk.jpg" class="card-img-top" alt="...">
                 <div class="card-body text-center">
@@ -90,10 +90,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-1">
-        </div>
         
-        <div class="col-md-5">
+        <div class="col-lg-5 col-md-6 col-sm-12">
             <div class="card mt-3" style="max-width: 400px;">
                 <img src="public/images/publicHab1/HabitacionPrincipal.jpg" class="card-img-top" alt="...">
                 <div class="card-body text-center">
@@ -122,7 +120,11 @@
                 </div>
             </div>
         </div>
+        
+        <div class="col-lg-1"></div>
     </div>
+</div>
+
 
     <!-- Sección de Artículos -->
     <div class="container" style="padding: 15px 10px;">

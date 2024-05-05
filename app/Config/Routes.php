@@ -36,8 +36,8 @@ if (!empty($session->get('user'))){
     $routes->get('products/new', [ProductsController::class, 'new']);   //Formulario insertar productos  - El new abre el formulario para insertar datos.
     $routes->post('products/createProduct', [ProductsController::class, 'create']);   //Ejecuta insertar productos  - El create es el que hace el insert into (Inserta).
 
-    $routes->get('products/update/updated/(:segment)', [ProductsController::class, 'updatedItem']);   //Formulario modificar productos  
-    $routes->post('products/update/(:segment)', [ProductsController::class, 'update']);   //Ejecuta modificar productos  
+    $routes->get('products/update/(:segment)', [ProductsController::class, 'update']);   //Ejecuta modificar productos  
+    $routes->post('products/update/updated/(:segment)', [ProductsController::class, 'updatedItem']);   //Formulario modificar productos  
 
     $routes->get('products/del/(:segment)', [ProductsController::class, 'delete']);   //Ejecuta eliminar productos  
 

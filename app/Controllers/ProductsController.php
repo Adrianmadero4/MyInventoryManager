@@ -15,12 +15,12 @@ class ProductsController extends BaseController
             . view('templates/footer');
     }
 
-    public function index()
+    public function index() //Para ver todos los productos
     {
         $model = model(ProductModel::class);
         $data = [//Elementos del array almacenados 
             'products'  => $model->getProducts(),
-            'nombreProducto' => 'Nombre del Producto',
+            'title' => 'Lista de productos', //Esto es luego lo que se imprime en la cabecera de index.php
         ];
 
         return view('templates/menuHeader', $data)
@@ -28,7 +28,7 @@ class ProductsController extends BaseController
             . view('templates/footer');
     }
 
-    public function show($id = null){
+    public function show($id = null){ //Para ver un producto en especifico
         $model = model(ProductModel::class);
     
         $products = $model->getById($id);
@@ -134,31 +134,30 @@ class ProductsController extends BaseController
     }
 
 
-    /*
     public function update($id){//le pasamos como identificador la variable id y abajo hace falta el helper form
 
         helper('form');
 
         if ($id==null){
-            throw new PageNotFoundException('Cannot update the item');
+            throw new PageNotFoundException('No se puede actualizar el producto');
         }
 
         //si no es null:
-        $model = model(WondersModel::class);
+        $model = model(ProductModel::class);
 
         if ($model->where('id', $id)->find()) {//busca la noticia del id
             $data = [
-                'wonders' => $model ->where(['id' => $id])->first(),
-                'wonder' => 'Update item', //ojo si da error en la linea 224 del header que es por esto o por justo la de arriba
+                'products' => $model ->where(['id' => $id])->first(),
+                'title' => 'Actualizar ' , //ojo si da error en la linea 224 del header que es por esto o por justo la de arriba
             ];
 
         }else{
-            throw new PageNotFoundException('Selected item does not exist in database');
+            throw new PageNotFoundException('El producto seleccionado no existe');
         }// y si no hay noticia con ID, sacamos otro mensaje.
 
 
-        return view('templates/header', $data)
-            . view('wonders/update')
+        return view('templates/menuHeader', $data)
+            . view('Products/update')
             . view('templates/footer');
     }
 
@@ -168,8 +167,16 @@ class ProductsController extends BaseController
  
         // Checks whether the submitted data passed the validation rules.
         if (! $this->validate([
-            'wonder' => 'required|max_length[100]|min_length[2]',
-            'localizacion'  => 'required|max_length[100]|min_length[2]'
+            'nombreProducto' => 'required|max_length[50]|min_length[2]',
+            'descripcion'  => 'required|max_length[250]|min_length[5]',
+            'stock' =>'min_length[0]',
+            'guardado_en' => 'max_length[50]|min_length[0]',
+            'precio_compra' => 'min_length[0]',
+            'precio_venta' => 'min_length[0]',
+            'fecha_compra' => 'min_length[0]',
+            'fecha_venta' => 'min_length[0]',
+            /*'imagen' => 'max_size[imagen,50000]',
+            'documentos' => 'max_size[documentos,50000]'*/
         ])) {
             // The validation fails, so returns the form.
             return $this->update($id);
@@ -179,21 +186,30 @@ class ProductsController extends BaseController
         $post = $this->validator->getValidated();
  
         $data = [
-            'id' => $id,
-            'wonder' => $post['wonder'],
-            'location'  => $post['localizacion'],
+            'id' => $id, //Aqui hay que recoger el id para que el método save modifique y no inserte. (Diferencia principal entre insertar y modificar)
+            'nombreProducto' => $post['nombreProducto'], //Esto viene del name del input en el formulario
+            'slug'  => url_title($post['nombreProducto'], '-', true), //Generamos el slug automaticamente a partir del nombre del producto
+            'descripcion'  => $post['descripcion'],
+            'guardado_en'  => $post['guardado_en'],
+            'stock'  => $post['stock'],
+            'precio_compra'  => $post['precio_compra'],
+            'precio_venta'  => $post['precio_venta'],
+            'fecha_compra'  => $post['fecha_compra'],
+            'fecha_venta'  => $post['fecha_venta'],
+            /*'imagen'  => $post['imagen'],
+            'documentos'  => $post['documentos'],*/
         ];
-        $model = model(WondersModel::class);
+        $model = model(ProductModel::class);
         $model->save($data);
 
         //Nos vamos directamente a la pag. principal
-        return redirect()->to(base_url());
+        /*return redirect()->to(base_url());*/
        
-        /*
-        return view('templates/header', ['title' => 'Item updated'])
-            . view('wonders/update')
+        
+        return view('templates/menuHeader', ['title' => 'Item updated'])
+            . view('Products/succes')
             . view('templates/footer');
-    }*/
+    }
 
 
 }
