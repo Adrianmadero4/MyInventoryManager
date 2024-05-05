@@ -2,62 +2,77 @@
 <script src="<?php echo base_url('public/assets/bootstrap.min.js'); ?>"></script>
 
 <div class="container">
-    <h2><?= esc($title)?></h2> <!--Esto viene del controlador ProductsController -->
-
+    <h2><?= esc($title)?></h2>
 
     <?= session()->getFlashdata('error') ?>
     <?= validation_list_errors() ?>
 
-    <a class="" href="<?php echo base_url('/products'); ?>">Volver al listado</a>
+    <a class="btn col-7.5 bgLim text-light" href="<?php echo base_url('/products'); ?>">Volver al listado</a>
 
+    <div class="row">
+        <div class="col-md-6">
+            <form action="./createProduct" method="post">
+                <?= csrf_field() ?>
 
-    <form action="./createProduct" method="post">
-        <?= csrf_field() ?> <!--Genera una entrada oculta para ayudarnos a protegernos contra posibles ataques mediante al creación de un token adecuado. -->
+                <div class="form-group">
+                    <label for="nombreProducto">Nombre del producto</label>
+                    <input type="input" class="form-control" name="nombreProducto" value="<?= set_value('nombreProducto') ?>">
+                </div>
 
-        <label for="nombreProducto">Nombre del producto</label>
-        <input type="input" name="nombreProducto" value="<?= set_value('nombreProducto') ?>"></input> <!--El set value permite tener el registro escrito en caso de error, para no tener que escribir todo de nuevo -->
-        <br>
+                <div class="form-group">
+                    <label for="id_categoria">Sección</label>
+                    <input type="input" class="form-control" name="id_categoria" value="<?= set_value('id_categoria') ?>">
+                </div>
 
-        <label for="id_categoria">Sección</label>
-        <input type="input" name="id_categoria" value="<?= set_value('id_categoria') ?>"></input>
-        <br>
+                <div class="form-group">
+                    <label for="descripcion">Descripcion</label>
+                    <textarea name="descripcion" class="form-control" rows="4"><?= set_value('descripcion') ?></textarea>
+                </div>
 
-        <label for="descripcion">Descripcion</label>
-        <textarea name="descripcion" cols="45" rows="4"><?= set_value('descripcion') ?></textarea>
-        <br>
+                <div class="form-group">
+                    <label for="stock">Stock</label>
+                    <input type="number" class="form-control" name="stock" value="<?= set_value('stock') ?>">
+                </div>
 
-        <label for="stock">Stock</label>
-        <input type="number" name="stock" cols="45" rows="4"><?= set_value('stock') ?></input>
-        <br>
+                <div class="form-group">
+                    <label for="guardado_en">Guardado en</label>
+                    <input type="input" class="form-control" name="guardado_en" value="<?= set_value('guardado_en') ?>">
+                </div>
+            </form>
+        </div>
 
-        <label for="guardado_en">Guardado en</label>
-        <input type="input" name="guardado_en" cols="45" rows="4"><?= set_value('guardado_en') ?></input>
-        <br>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="precio_compra">Precio de compra</label>
+                <input type="number" class="form-control" name="precio_compra" value="<?= set_value('precio_compra') ?>">
+            </div>
 
-        <label for="precio_compra">Precio de compra</label>
-        <input type="number" name="precio_compra" cols="45" rows="4"><?= set_value('precio_compra') ?></input>
-        <br>
+            <div class="form-group">
+                <label for="precio_venta">Precio de venta</label>
+                <input type="number" class="form-control" name="precio_venta" value="<?= set_value('precio_venta') ?>">
+            </div>
 
-        <label for="precio_venta">Precio de venta</label>
-        <input type="number" name="precio_venta" cols="45" rows="4"><?= set_value('precio_venta') ?></input>
-        <br>
+            <div class="form-group">
+                <label for="fecha_compra">Fecha de compra</label>
+                <input type="date" class="form-control" name="fecha_compra" value="<?= set_value('fecha_compra') ?>">
+            </div>
 
-        <label for="fecha_compra">Fecha de compra</label>
-        <input type="date" name="fecha_compra" cols="45" rows="4"><?= set_value('fecha_compra') ?></input>
-        <br>
+            <div class="form-group mb-2">
+                <label for="fecha_venta">Fecha de venta</label>
+                <input type="date" class="form-control" name="fecha_venta" value="<?= set_value('fecha_venta') ?>">
+            </div>
 
-        <label for="fecha_venta">Fecha de venta</label>
-        <input type="date" name="fecha_venta" cols="45" rows="4"><?= set_value('fecha_venta') ?></input>
-        <br>
+            <div class="form-group mb-2">
+                <label for="imagen">Imagen</label>
+                <input type="file" class="form-control-file" name="imagen">
+            </div>
 
-        <label for="imagen">Imagen</label>
-        <input type="file" name="imagen" cols="45" rows="4"><?= set_value('imagen') ?></input>
-        <br>
+            <div class="form-group mb-2">
+                <label for="documentos">Documentos</label>
+                <input type="file" class="form-control-file" name="documentos">
+            </div>
+            <button type="submit" class="btn btn-primary">Crear producto</button>
 
-        <label for="documentos">Documentos</label>
-        <input type="file" name="documentos" cols="45" rows="4"><?= set_value('documentos') ?></input>
-        <br>
-
-        <input type="submit" name="submit" value="Create products item"></input>
-    </form>
+        </div>
+    </div>
 </div>

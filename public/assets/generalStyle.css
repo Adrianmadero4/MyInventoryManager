@@ -26,3 +26,13 @@
     background-color: #136921 !important;
 
 }
+
+/*Color para Eliminar*/
+.bgDelete {
+    background-color: #ff4747 !important; /*06a5e4*/
+}
+
+/*Color para ver*/
+.bgVer {
+    background-color: #cbdd00 !important; /*06a5e4*/
+}

@@ -1,15 +1,16 @@
+<div class="container">
 <link href="<?php echo base_url('public/assets/bootstrap.min.css'); ?>" rel="stylesheet">
 <script src="<?php echo base_url('public/assets/bootstrap.min.js'); ?>"></script>
 
 <h2><?= esc($nombreProducto) ?></h2> <!--Este title es el de la función index del controller-->
 <!-- -->
-<a href="./products/new">Añadir Producto</a>
+<a class="btn col-7.5 bgLim text-light" href="./products/new">Añadir Producto</a>
 
 <?php if (! empty($products) && is_array($products)): ?> <!--Si el array no está vacío y se puede recorrer: -->
 
     <div class="container mt-4 mb-4">
         <!-- Primera fila con background gris claro -->
-        <div class="row bg-secondary text-center">
+        <div class="row bg-light text-center">
             <!-- Columnas -->
             <div class="col-2">
                 <h6>Nombre del Producto</h6>
@@ -55,8 +56,8 @@
                 <div class="col-3">
                     <!-- <button class="col-7.5 bg-light">Ver producto/Editar</button> 
                     <button class="col-4 bg-light">Eliminar</button> -->
-                    <a class="btn col-7.5 bg-success" href="./products/<?= esc($new_product['id'], 'url')?>">Ver producto/Editar</a>
-                    <a class="btn col-4 bg-danger" href="./products/del/<?= esc($new_product['id'], 'url')?>">Eliminar</a>
+                    <a class="btn col-7.5 bgVer" href="./products/<?= esc($new_product['id'], 'url')?>">Ver producto/Editar</a>
+                    <a class="btn col-4 bgDelete" href="./products/del/<?= esc($new_product['id'], 'url')?>">Eliminar</a>
 
                     <!--Falta modificar, que lo voy a meter dentro de ver producto, sería el siguiente enlance:
                     <a class="btn col-7.5 bg-success" href="./products/update<?= esc($new_product['nombreProducto'], 'url')?>">Ver producto/Editar</a>  -->
@@ -95,3 +96,5 @@
     </div>
 
 <?php endif ?>
+
+</div>
