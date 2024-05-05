@@ -18,21 +18,42 @@
     text-decoration: underline; /* Opcional: agregar subrayado al pasar el cursor */
 }
 
-.bgLim {
-    background-color: #06a5e4 !important; /*06a5e4*/
-}
-
 .bgSectionsFilled {
     background-color: #136921 !important;
 
 }
 
-/*Color para Eliminar*/
 .bgDelete {
-    background-color: #ff4747 !important; /*06a5e4*/
+    background-color: rgb(255, 41, 41) !important;
+}
+
+/*COLORES DEL LOGO*/
+/*Color para Eliminar*/
+.bgLim {
+    background-color: #06a5e4 !important; /*06a5e4*/
 }
 
 /*Color para ver*/
 .bgVer {
-    background-color: #cbdd00 !important; /*06a5e4*/
+    background-color: #cbdd00 !important;
 }
+
+.bgPurple {
+    background-color: #c8005f;
+}
+
+.bgOrange {
+    background-color: #ff8800;
+}
+
+.nav-link {
+    transition: background-color 0.5s ease;
+    padding: 5px 10px; /* Relleno para que el área de hover sea más grande */
+}
+
+.nav-link:hover {
+    background-color: #cbdd00;
+    color: #ffffff;
+    border-radius: 5px; /* Botón más redondo para que el hover no tenga solo el tamaño de las letras sino que sea un poco mas grande */
+}
+
