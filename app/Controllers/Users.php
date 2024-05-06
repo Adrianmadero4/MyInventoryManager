@@ -62,6 +62,32 @@ class Users extends BaseController
 
         return redirect()->to(base_url());
     }
+
+    /*public function registrarUsuario() {
+        // Obtener los datos del formulario
+        $nombre = $this->input->post('nombre');
+        $correo = $this->input->post('correo');
+        $contraseña = $this->input->post('contraseña');
+        $rol = 'Basico'; // Asignar el rol por defecto
+    
+        // Cifrar la contraseña
+        $contraseñaCifrada = password_hash($contraseña, PASSWORD_DEFAULT);
+    
+        // Insertar el usuario en la base de datos
+        $data = array(
+            'nombre' => $nombre,
+            'correo' => $correo,
+            'contraseña' => $contraseñaCifrada,
+            'rol' => $rol
+        );
+    
+        // Insertar en la base de datos
+        $this->db->insert('Usuarios', $data);
+    
+        // Redirigir u mostrar un mensaje de éxito, etc.
+    }*/
+    
+    
    
 }
 
