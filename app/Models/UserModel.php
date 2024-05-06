@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-    protected $table = 't_usuarios';
+    protected $table = 'usuarios';
     protected $allowedFields = ['username', 'password','rol'];
 
     public function checkUser($user,$pass)

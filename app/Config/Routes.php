@@ -1,7 +1,7 @@
 <?php
 
 use CodeIgniter\Router\RouteCollection;
-use App\Controllers\Categories; // Importa la clase Categories
+use App\Controllers\secciones; // Importa la clase secciones
 use App\Controllers\ProductsController; // Importa la clase Products
 
 $routes->setAutoRoute(false); //No deja buscar en los controladores posibles rutas
@@ -20,12 +20,22 @@ $routes-> get('/pricing', 'PreciosController::precios');//Rutas para la página 
 //$routes-> get('/contact', 'Home::contact');//Rutas para la página de contacto
 $routes-> get('/conocenos', 'ContactoController::index');//Rutas para la página de contacto del Controlador ContactoController de la vista Precios
 
-//SESION DE CATEGORIES
+// Ruta para registrarse
+$routes->get('/registro', 'Users::registerForm'); // Muestra el formulario de registro
+$routes->post('/registro', 'Users::registerUser'); // Procesa los datos del formulario de registro
+
+
+// Ruta para el login:
+$routes-> get('/admin', 'Users::loginForm'); // Muestra el formulario para iniciar sesión
+$routes-> post('/login', 'Users::checkUser'); // Obtenemos user y pass (Definidos en el modelo).
+$routes->get('session', 'Users::closeSession');   //Cerrar sesion
+
+// SESSION DE Secciones
 $session = session();
 if (!empty($session->get('user'))){
-    $routes->get('categories', [Categories::class, 'index']);   //Muestra todas las categorías  
+    $routes->get('secciones', [Secciones::class, 'index']);   //Muestra todas las categorías  
 }else{
-    $routes->get('categories', [Categories::class, 'noSession']); 
+    $routes->get('secciones', [Secciones::class, 'noSession']); 
 }
 
 //SESION DE PRODUCTS
@@ -51,10 +61,6 @@ if (!empty($session->get('user'))){
     $routes->get('products/(:segment)', [ProductsController::class, 'noSession']); 
 }
 
-//Ruta para el login:
-$routes-> get('/admin', 'Users::loginForm'); // Muestra el formulario para iniciar sesión
-$routes-> post('/login', 'Users::checkUser'); // Obtenemos user y pass (Definidos en el modelo).
-$routes->get('session', 'Users::closeSession');   //Cerrar sesion
 
 
 

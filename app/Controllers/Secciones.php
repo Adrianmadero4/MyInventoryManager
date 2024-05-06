@@ -1,28 +1,28 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\CategoryModel;
+use App\Models\SeccionesModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
-class Categories extends BaseController
+class Secciones extends BaseController
 {
 
     public function index()
     {
-        $model = model(CategoryModel::class);
+        $model = model(SeccionesModel::class);
         $data = [
-            'category'  => $model->getCategories(),
-            'title' => 'List of Categories',
+            'secciones'  => $model->getSecciones(),
+            'title' => 'List of Secciones',
         ];
 
         return view('templates/menuHeader', $data)
-            . view('categories/index')
+            . view('secciones/index')
             . view('templates/footer');
     }
     public function noSession()
     {
 
         return view('templates/menuHeader')
-            . view('categories/noSession')
+            . view('secciones/noSession')
             . view('templates/footer');
     }
 

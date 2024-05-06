@@ -30,7 +30,7 @@
         $session = session();
         if (!empty($session->get('user'))) :
         ?>
-        <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?= base_url('categories')?>">Secciones</a>
+        <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?= base_url('secciones')?>">Secciones</a>
         <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?= base_url('products')?>">Productos</a>
         <a class="py-2 text-dark text-decoration-none nav-link" href="<?= base_url('session')?>">Cerrar sesion</a>
         <?php endif ?>

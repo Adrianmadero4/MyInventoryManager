@@ -25,8 +25,9 @@
                     <input type="password" class="form-control" id="password" name="password" value="<?= set_value('password') ?>">
                 </div>
 
-                <button type="submit" class="btn btn-primary mb-3">Send</button>
+                <button type="submit" class="btn btn-primary mb-3">Send</button>                
             </form>
+            <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('registro'); ?>">No tienes cuenta? Registrate aquí, ¡Es gratis!</a>
             <button class="btn btn-secondary mb-3 float-end" onclick="window.location.href='<?php echo base_url(''); ?>'">Volver al Inicio</button>
         </div>
     </div>

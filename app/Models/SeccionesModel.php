@@ -4,13 +4,13 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class CategoryModel extends Model
+class SeccionesModel extends Model
 {
-    protected $table = 'category';
+    protected $table = 'secciones';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['category'];
+    protected $allowedFields = ['nombre_seccion', 'id_usuario', 'imagen', 'created_at', 'updated_at'];
 
-    public function getCategories()
+    public function getSecciones()
     {
         return $this->findAll();
     }
