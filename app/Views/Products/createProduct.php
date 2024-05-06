@@ -11,7 +11,11 @@
 
     <div class="row">
         <div class="col-md-6">
-            <form action="./createProduct" method="post">
+            <!-- <form action="./createProduct" method="post"> -->
+            <form action="<?= site_url('products/createProduct'); ?>" method="post"> 
+
+
+
                 <?= csrf_field() ?>
 
                 <div class="form-group">
@@ -38,40 +42,41 @@
                     <label for="guardado_en">Guardado en</label>
                     <input type="input" class="form-control" name="guardado_en" value="<?= set_value('guardado_en') ?>">
                 </div>
-            </form>
         </div>
 
         <div class="col-md-6">
-            <div class="form-group">
-                <label for="precio_compra">Precio de compra</label>
-                <input type="number" class="form-control" name="precio_compra" value="<?= set_value('precio_compra') ?>">
-            </div>
 
-            <div class="form-group">
-                <label for="precio_venta">Precio de venta</label>
-                <input type="number" class="form-control" name="precio_venta" value="<?= set_value('precio_venta') ?>">
-            </div>
+                <div class="form-group">
+                    <label for="precio_compra">Precio de compra</label>
+                    <input type="number" class="form-control" name="precio_compra" value="<?= set_value('precio_compra') ?>">
+                </div>
 
-            <div class="form-group">
-                <label for="fecha_compra">Fecha de compra</label>
-                <input type="date" class="form-control" name="fecha_compra" value="<?= set_value('fecha_compra') ?>">
-            </div>
+                <div class="form-group">
+                    <label for="precio_venta">Precio de venta</label>
+                    <input type="number" class="form-control" name="precio_venta" value="<?= set_value('precio_venta') ?>">
+                </div>
 
-            <div class="form-group mb-2">
-                <label for="fecha_venta">Fecha de venta</label>
-                <input type="date" class="form-control" name="fecha_venta" value="<?= set_value('fecha_venta') ?>">
-            </div>
+                <div class="form-group">
+                    <label for="fecha_compra">Fecha de compra</label>
+                    <input type="date" class="form-control" name="fecha_compra" value="<?= set_value('fecha_compra') ?>">
+                </div>
 
-            <div class="form-group mb-2">
-                <label for="imagen">Imagen</label>
-                <input type="file" class="form-control-file" name="imagen">
-            </div>
+                <div class="form-group mb-2">
+                    <label for="fecha_venta">Fecha de venta</label>
+                    <input type="date" class="form-control" name="fecha_venta" value="<?= set_value('fecha_venta') ?>">
+                </div>
 
-            <div class="form-group mb-2">
-                <label for="documentos">Documentos</label>
-                <input type="file" class="form-control-file" name="documentos">
-            </div>
-            <button type="submit" class="btn btn-primary">Crear producto</button>
+                <div class="form-group mb-2">
+                    <label for="imagen">Imagen</label>
+                    <input type="file" class="form-control-file" name="imagen">
+                </div>
+
+                <div class="form-group mb-2">
+                    <label for="documentos">Documentos</label>
+                    <input type="file" class="form-control-file" name="documentos">
+                </div>
+                <button type="submit" class="btn btn-primary">Crear producto</button>
+            </form>
 
         </div>
     </div>

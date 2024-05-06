@@ -34,6 +34,9 @@ $routes->get('session', 'Users::closeSession');   //Cerrar sesion
 $session = session();
 if (!empty($session->get('user'))){
     $routes->get('secciones', [Secciones::class, 'index']);   //Muestra todas las categorías  
+    
+    $routes->get('secciones/new', [Secciones::class, 'new']);   //Formulario insertar categorías  - El new abre el formulario para insertar datos.
+    $routes->post('secciones/createSection', [Secciones::class, 'create']);   //Ejecuta insertar categorías  - El create es el que hace el insert into (Inserta).
 }else{
     $routes->get('secciones', [Secciones::class, 'noSession']); 
 }

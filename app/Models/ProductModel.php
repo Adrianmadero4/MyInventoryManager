@@ -17,9 +17,9 @@ class ProductModel extends Model
             $sql = $this->join('secciones', 'productos.id_seccion = secciones.id');
             $sql = $this->findAll();
             return $sql;
-        }
+        } // Abajo para un producto en particular.
         $sql = $this->select('productos.*, secciones.nombre_seccion');
-        $sql = $this->join('secciones', 'productos.id_seccion = secciones.id');
+        $sql = $this->join('secciones', 'productos.id_seccion = secciones.id'); // Esto es como si fuera el JOIN .. ON que hacíamos en php
         $sql = $this->where(['slug' => $slug]);
         $sql = $this->first();
         return $sql;

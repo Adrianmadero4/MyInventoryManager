@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\ProductModel;
+use App\Models\SeccionesModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 class ProductsController extends BaseController
 {
@@ -51,11 +52,25 @@ class ProductsController extends BaseController
             . view('templates/footer');
     }
 
+    // Verifica si hay al menos una categoría en la base de datos
+    public function checkSectionExist() {
+        $categoryModel = new SeccionesModel(); // Suponiendo que tienes un modelo para la tabla de categorías
+        $categories = $categoryModel->findAll();
+
+        return !empty($categories);
+    }
+
 
     public function create() //Método que recoge los datos del formulario del new al haber insertado el producto.
 
     {
         helper('form');
+
+        // Verifica si hay al menos una categoría
+        /*if (!$this->checkSectionExist()) {
+            // No hay categorías disponibles, muestra un mensaje de error o redirige a la página de creación de categorías
+            return redirect()->back()->with('error', 'Debes crear al menos una categoría antes de agregar productos.');
+        }*/
 
         $data = $this->request->getPost(['nombreProducto', 'descripcion' ,'stock', 'guardado_en']);
 
