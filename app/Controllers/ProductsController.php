@@ -7,14 +7,34 @@ use CodeIgniter\Exceptions\PageNotFoundException;
 class ProductsController extends BaseController
 {
 
-    public function new() //Método para insertar datos en el formulario, llamando a createProduct.php
+    /*public function new() //Método para insertar datos en el formulario, llamando a createProduct.php
     {
-        helper('form');
+        helper('form'); //Para devolver todo a la vista
+        
 
         return view('templates/menuHeader', ['title' => 'Crea tu nuevo producto'] ) //El 'titulo' va luego al createProduct.php en las vistas
             . view('Products/createProduct')
             . view('templates/footer');
+    }*/
+    
+    public function new() //Método para insertar datos en el formulario, llamando a createProduct.php
+    {
+        helper('form'); //Para devolver todo a la vista
+
+        //Pero si además, queremos controlar las categorías para que el usuario no pueda indicar alguna que no existe:
+        $model = model(SeccionesModel::class);
+        if ($data['section'] = $model->findAll()) { //el campo section está inventado ['inventado'] (izquierda del igual inventado).
+            return view('templates/menuHeader', ['title' => 'Crea tu nuevo producto'] ) //El 'titulo' va luego al createProduct.php en las vistas
+            . view('Products/createProduct', $data)
+            . view('templates/footer');
+        } else {
+            // Si no se encuentran secciones, mostramos página de error no hay secciones
+            return view('templates/menuHeader', ['title' => 'Error al intentar crear producto'] ) //El 'titulo' va luego al createProduct.php en las vistas
+            . view('Products/errorNoSection')
+            . view('templates/footer');
+        }
     }
+    
 
     public function index() //Para ver todos los productos
     {
@@ -64,7 +84,7 @@ class ProductsController extends BaseController
     public function create() //Método que recoge los datos del formulario del new al haber insertado el producto.
 
     {
-        helper('form');
+        helper('form'); // Ayuda para validar los datos.
 
         // Verifica si hay al menos una categoría
         /*if (!$this->checkSectionExist()) {
@@ -74,10 +94,11 @@ class ProductsController extends BaseController
 
         $data = $this->request->getPost(['nombreProducto', 'descripcion' ,'stock', 'guardado_en']);
 
-        // Checks whether the submitted data passed the validation rules.
+        // Chequear las validaciones del formulario de crear.
         if (! $this->validate ([
             'nombreProducto' => 'required|max_length[50]|min_length[2]',
             'descripcion'  => 'required|max_length[250]|min_length[5]',
+            'id_seccion'  => 'required', // Viene de la vista createProduct, del: select name="id_seccion";
             'stock' =>'min_length[0]',
             'guardado_en' => 'max_length[50]|min_length[0]',
             'precio_compra' => 'min_length[0]',
@@ -87,7 +108,7 @@ class ProductsController extends BaseController
             /*'imagen' => 'max_size[imagen,50000]',
             'documentos' => 'max_size[documentos,50000]'*/
         ])) {
-            // The validation fails, so returns the form.
+            // Falla la validación, volvemos al formulario.
             return $this->new();
         }
 
@@ -100,6 +121,7 @@ class ProductsController extends BaseController
             'nombreProducto' => $post['nombreProducto'], //Esto viene del name del input en el formulario
             'slug'  => url_title($post['nombreProducto'], '-', true), //Generamos el slug automaticamente a partir del nombre del producto
             'descripcion'  => $post['descripcion'],
+            'id_seccion'  => $post['id_seccion'], // El id_seccion de la derecha viene de la vista createProduct, del: select name="id_seccion"; el de la izq: campos de las tablas. lo de post viene siempre de formulario.
             'guardado_en'  => $post['guardado_en'],
             'stock'  => $post['stock'],
             'precio_compra'  => $post['precio_compra'],

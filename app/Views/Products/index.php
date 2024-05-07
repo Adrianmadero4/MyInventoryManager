@@ -35,6 +35,8 @@
         </div>
         
         <?php foreach ($products as $new_product): ?> <!--Recorremos el array de productos y nos inventamos el new_product -->
+            <!-- <h4><?= esc($new_product['id_seccion']) ?> Este id_seccion es el campo seccion del select, si no funciona, probar con secciones o secciones.id</h4> -->
+
             <!-- Segunda fila sin fondo -->
             <div class="row align-items-center text-center border">
                 <!-- Aquí puedes iterar sobre tus productos -->

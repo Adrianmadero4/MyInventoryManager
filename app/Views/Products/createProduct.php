@@ -24,8 +24,19 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="id_categoria">Sección</label>
-                    <input type="input" class="form-control" name="id_categoria" value="<?= set_value('id_categoria') ?>">
+                    <label for="nombre_seccion">Sección</label>
+                    <select name="id_seccion"> <!-- Corresponderá luego al campo de la validación de crar en el formulario en el controlador -->
+                        <?php if (!empty($section) && is_array($section)): ?>
+
+                            <?php foreach ($section as $section_item): ?> <!--$section_item es el nombre que le asigno a la variable del foreach -->
+
+                                <option value="<?= $section_item['id'] ?>"> <!-- Almacena el codigo de la sección y no el nombre de la sección -->
+                                    <?= $section_item['nombre_seccion'] ?> 
+                                </option>
+                            <?php endforeach ?>
+                        <?php endif ?>
+                    </select>
+                    <!-- <input type="input" class="form-control" name="id_categoria" value="<?= set_value('id_categoria') ?>"> -->
                 </div>
 
                 <div class="form-group">

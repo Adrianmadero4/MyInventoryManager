@@ -1,6 +1,6 @@
-<?php
+<?php namespace App\Models; //Ojo que eñ <?php tiene que ser si o si la primer linea o da error
+// Creamos un modelo porque necesitamos acceder a la tabla de secciones para el desplegable, que aparezcan las secciones
 
-namespace App\Models;
 
 use CodeIgniter\Model;
 
@@ -14,6 +14,7 @@ class SeccionesModel extends Model
     {
         return $this->findAll();
     }
+
     public function getById($id = false)
     {
         if ($id === false) {
@@ -22,5 +23,5 @@ class SeccionesModel extends Model
 
         return $this->where(['id' => $id])->first();
     }
-
 }
+

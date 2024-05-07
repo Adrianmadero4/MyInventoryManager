@@ -8,7 +8,7 @@ class ProductModel extends Model
 {
     protected $table = 'productos'; //Accedemos a la tabla
     protected $primaryKey = 'id';// Variable para la primary_key
-    protected $allowedFields = ['id_seccion', 'nombreProducto', 'slug', 'codigo', 'descripcion', 'stock', 'guardado_en', 'precio_compra', 'precio_venta',' fecha_compra', 'fecha_venta', 'imagen', 'documentos'];//Campos permitidos para actualizar.
+    protected $allowedFields = ['id_seccion', 'nombreProducto', 'slug', 'codigo', 'descripcion', 'stock', 'guardado_en', 'precio_compra', 'precio_venta',' fecha_compra', 'fecha_venta', 'imagen', 'documentos', 'created_at', 'updated_at'];//Campos permitidos para actualizar.
 
     public function getProducts($slug = false)
     {
