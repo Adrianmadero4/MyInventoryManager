@@ -15,19 +15,17 @@
             <div class="col-2">
                 <h6>Nombre del Producto</h6>
             </div>
-            <div class="col-2">
+            <div class="col-4">
                 <h6>Descripción</h6>
             </div>
             <div class="col-1">
                 <h6>Tienes</h6>
             </div>
             <div class="col-2">
-                <h6>Guardado en</h6>
+                <h6>Ubicado en la sección</h6>
             </div>
             
-            <div class="col-2">
-                <h6>Imagen</h6>
-            </div>
+
             <div class="col-3">
                 <h6>Acciones</h6>
             </div>
@@ -40,21 +38,22 @@
             <!-- Segunda fila sin fondo -->
             <div class="row align-items-center text-center border mb-2">
                 <!-- Aquí puedes iterar sobre tus productos -->
+
                 <div class="col-2">
-                    <p class="fw-bold"><?= esc($new_product['nombreProducto']) ?></p> <!--['Nombre del campo de la BBDD'] -->
+                    <!-- Contenedor con margen lateral -->
+                    <div class="d-flex justify-content-start align-items-center">
+                        <img src="<?= esc($model->getImagenRuta($new_product['id'])) ?>" alt="" style="width: 80px; margin-right: 10px;">
+                        <p><?= esc($new_product['nombreProducto']) ?></p>
+                    </div>
                 </div>
-                <div class="col-2">
+                <div class="col-4">
                     <p><?= esc($new_product['descripcion']) ?></p>
                 </div>
                 <div class="col-1">
                     <p><?= esc($new_product['stock']) ?></p>
                 </div>
                 <div class="col-2">
-                    <p><?= esc($new_product['guardado_en']) ?></p>
-                </div>
-                <div class="col-2">
-                    <img src="<?= esc($model->getImagenRuta($new_product['id'])) ?>" style="width: 60px; height: 60px" alt="<?= esc('Imagen de: '.$new_product['nombreProducto']) ?>" width="80">
-                    <!-- <p><?= esc($new_product['imagen']) ?></p> -->
+                    <p><?= esc($new_product['nombre_seccion']) ?></p>
                 </div>
                 <div class="col-3">
                     <!-- <button class="col-7.5 bg-light">Ver producto/Editar</button> 
@@ -72,7 +71,8 @@
 
                 <!-- Agrega más columnas según sea necesario -->
             </div>
-            
+        
+        <!-- Aqui va otra posible tabla 
         <?php endforeach ?>
         <table class="table align-middle mb-0 mt-4 bg-white">
             <thead class="bg-light">
@@ -85,7 +85,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($products as $product): ?> <!-- Utiliza $product en lugar de $new_product -->
+                <?php foreach ($products as $product): ?> <!-- Utiliza $product en lugar de $new_product --><!--
                     <tr>
                         <td>
                             <div class="d-flex align-items-center">
@@ -125,7 +125,7 @@
                 <?php endforeach ?>
             </tbody>
 
-        </table>
+        </table>-->
     </div>
 
 
