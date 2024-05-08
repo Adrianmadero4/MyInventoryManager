@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-6">
             <!-- <form action="./createProduct" method="post"> -->
-            <form action="<?= site_url('secciones/createSection'); ?>" method="post"> 
+            <form action="<?= site_url('secciones/createSection'); ?>" method="post" enctype="multipart/form-data">  <!-- enctype="multipart/form-data" para poder subir imagenes correctamente --> 
 
 
 
@@ -27,7 +27,7 @@
                     <label for="imagen">Imagen</label>
                     <input type="file" class="form-control-file" name="imagen">
                 </div>
-                <button type="submit" class="btn btn-primary">Crear Categoría</button>
+                <button type="submit" class="btn btn-primary">Crear Sección</button>
             </form>
 
 

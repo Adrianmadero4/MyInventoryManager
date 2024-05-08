@@ -23,5 +23,15 @@ class SeccionesModel extends Model
 
         return $this->where(['id' => $id])->first();
     }
+
+    public function getImagenRuta($id)
+    {
+        $seccion = $this->find($id);
+        if (!$seccion) {
+            return null; // o una ruta predeterminada si prefieres
+        }
+        return base_url('images/imgPrivate/' . $seccion['imagen']);
+    }
+
 }
 

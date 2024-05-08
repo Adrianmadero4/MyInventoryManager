@@ -39,8 +39,8 @@ class Users extends BaseController
         $model = model(UserModel::class);
         if($data['user'] = $model->checkUser($post['username'],$post['password'])){
             
-            $session = session();
-            $session->set('user',$post['username']);
+            $session = session(); // Ininializar la sesión como con el session_start();
+            $session->set('user',$post['username']); 
 
             return view('templates/menuHeader', ['title' => 'Backend'])
             . view('users/admin', $data)
@@ -55,9 +55,9 @@ class Users extends BaseController
     public function closeSession()
     {
         $session = session();
-        //eliminar variable de sesion específica
+        // eliminar variable de sesion específica
         $session->remove('user');
-        //eliminar toda la información de la sesion
+        // eliminar toda la información de la sesion
         $session->destroy(); //Esta porque me cerraría todas las sesiones del sistema.
 
         return redirect()->to(base_url());

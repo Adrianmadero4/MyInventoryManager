@@ -13,7 +13,7 @@
             <h1><?= esc($error) ?></h1>
 
             <form action="<?php echo base_url('login'); ?>" method="post">
-                <?= csrf_field() ?>
+                <?= csrf_field() ?> <!-- Token oculto para evitar codigo malicioso -->
 
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>

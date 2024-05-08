@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-6">
             <!-- <form action="./createProduct" method="post"> -->
-            <form action="<?= site_url('products/createProduct'); ?>" method="post"> 
+            <form action="<?= site_url('products/createProduct'); ?>" method="post" enctype="multipart/form-data">  <!-- enctype="multipart/form-data" para poder subir imagenes correctamente -->
 
 
 

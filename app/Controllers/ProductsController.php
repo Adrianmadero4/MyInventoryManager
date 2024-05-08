@@ -105,8 +105,8 @@ class ProductsController extends BaseController
             'precio_venta' => 'min_length[0]',
             'fecha_compra' => 'min_length[0]',
             'fecha_venta' => 'min_length[0]',
-            /*'imagen' => 'max_size[imagen,50000]',
-            'documentos' => 'max_size[documentos,50000]'*/
+            'imagen' => 'max_size[imagen,50000]',
+            /*'documentos' => 'max_size[documentos,50000]'*/
         ])) {
             // Falla la validación, volvemos al formulario.
             return $this->new();
@@ -114,6 +114,10 @@ class ProductsController extends BaseController
 
         // Recoge los datos ya validados en la variable $post.
         $post = $this->validator->getValidated();
+
+        $foto = $this->request->getFile('imagen');
+        $fotoName = $foto->getName();
+        $foto->move(ROOTPATH . 'public/images/imgPrivate',$fotoName);
 
         $model = model(ProductModel::class);
 
@@ -128,8 +132,8 @@ class ProductsController extends BaseController
             'precio_venta'  => $post['precio_venta'],
             'fecha_compra'  => $post['fecha_compra'],
             'fecha_venta'  => $post['fecha_venta'],
-            /*'imagen'  => $post['imagen'],
-            'documentos'  => $post['documentos'],*/
+            'imagen'  => $fotoName, //Aqui en el fotoName viene almacenado el nombre de la imagen
+            /*'documentos'  => $post['documentos'],*/
         ]);
 
         return view('templates/menuHeader', ['title' => 'Create a news item'])
@@ -180,13 +184,15 @@ class ProductsController extends BaseController
         }
 
         //si no es null:
-        $model = model(ProductModel::class);
+        $model = model(ProductModel::class); // Apunta a product
+        $Sectionmodel = model(SeccionesModel::class); // Apunta a secciones
 
         if ($model->where('id', $id)->find()) {//busca la noticia del id
             $data = [
-                'products' => $model ->where(['id' => $id])->first(),
+                'products' => $model ->where(['id' => $id])->first(), // Contendrá todas las noticias
                 'title' => 'Actualizar ' , //ojo si da error en la linea 224 del header que es por esto o por justo la de arriba
-            ];
+                'id_seccion' => $Sectionmodel->findAll(), // Buscará todas las categorías
+            ]; // Ahora habría que modificar la vista de update.php
 
         }else{
             throw new PageNotFoundException('El producto seleccionado no existe');
@@ -206,6 +212,7 @@ class ProductsController extends BaseController
         if (! $this->validate([
             'nombreProducto' => 'required|max_length[50]|min_length[2]',
             'descripcion'  => 'required|max_length[250]|min_length[5]',
+            'id_seccion'  => 'required', // Viene de la vista createProduct, del: select name="id_seccion";
             'stock' =>'min_length[0]',
             'guardado_en' => 'max_length[50]|min_length[0]',
             'precio_compra' => 'min_length[0]',
@@ -227,6 +234,7 @@ class ProductsController extends BaseController
             'nombreProducto' => $post['nombreProducto'], //Esto viene del name del input en el formulario
             'slug'  => url_title($post['nombreProducto'], '-', true), //Generamos el slug automaticamente a partir del nombre del producto
             'descripcion'  => $post['descripcion'],
+            'id_seccion'  => $post['id_seccion'], // El id_seccion de la derecha viene de la vista createProduct, del: select name="id_seccion"; el de la izq: campos de las tablas. lo de post viene siempre de formulario.
             'guardado_en'  => $post['guardado_en'],
             'stock'  => $post['stock'],
             'precio_compra'  => $post['precio_compra'],

@@ -18,16 +18,16 @@
             <label for="descripcion">Text</label>
             <textarea name="descripcion" cols="45" rows="4">  <?= esc($products['descripcion']) ?></textarea>
             <br>
-            <label for="id_category">Sección</label>
-            <select name="id_category">
+            <label for="nombre_seccion">Sección</label>
+            <select name="id_seccion">
 
-                <?php if (! empty($category) && is_array($category)): ?>
+                <?php if (! empty($section) && is_array($section)): ?>
 
-                    <?php foreach ($category as $category_item): ?>
+                    <?php foreach ($section as $section_item): ?>
 
-                        <option value="<?= $category_item['id'] ?>"
-                            <?php if($category_item['id'] == esc($products['id_category'])):?> selected <?php endif ?> >
-                            <?= $category_item['category']  ?>
+                        <option value="<?= $section_item['id'] ?>"
+                            <?php if($section_item['id'] == esc($products['id_seccion'])):?> selected <?php endif ?> >
+                            <?= $section_item['nombre_seccion']  ?>
                         </option>
 
                     <?php endforeach ?>

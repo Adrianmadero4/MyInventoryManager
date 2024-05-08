@@ -1,13 +1,19 @@
 <div class="container">
-    <h2><?= esc($title) ?></h2>
 
-    <a href="./secciones/new">Añadir Sección</a>
 
-    <?php if (! empty($section) && is_array($section)): ?>
+    <?php if (! empty($secciones) && is_array($secciones)): ?> <!-- OJO MUY IMPORTANTES QUE ESTA VARIABLE SECCIONES DEBE SER LA MISMA A LA QUE NOMBRAMOS EN LOS DATOS DEL CONTROLADOR  -->
 
-        <?php foreach ($section as $sect): ?>
+        <?php foreach ($secciones as $sect): ?>
+            <h2><?= esc($title) ?></h2>
 
-            <h4><?= esc($cat['section']) ?></h4>
+            <a href="./secciones/new">Añadir Sección</a>
+
+            <h4><?= esc($sect['nombre_seccion']) ?></h4>
+
+            <div class="col-2">
+                    <img src="<?= base_url('images/imgPrivate/' . $sect['imagen']) ?>" alt="<?= esc('Imagen de: '.$sect['nombre_seccion']) ?>" width="150">
+                    <p><?= esc($sect['imagen']) ?></p>
+                </div>
         
             &nbsp;
             <a  class="btn btn-outline-secondary" href="./secciones/del/<?= esc($sect['id'], 'url') ?>">
@@ -24,9 +30,11 @@
 
     <?php else: ?>
 
-        <h3>No secciones</h3>
+        <h3>No hay secciones creadas</h3>
 
-        <p>Unable to find any section for you.</p>
+        <p>Crea una parte del hogar y empieza a controlar todos tus productos!!.</p>
+        <a href="./secciones/new">Añadir Sección</a>
+
 
     <?php endif ?>
 

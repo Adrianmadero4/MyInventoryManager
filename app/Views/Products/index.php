@@ -53,7 +53,8 @@
                     <p><?= esc($new_product['guardado_en']) ?></p>
                 </div>
                 <div class="col-2">
-                    <p><?= esc($new_product['imagen']) ?></p>
+                    <img src="<?= base_url('images/imgPrivate'.$new_product["imagen"])?>" alt="<?= esc('Imagen de: '.$new_product['nombreProducto']) ?>" width="150">
+                    <!-- <p><?= esc($new_product['imagen']) ?></p> -->
                 </div>
                 <div class="col-3">
                     <!-- <button class="col-7.5 bg-light">Ver producto/Editar</button> 

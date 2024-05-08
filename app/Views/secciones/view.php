@@ -17,7 +17,6 @@
             <p><?= esc('Documentos: '.$product['documentos'])?></p>
         </div>
         <div class="col-md-6">
-            
             <img src="<?= esc($product['imagen']) ?>" alt="<?= esc('Imagen de: '.$product['nombreProducto']) ?>">
         </div>
     </div>
