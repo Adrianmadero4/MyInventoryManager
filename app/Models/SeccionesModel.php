@@ -30,7 +30,7 @@ class SeccionesModel extends Model
         if (!$seccion) {
             return null; // o una ruta predeterminada si prefieres
         }
-        return base_url('images/imgPrivate/' . $seccion['imagen']);
+        return base_url('public/images/imgPrivate/' . $seccion['imagen']);
     }
 
 }

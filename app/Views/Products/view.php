@@ -17,8 +17,7 @@
             <p><?= esc('Documentos: '.$product['documentos'])?></p>
         </div>
         <div class="col-md-6">
-            
-            <img src="<?= esc($product['imagen']) ?>" alt="<?= esc('Imagen de: '.$product['nombreProducto']) ?>">
+            <img src="<?= esc($model->getImagenRuta($product['id'])) ?>" alt="<?= esc('Imagen de: '.$product['nombreProducto']) ?>">
         </div>
     </div>
 </div>

@@ -1,6 +1,7 @@
 <div class="container">
     <a class="btn col-7.5 bgLim text-light" href="<?php echo base_url('/products'); ?>">Volver al listado</a>
     <a class="btn col-7.5 bg-success" href="<?= base_url("products/update/{$product['id']}") ?>">Editar producto</a>
+    
 
 
     <h2 class="text-center"><?= esc('Producto: '.$product['nombreProducto'])?></h2>
@@ -18,6 +19,7 @@
         </div>
         <div class="col-md-6">
             <img src="<?= esc($product['imagen']) ?>" alt="<?= esc('Imagen de: '.$product['nombreProducto']) ?>">
+            <img src="<?= esc($model->getImagenRuta($new_product['id'])) ?>" alt="<?= esc('Imagen de: '.$new_product['nombreProducto']) ?>" width="100">
         </div>
     </div>
 </div>

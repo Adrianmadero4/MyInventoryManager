@@ -11,6 +11,7 @@ class Secciones extends BaseController
         $data = [
             'secciones'  => $model->getSecciones(), // este secciones es muy importante porque es el que luego tendremos como $variable en la vista de secciones en el index.php
             'title' => 'Listado de secciones',
+            'model' => $model // Pasar el modelo a la vista
         ];
 
         return view('templates/menuHeader', $data)
@@ -20,14 +21,17 @@ class Secciones extends BaseController
 
     public function show($id = null){ //Para ver una sección en especifico
         $model = model(SeccionesModel::class);
-    
         $secciones = $model->getById($id);
     
         if (empty($secciones)) {
             throw new PageNotFoundException('No se puede encontrar el producto');
         }
     
-        $data['secciones'] = $secciones;
+        $data = [
+            'secciones' => $secciones,
+            'model' => $model // Pasar el modelo a la vista
+        ];
+
         return view('templates/menuHeader', $data)
             . view('secciones/view')
             . view('templates/footer'); 

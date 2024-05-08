@@ -36,12 +36,13 @@ class ProductsController extends BaseController
     }
     
 
-    public function index() //Para ver todos los productos
+    public function index()
     {
         $model = model(ProductModel::class);
-        $data = [//Elementos del array almacenados 
-            'products'  => $model->getProducts(),
-            'title' => 'Lista de productos', //Esto es luego lo que se imprime en la cabecera de index.php
+        $data = [
+            'products' => $model->getProducts(),
+            'title' => 'Lista de productos',
+            'model' => $model // Pasar el modelo a la vista
         ];
 
         return view('templates/menuHeader', $data)
@@ -49,16 +50,21 @@ class ProductsController extends BaseController
             . view('templates/footer');
     }
 
+
+
     public function show($id = null){ //Para ver un producto en especifico
         $model = model(ProductModel::class);
-    
-        $products = $model->getById($id);
-    
-        if (empty($products)) {
+        $product = $model->getById($id);
+
+        if (empty($product)) {
             throw new PageNotFoundException('No se puede encontrar el producto');
         }
+
+        $data = [
+            'product' => $product,
+            'model' => $model // Pasar el modelo a la vista
+        ];
     
-        $data['product'] = $products;
         return view('templates/menuHeader', $data)
             . view('Products/view')
             . view('templates/footer'); 

@@ -11,8 +11,7 @@
             <h4><?= esc($sect['nombre_seccion']) ?></h4>
 
             <div class="col-2">
-                    <img src="<?= base_url('images/imgPrivate/' . $sect['imagen']) ?>" alt="<?= esc('Imagen de: '.$sect['nombre_seccion']) ?>" width="150">
-                    <p><?= esc($sect['imagen']) ?></p>
+                <img src="<?= esc($model->getImagenRuta($sect['id'])) ?>" alt="<?= esc('Imagen de: '.$sect['nombre_seccion']) ?>" width="100">
                 </div>
         
             &nbsp;

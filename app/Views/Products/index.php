@@ -4,7 +4,7 @@
 
 <h2><?= esc($title) ?></h2> <!--Este title es el de la función index del controller-->
 <!-- -->
-<a class="btn col-7.5 bgLim" href="./products/new">Añadir Producto</a>
+<a class="btn col-7.5 bgLim text-light" href="./products/new">Añadir Producto</a>
 
 <?php if (! empty($products) && is_array($products)): ?> <!--Si el array no está vacío y se puede recorrer: -->
 
@@ -38,10 +38,10 @@
             <!-- <h4><?= esc($new_product['id_seccion']) ?> Este id_seccion es el campo seccion del select, si no funciona, probar con secciones o secciones.id</h4> -->
 
             <!-- Segunda fila sin fondo -->
-            <div class="row align-items-center text-center border">
+            <div class="row align-items-center text-center border mb-2">
                 <!-- Aquí puedes iterar sobre tus productos -->
                 <div class="col-2">
-                    <p><?= esc($new_product['nombreProducto']) ?></p> <!--['Nombre del campo de la BBDD'] -->
+                    <p class="fw-bold"><?= esc($new_product['nombreProducto']) ?></p> <!--['Nombre del campo de la BBDD'] -->
                 </div>
                 <div class="col-2">
                     <p><?= esc($new_product['descripcion']) ?></p>
@@ -53,17 +53,20 @@
                     <p><?= esc($new_product['guardado_en']) ?></p>
                 </div>
                 <div class="col-2">
-                    <img src="<?= base_url('images/imgPrivate'.$new_product["imagen"])?>" alt="<?= esc('Imagen de: '.$new_product['nombreProducto']) ?>" width="150">
+                    <img src="<?= esc($model->getImagenRuta($new_product['id'])) ?>" style="width: 60px; height: 60px" alt="<?= esc('Imagen de: '.$new_product['nombreProducto']) ?>" width="80">
                     <!-- <p><?= esc($new_product['imagen']) ?></p> -->
                 </div>
                 <div class="col-3">
                     <!-- <button class="col-7.5 bg-light">Ver producto/Editar</button> 
                     <button class="col-4 bg-light">Eliminar</button> -->
-                    <a class="btn col-7.5 bgVer" href="./products/<?= esc($new_product['id'], 'url')?>">Ver producto/Editar</a>
-                    <a class="btn col-4 bgDelete" href="./products/del/<?= esc($new_product['id'], 'url')?>">Eliminar</a>
+                    <a class="btn col-7.5 bg-secondary text-light" href="./products/<?= esc($new_product['id'], 'url')?>">Ver producto/Editar</a>
+
+                    
+                    <!-- <a class="btn col-7.5 bgVer" href="./products/<?= esc($new_product['id'], 'url')?>">Ver producto/Editar</a>-->
+                    <a class="btn col-4 bgDelete text-light" href="./products/del/<?= esc($new_product['id'], 'url')?>">Eliminar</a> 
 
                     <!--Falta modificar, que lo voy a meter dentro de ver producto, sería el siguiente enlance: -->
-                    <a class="btn col-7.5 bg-success" href="./products/update/<?= esc($new_product['id'], 'url')?>">Editar</a>  
+                    <!--<a class="btn col-7.5 bg-success" href="./products/update/<?= esc($new_product['id'], 'url')?>">Editar</a>  -->
 
                 </div>
 
@@ -71,86 +74,68 @@
             </div>
             
         <?php endforeach ?>
-        <table class="table align-middle mb-0 bg-white">
-        <thead class="bg-light">
-            <tr>
-            <th>Producto</th>
-            <th>Title</th>
-            <th>Tienes</th>
-            <th>Guardado en</th>
-            <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td>
-                <div class="d-flex align-items-center">
-                <img
-                    src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                    alt=""
-                    style="width: 45px; height: 45px"
-                    class="rounded-circle"
-                    />
-                <div class="ms-3">
-                    <p class="fw-bold mb-1"><?= esc($new_product['nombreProducto']) ?></p> <!--['Nombre del campo de la BBDD'] -->
-                    <p class="text-muted mb-0"><?= esc($new_product['descripcion']) ?></p>
-                </div>
-                </div>
-            </td>
-            <td>
-                <p class="fw-normal mb-1">Software engineer</p>
-                <p class="text-muted mb-0">IT department</p>
-            </td>
-            <td>
-                <span class="badge badge-success rounded-pill d-inline">Active</span>
-                <p><?= esc($new_product['stock']) ?></p>
+        <table class="table align-middle mb-0 mt-4 bg-white">
+            <thead class="bg-light">
+                <tr>
+                <th>Producto</th>
+                <th>Title</th>
+                <th>Tienes</th>
+                <th>Guardado en</th>
+                <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($products as $product): ?> <!-- Utiliza $product en lugar de $new_product -->
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img
+                                    src="<?= esc($model->getImagenRuta($product['id'])) ?>"
+                                    alt=""
+                                    style="width: 45px; height: 45px"
+                                    class="squared-circle"
+                                />
+                                <div class="ms-3">
+                                    <p class="fw-bold mb-1"><?= esc($product['nombreProducto']) ?></p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="fw-normal mb-1"><?= esc($product['descripcion']) ?></p>
+                        </td>
+                        <td>
+                            <span class="badge badge-success rounded-pill d-inline">Active</span>
+                            <p><?= esc($product['stock']) ?></p>
+                        </td>
+                        <td>
+                            <p><?= esc($product['guardado_en']) ?></p>
+                        </td>
+                        <td>
+                            <button
+                                type="button"
+                                class="btn btn-link btn-rounded btn-sm fw-bold"
+                                data-mdb-ripple-color="dark">
+                                <a class="btn col-7.5 bg-secondary text-light" href="./products/<?= esc($new_product['id'], 'url')?>">Ver producto/Editar</a>
+                                <a class="btn col-4 bgDelete text-light" href="./products/del/<?= esc($new_product['id'], 'url')?>">Eliminar</a> 
 
-            </td>
-            <td><p><?= esc($new_product['guardado_en']) ?></p>
-            </td>
-            <td>
-                <button
-                    type="button"
-                    class="btn btn-link btn-rounded btn-sm fw-bold"
-                    data-mdb-ripple-color="dark"
-                    >
-                    <a class="btn col-7.5 " href="./products/<?= esc($new_product['id'], 'url')?>">Ver producto/Editar</a>
 
-                    <!--Edit-->
-                </button>
-            </td>
-            </tr>
-        </tbody>
-    </table>
+                            </button>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
 
-        
-        <!--Ahora el enlace al producto en particular -->
-        <!--
-            <p>
-                <a href="./products/<?= esc($new_product['nombreProducto'], 'url')?>">Ver Producto</a>
-            </p>
-            &nbsp;
-            <a  class="btn btn-outline-secondary" href="./products/del/<?= esc($new_product['id'], 'url') ?>">
-                Eliminar Producto
-                </a>
-            
-                &nbsp;
-            <a class="btn btn-warning" href="./products/update/<?= esc($new_product['id'], 'url') ?>">
-                Actualizar Producto
-                </a>
-            </p>
-            <br>
-        -->
+        </table>
     </div>
 
 
-<?php else: ?>
+    <?php else: ?>
 
-    <div class="container">
-        <h3>No hay productos</h3>
-        <a href="./products/new">CREATE PRODUCT</a>
-    </div>
+        <div class="container">
+            <h3>No hay productos</h3>
+            <a href="./products/new">CREATE PRODUCT</a>
+        </div>
 
-<?php endif ?>
+    <?php endif ?>
 
 </div>
