@@ -20,16 +20,26 @@
       </a>
 
       <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto ">
+      <?php
+        $session = session();
+        if (empty($session->get('user'))) :
+        ?>
         <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url(''); ?>">Inicio</a>
         <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('conocenos'); ?>">Conocenos</a>
         <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('pricing'); ?>">Precios</a>
         <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('admin'); ?>">Login</a>
+        <?php endif ?>
+
         <?php
         $session = session();
         if (!empty($session->get('user'))) :
         ?>
+        <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url(''); ?>">Inicio</a>
+        <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('conocenos'); ?>">Conocenos</a>
+        <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('pricing'); ?>">Precios</a>
         <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?= base_url('secciones')?>">Secciones</a>
         <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?= base_url('products')?>">Productos</a>
+        <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('admin'); ?>">Cuenta</a>
         <a class="py-2 text-dark text-decoration-none nav-link" href="<?= base_url('session')?>">Cerrar sesion</a>
         <?php endif ?>
       </nav>

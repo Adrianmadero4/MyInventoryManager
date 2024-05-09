@@ -4,13 +4,12 @@ use CodeIgniter\Router\RouteCollection;
 use App\Controllers\secciones; // Importa la clase secciones
 use App\Controllers\ProductsController; // Importa la clase Products
 
-$routes->setAutoRoute(false); //No deja buscar en los controladores posibles rutas
-
 /**
  * @var RouteCollection $routes
  */
+$routes->setAutoRoute(false); //No deja buscar en los controladores posibles rutas
 
- //MUY IMPORTANTE ACORDARSE DEL ORDEN DE LAS RUTAS, PARA QUE SE PUEDAN EJECUTAR TODAS Y NO QUE UNA IMPIDA LA EJECUCIÓN DE OTRA POR LA URL...
+//MUY IMPORTANTE ACORDARSE DEL ORDEN DE LAS RUTAS, PARA QUE SE PUEDAN EJECUTAR TODAS Y NO QUE UNA IMPIDA LA EJECUCIÓN DE OTRA POR LA URL...
 
 $routes->get('/', 'Home::index'); //Ruta principal index sin login
 
