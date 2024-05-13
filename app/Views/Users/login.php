@@ -12,7 +12,7 @@
             <br><br><br>
             <h1><?= esc($error) ?></h1>
 
-            <form action="<?php echo base_url('login'); ?>" method="post">
+            <form action="<?php echo base_url('admin'); ?>" method="post">
                 <?= csrf_field() ?> <!-- Token oculto para evitar codigo malicioso -->
 
                 <div class="mb-3">

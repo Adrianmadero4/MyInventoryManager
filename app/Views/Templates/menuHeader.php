@@ -27,7 +27,7 @@
         <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url(''); ?>">Inicio</a>
         <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('conocenos'); ?>">Conocenos</a>
         <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('pricing'); ?>">Precios</a>
-        <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('admin'); ?>">Login</a>
+        <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('login'); ?>">Login</a>
         <?php endif ?>
 
         <?php

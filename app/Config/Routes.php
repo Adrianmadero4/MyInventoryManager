@@ -25,8 +25,9 @@ $routes->post('/registro', 'Users::registerUser'); // Procesa los datos del form
 
 
 // Ruta para el login:
-$routes-> get('/admin', 'Users::loginForm'); // Muestra el formulario para iniciar sesión
-$routes-> post('/login', 'Users::checkUser'); // Obtenemos user y pass (Definidos en el modelo).
+$routes-> get('/login', 'Users::loginForm'); // Muestra el formulario para iniciar sesión
+$routes-> get('/admin', 'Users::checkUser'); // Muestra el formulario para iniciar sesión
+$routes-> post('/admin', 'Users::checkUser'); // Obtenemos user y pass (Definidos en el modelo).
 $routes->get('session', 'Users::closeSession');   //Cerrar sesion
 
 // SESSION DE Secciones

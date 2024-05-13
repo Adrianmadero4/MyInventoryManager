@@ -2,6 +2,9 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\SeccionesModel;
+use App\Models\ProductModel;
+
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Users extends BaseController
@@ -10,11 +13,11 @@ class Users extends BaseController
     {
         helper('form');
         if ($error == null){
-            return view('templates/menuHeader', ['title' => 'Acceso al área privada'])
+            return view('templates/menuHeader', ['title' => 'Acceso al área privada 1'])
             . view('users/login',['error' => ''])
             . view('templates/footer');
         }else{
-            return view('templates/menuHeader', ['title' => 'Acceso al área privada']) // Este campo luego va al login.php en la variable title
+            return view('templates/menuHeader', ['title' => 'Acceso al área privada 2']) // Este campo luego va al login.php en la variable title
                 . view('users/login',  ['error' => 'Credenciales incorrectas'])
                 . view('templates/footer');
         }
@@ -42,15 +45,25 @@ class Users extends BaseController
             $session = session(); // Ininializar la sesión como con el session_start();
             $session->set('user',$post['username']); 
 
+            //Poder mostrar secciones y productos en la parte del admin
+            $model_secciones = model(SeccionesModel::class);
+            $data['secciones'] = $model_secciones->getSecciones();
+
+            $model_products = model(ProductModel::class);
+            $data['products'] = $model_products->getProducts();
+
+            // Aquí pasamos el modelo a la vista
+            $data['model'] = $model;
+
             return view('templates/menuHeader', ['title' => 'Backend'])
-            . view('users/admin', $data)
-            . view('templates/footer');
-        }else{
+                . view('users/admin', $data)
+                . view('templates/footer');
+        } else {
             return $this->loginForm("Error");
         }
-
-        
     }
+
+    
 
     public function closeSession()
     {
