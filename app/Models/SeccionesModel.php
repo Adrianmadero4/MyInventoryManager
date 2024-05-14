@@ -10,9 +10,20 @@ class SeccionesModel extends Model
     protected $primaryKey = 'id';
     protected $allowedFields = ['nombre_seccion', 'id_usuario', 'imagen', 'created_at', 'updated_at'];
 
-    public function getSecciones()
+    public function getSecciones($id = false)
     {
-        return $this->findAll();
+        if ($id === false) {
+            $sql = $this->select('secciones.*, usuarios.username');
+            $sql = $this->join('usuarios', 'secciones.id_usuario = usuarios.id');
+            $sql = $this->findAll();
+            return $sql;
+        } // Abajo para un usuario en particular.
+        $sql = $this->select('secciones.*, usuarios.username');
+        $sql = $this->join('usuarios', 'secciones.id_usuario = usuarios.id'); // Esto es como si fuera el JOIN .. ON que hacíamos en php
+        $sql = $this->where(['id' => $id]);
+        $sql = $this->first();
+        return $sql;
+        //return $this->findAll();
     }
 
     public function getById($id = false)
