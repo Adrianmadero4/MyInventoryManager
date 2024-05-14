@@ -5,6 +5,26 @@ use App\Models\SeccionesModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 class Secciones extends BaseController
 {
+
+    public function new()
+{
+    helper('form');
+
+    $model = model(SeccionesModel::class);
+    $data['users'] = $model->getSecciones(); // Cambiado 'user' a 'users'
+
+    if (!empty($data['users'])) {
+        return view('templates/menuHeader', ['title' => 'Crea tu sección del hogar'])
+            . view('secciones/createSection', $data)
+            . view('templates/footer');
+    } else {
+        return view('templates/menuHeader', ['title' => 'Error al intentar crear producto'])
+            . view('Products/errorNoSection')
+            . view('templates/footer');
+    }
+}
+
+
     public function index() // Para ver las secciones que hay en la BBDD
     {
         $model = model(SeccionesModel::class);
@@ -45,14 +65,14 @@ class Secciones extends BaseController
             . view('templates/footer');
     }
 
-    public function new() //Método para insertar datos en el formulario, llamando a createProduct.php
+    /*public function new() //Método para insertar datos en el formulario, llamando a createProduct.php
     {
         helper('form');
 
         return view('templates/menuHeader', ['title' => 'Crea tu sección del hogar'] ) //El 'titulo' va luego al createProduct.php en las vistas
             . view('secciones/createSection')
             . view('templates/footer');
-    }
+    }*/
 
     public function create() //Método que recoge los datos del formulario del new al haber insertado la seccion.
 
@@ -65,6 +85,7 @@ class Secciones extends BaseController
         if (! $this->validate ([
             'nombre_seccion' => 'required|max_length[50]|min_length[2]',
             'imagen' => 'max_size[imagen,50000]',
+            'id_usuario'  => 'required',
         ])) {
             // Falla la validación, volvemos al formulario.
             return $this->new();
@@ -82,6 +103,7 @@ class Secciones extends BaseController
         $model->save([ //Esto es como el insert into
             'nombre_seccion' => $post['nombre_seccion'], //Esto viene del name del input en el formulario
             'imagen'  => $fotoName,
+            'id_usuario' => $post['id_usuario']
         ]);
 
         return view('templates/menuHeader', ['title' => 'Create a news item'])
