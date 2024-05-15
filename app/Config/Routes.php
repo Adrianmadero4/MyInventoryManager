@@ -33,15 +33,15 @@ $routes->get('session', 'Users::closeSession');   //Cerrar sesion
 // SESSION DE Secciones
 $session = session();
 if (!empty($session->get('user'))){
-    $routes->get('secciones', [Secciones::class, 'index']);   //Muestra todas las categorías  
+    $routes->get('secciones', [Secciones::class, 'index']);   //Muestra todas las secciones  
     
-    $routes->get('secciones/new', [Secciones::class, 'new']);   //Formulario insertar categorías  - El new abre el formulario para insertar datos.
-    $routes->post('secciones/createSection', [Secciones::class, 'create']);   //Ejecuta insertar categorías  - El create es el que hace el insert into (Inserta).
+    $routes->get('secciones/new', [Secciones::class, 'new']);   //Formulario insertar secciones  - El new abre el formulario para insertar datos.
+    $routes->post('secciones/createSection', [Secciones::class, 'create']);   //Ejecuta insertar secciones  - El create es el que hace el insert into (Inserta).
     
-    $routes->get('secciones/update/(:segment)', [Secciones::class, 'update']);   //Ejecuta modificar productos  
-    $routes->post('secciones/update/updated/(:segment)', [Secciones::class, 'updatedItem']);   //Formulario modificar productos  
+    $routes->get('secciones/update/(:segment)', [Secciones::class, 'update']);   //Ejecuta modificar secciones  
+    $routes->post('secciones/update/updated/(:segment)', [Secciones::class, 'updatedSection']);   //Formulario modificar secciones  
 
-    $routes->get('secciones/del/(:segment)', [Secciones::class, 'delete']);   //Ejecuta eliminar productos  
+    $routes->get('secciones/del/(:segment)', [Secciones::class, 'delete']);   //Ejecuta eliminar secciones  
 
     $routes->get('secciones/(:num)', [Secciones::class, 'show']); // Muestra un producto seleccionado por su ID
 }else{

@@ -127,5 +127,61 @@ class Secciones extends BaseController
             . view('templates/footer');
     }
 
+    public function update($id){//le pasamos como identificador la variable id y abajo hace falta el helper form
+
+        helper('form');
+
+        if ($id==null){
+            throw new PageNotFoundException('Cannot update the section');
+        }
+
+        //si no es null:
+        $model = model(SeccionesModel::class);
+
+        if ($model->where('id', $id)->find()) {//busca la noticia del id
+            $data = [
+                'sections' => $model ->where(['id' => $id])->first(),
+                'nombre_seccion' => 'Update section', //ojo si da error en la linea 224 del header que es por esto o por justo la de arriba
+            ];
+
+        }else{
+            throw new PageNotFoundException('Selected section does not exist in database');
+        }// y si no hay noticia con ID, sacamos otro mensaje.
+
+
+        return view('templates/menuHeader', $data)
+            . view('secciones/update')
+            . view('templates/footer');
+    }
+
+    public function updatedSection($id)
+    {
+        helper('form');
+ 
+        // Checks whether the submitted data passed the validation rules.
+        if (! $this->validate([
+            'nombre_seccion' => 'required|max_length[100]|min_length[2]',
+            //'localizacion'  => 'required|max_length[100]|min_length[2]'
+        ])) {
+            // The validation fails, so returns the form.
+            return $this->update($id);
+        }
+ 
+        // Gets the validated data.
+        $post = $this->validator->getValidated();
+ 
+        $data = [
+            'id' => $id,
+            'nombre_seccion' => $post['nombre_seccion'],
+            //'location'  => $post['localizacion'],
+        ];
+        $model = model(SeccionesModel::class);
+        $model->save($data);
+
+        return view('templates/menuHeader', ['title' => 'Item updated'])
+            . view('secciones/succes')
+            . view('templates/footer');
+    }
+
 }
 

@@ -78,9 +78,9 @@ class ProductsController extends BaseController
             . view('templates/footer');
     }
 
-    // Verifica si hay al menos una categoría en la base de datos
+    // Verificar si hay al menos una categoría en la base de datos
     public function checkSectionExist() {
-        $categoryModel = new SeccionesModel(); // Suponiendo que tienes un modelo para la tabla de categorías
+        $categoryModel = new SeccionesModel(); // 
         $categories = $categoryModel->findAll();
 
         return !empty($categories);
@@ -92,11 +92,6 @@ class ProductsController extends BaseController
     {
         helper('form'); // Ayuda para validar los datos.
 
-        // Verifica si hay al menos una categoría
-        /*if (!$this->checkSectionExist()) {
-            // No hay categorías disponibles, muestra un mensaje de error o redirige a la página de creación de categorías
-            return redirect()->back()->with('error', 'Debes crear al menos una categoría antes de agregar productos.');
-        }*/
 
         $data = $this->request->getPost(['nombreProducto', 'descripcion' ,'stock', 'guardado_en']);
 
@@ -225,8 +220,8 @@ class ProductsController extends BaseController
             'precio_venta' => 'min_length[0]',
             'fecha_compra' => 'min_length[0]',
             'fecha_venta' => 'min_length[0]',
-            /*'imagen' => 'max_size[imagen,50000]',
-            'documentos' => 'max_size[documentos,50000]'*/
+            'imagen' => 'max_size[imagen,50000]',
+            /*'documentos' => 'max_size[documentos,50000]'*/
         ])) {
             // The validation fails, so returns the form.
             return $this->update($id);
