@@ -43,6 +43,7 @@ class Users extends BaseController
         if($data['user'] = $model->checkUser($post['username'],$post['password'])){
             
             $session = session(); // Ininializar la sesión como con el session_start();
+            $session->set('user_id',$data['user']['id'] ); 
             $session->set('user',$post['username']); 
 
             //Poder mostrar secciones y productos en la parte del admin

@@ -11,9 +11,20 @@ class UserModel extends Model
 
     public function checkUser($user,$pass)
     {
-        return $this->where(['username' => $user,'password'=>$pass])->find();
+        return $this->where(['username' => $user,'password'=>$pass])->first();
 
     }
+    /*public function checkUserHash($user,$pass)
+    {
+        $user = $this->where(['username' => $user])->first();
+        $userPasswordHash = $user['password'];
+
+        if(password_verify($pass, $userPasswordHash)) {
+            return $user;
+        }
+
+        return false;
+    }*/
     public function getById($id = false)
     {
         if ($id === false) {

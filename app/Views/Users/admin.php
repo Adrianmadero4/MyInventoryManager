@@ -1,17 +1,10 @@
 <div class="container">
     
     <?php $session = session()?>
-    <?php if (! empty($user) && is_array($user)): ?> <!--$User es un array que contiene los usuarios que hemos obtenido-->
+    <?php if (! empty($user)): ?> <!--$User es un array que contiene los usuarios que hemos obtenido-->
     <h3><?= "Bienvenid@ ". $session->get('user')?></h3>
     <p>Aquí encontrarás tus secciones del hogar así como un breve listado con 4 productos, pero con la posibilidad de acceder a todos ellos</p>
-
-        <!-- <?php foreach ($user as $get_user): ?>
-
-            <h3><?= esc($get_user['username']) ?></h3>
-
-            
-        <?php endforeach ?> -->
-
+            <h3><?= esc($user['username']) ?></h3>
     <?php else: ?>
 
     <h3>No Users</h3>
