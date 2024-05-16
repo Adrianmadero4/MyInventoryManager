@@ -7,22 +7,22 @@ class Secciones extends BaseController
 {
 
     public function new()
-{
-    helper('form');
+    {
+        helper('form');
 
-    $model = model(SeccionesModel::class);
-    $data['users'] = $model->getSecciones(); // Cambiado 'user' a 'users'
+        $model = model(SeccionesModel::class);
+        $data['users'] = $model->getSecciones(); // Cambiado 'user' a 'users'
 
-    if (!empty($data['users'])) {
-        return view('templates/menuHeader', ['title' => 'Crea tu sección del hogar'])
-            . view('secciones/createSection', $data)
-            . view('templates/footer');
-    } else {
-        return view('templates/menuHeader', ['title' => 'Error al intentar crear producto'])
-            . view('Products/errorNoSection')
-            . view('templates/footer');
+        if (!empty($data['users'])) {
+            return view('templates/menuHeader', ['title' => 'Crea tu sección del hogar'])
+                . view('secciones/createSection', $data)
+                . view('templates/footer');
+        } else {
+            return view('templates/menuHeader', ['title' => 'Error al intentar crear secciones'])
+                . view('secciones/errorNoSection')
+                . view('templates/footer');
+        }
     }
-}
 
 
     public function index() // Para ver las secciones que hay en la BBDD
@@ -44,7 +44,7 @@ class Secciones extends BaseController
         $secciones = $model->getById($id);
     
         if (empty($secciones)) {
-            throw new PageNotFoundException('No se puede encontrar el producto');
+            throw new PageNotFoundException('No se puede encontrar el secciones');
         }
     
         $data = [
@@ -179,7 +179,7 @@ class Secciones extends BaseController
         $model->save($data);
 
         return view('templates/menuHeader', ['title' => 'Item updated'])
-            . view('secciones/succes')
+            . view('secciones/success')
             . view('templates/footer');
     }
 

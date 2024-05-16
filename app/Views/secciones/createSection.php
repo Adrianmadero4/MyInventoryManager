@@ -11,10 +11,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <!-- <form action="./createProduct" method="post"> -->
             <form action="<?= site_url('secciones/createSection'); ?>" method="post" enctype="multipart/form-data">  <!-- enctype="multipart/form-data" para poder subir imagenes correctamente --> 
-
-
 
                 <?= csrf_field() ?>
 
@@ -29,8 +26,6 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Crear Sección</button>
             </form>
-
-
 
         </div>
     </div>

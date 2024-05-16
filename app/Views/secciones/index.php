@@ -32,7 +32,7 @@
         <h3>No hay secciones creadas</h3>
 
         <p>Crea una parte del hogar y empieza a controlar todos tus productos!!.</p>
-        <a href="./secciones/new">Añadir Sección</a>
+        <a href="<?= base_url('secciones/new') ?>">Añadir Sección</a>
 
 
     <?php endif ?>
