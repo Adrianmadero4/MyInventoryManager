@@ -10,7 +10,7 @@ class ProductModel extends Model
     protected $primaryKey = 'id';// Variable para la primary_key
 
     //En el allowedfields van todos los campos que puedan ser editables. Ojo probar a quitar  'created_at', 'updated_at.
-    protected $allowedFields = ['id_seccion', 'nombreProducto', 'slug', 'codigo', 'descripcion', 'stock', 'guardado_en', 'precio_compra', 'precio_venta',' fecha_compra', 'fecha_venta', 'imagen', 'documentos', 'created_at', 'updated_at'];//Campos permitidos para actualizar.
+    protected $allowedFields = ['id_seccion', 'nombreProducto', 'slug', 'codigo', 'descripcion', 'stock', 'guardado_en', 'precio_compra', 'precio_venta', 'fecha_compra', 'fecha_venta', 'imagen', 'documentos', 'created_at', 'updated_at'];//Campos permitidos para actualizar.
 
     public function getProducts($slug = false)
     {

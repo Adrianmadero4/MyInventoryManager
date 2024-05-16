@@ -7,7 +7,7 @@
     <?= session()->getFlashdata('error') ?>
     <?= validation_list_errors() ?>
 
-    <a class="btn col-7.5 bgLim text-light" href="<?php echo base_url('/products'); ?>">Volver al listado</a>
+    <a class="btn col-7.5 bgLim text-light" href="<?php echo base_url('/products'); ?>">Volver al listado de productos</a>
 
     <div class="row">
         <div class="col-md-6">
@@ -59,12 +59,13 @@
 
                 <div class="form-group">
                     <label for="precio_compra">Precio de compra</label>
-                    <input type="number" class="form-control" name="precio_compra" value="<?= set_value('precio_compra') ?>">
+                    <input type="text" class="form-control" name="precio_compra" value="<?= set_value('precio_compra') ?>" pattern="[0-9]+(\.[0-9]{1,2})?" title="Ingrese un número válido con máximo dos decimales">
                 </div>
+
 
                 <div class="form-group">
                     <label for="precio_venta">Precio de venta</label>
-                    <input type="number" class="form-control" name="precio_venta" value="<?= set_value('precio_venta') ?>">
+                    <input type="text" class="form-control" name="precio_venta" value="<?= set_value('precio_venta') ?>" pattern="[0-9]+(\.[0-9]{1,2})?" title="Ingrese un número válido con máximo dos decimales">
                 </div>
 
                 <div class="form-group">
@@ -76,6 +77,29 @@
                     <label for="fecha_venta">Fecha de venta</label>
                     <input type="date" class="form-control" name="fecha_venta" value="<?= set_value('fecha_venta') ?>">
                 </div>
+                <script>
+                    // Obtener los elementos de entrada de fecha
+                    const fechaCompraInput = document.getElementById('fecha_compra');
+                    const fechaVentaInput = document.getElementById('fecha_venta');
+
+                    // Función para formatear la fecha en formato dd/mm/yyyy
+                    function formatDate(date) {
+                        const day = String(date.getDate()).padStart(2, '0');
+                        const month = String(date.getMonth() + 1).padStart(2, '0');
+                        const year = date.getFullYear();
+                        return `${day}/${month}/${year}`;
+                    }
+
+                    // Función para establecer el valor del campo de entrada de fecha en el formato deseado
+                    function setFormattedDate(input) {
+                        const date = new Date(input.value);
+                        input.value = formatDate(date);
+                    }
+
+                    // Establecer el valor inicial de los campos de entrada de fecha
+                    setFormattedDate(fechaCompraInput);
+                    setFormattedDate(fechaVentaInput);
+                </script>
 
                 <div class="form-group mb-2">
                     <label for="imagen">Imagen</label>

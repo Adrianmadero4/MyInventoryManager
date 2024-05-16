@@ -10,7 +10,7 @@
             <?= validation_list_errors() ?>
 
             <br><br><br>
-            <h1><?= esc($error) ?></h1>
+            <h2><?= esc($error) ?></h2>
 
             <form action="<?php echo base_url('admin'); ?>" method="post">
                 <?= csrf_field() ?> <!-- Token oculto para evitar codigo malicioso -->
@@ -27,7 +27,7 @@
 
                 <button type="submit" class="btn btn-primary mb-3">Send</button>                
             </form>
-            <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('registro'); ?>">No tienes cuenta? Registrate aquí, ¡Es gratis!</a>
+            <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('register'); ?>">No tienes cuenta? Registrate aquí, ¡Es gratis!</a>
             <button class="btn btn-secondary mb-3 float-end" onclick="window.location.href='<?php echo base_url(''); ?>'">Volver al Inicio</button>
         </div>
     </div>

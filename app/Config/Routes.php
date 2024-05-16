@@ -20,9 +20,8 @@ $routes-> get('/pricing', 'PreciosController::precios');//Rutas para la página 
 $routes-> get('/conocenos', 'ContactoController::index');//Rutas para la página de contacto del Controlador ContactoController de la vista Precios
 
 // Ruta para registrarse
-$routes->get('/registro', 'Users::registerForm'); // Muestra el formulario de registro
-$routes->post('/registro', 'Users::registerUser'); // Procesa los datos del formulario de registro
-
+$routes->get('/register', 'Users::registerForm'); // Muestra el formulario de registro
+$routes->post('/register', 'Users::register'); // Envía los datos del formulario de registro
 
 // Ruta para el login:
 $routes-> get('/login', 'Users::loginForm'); // Muestra el formulario para iniciar sesión
@@ -70,7 +69,3 @@ if (!empty($session->get('user'))){
     $routes->get('products/del/(:segment)', [ProductsController::class, 'noSession']); 
     $routes->get('products/(:segment)', [ProductsController::class, 'noSession']); 
 }
-
-
-
-

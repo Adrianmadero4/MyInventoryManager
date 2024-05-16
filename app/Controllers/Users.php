@@ -13,11 +13,11 @@ class Users extends BaseController
     {
         helper('form');
         if ($error == null){
-            return view('templates/menuHeader', ['title' => 'Acceso al área privada 1'])
+            return view('templates/menuHeader', ['title' => 'Acceso al área privada'])
             . view('users/login',['error' => ''])
             . view('templates/footer');
         }else{
-            return view('templates/menuHeader', ['title' => 'Acceso al área privada 2']) // Este campo luego va al login.php en la variable title
+            return view('templates/menuHeader', ['title' => 'Acceso al área privada']) // Este campo luego va al login.php en la variable title
                 . view('users/login',  ['error' => 'Credenciales incorrectas'])
                 . view('templates/footer');
         }
@@ -77,29 +77,44 @@ class Users extends BaseController
         return redirect()->to(base_url());
     }
 
-    /*public function registrarUsuario() {
-        // Obtener los datos del formulario
-        $nombre = $this->input->post('nombre');
-        $correo = $this->input->post('correo');
-        $contraseña = $this->input->post('contraseña');
-        $rol = 'Basico'; // Asignar el rol por defecto
-    
-        // Cifrar la contraseña
-        $contraseñaCifrada = password_hash($contraseña, PASSWORD_DEFAULT);
-    
-        // Insertar el usuario en la base de datos
-        $data = array(
-            'nombre' => $nombre,
-            'correo' => $correo,
-            'contraseña' => $contraseñaCifrada,
-            'rol' => $rol
-        );
-    
-        // Insertar en la base de datos
-        $this->db->insert('Usuarios', $data);
-    
-        // Redirigir u mostrar un mensaje de éxito, etc.
-    }*/
+    public function registerForm()
+{
+    helper('form');
+    return view('templates/menuHeader', ['title' => 'Registro de usuario'])
+        . view('users/register', ['error' => ''])
+        . view('templates/footer');
+}
+
+    public function register()
+    {
+        helper('form');
+
+        // Chequea si los datos enviados pasan las reglas de validación.
+        if (! $this->validate([
+            'username' => 'required|max_length[255]|min_length[4]',
+            'email' => 'required|valid_email|max_length[255]|is_unique[usuarios.email]',
+            'password'  => 'required|max_length[5000]|min_length[4]',
+        ])) {
+            // La validación falla, devuelve el formulario.
+            return $this->registerForm();
+        }
+
+        // Obtiene los datos validados.
+        $post = $this->request->getPost(['username', 'email', 'password']);
+
+        // Define el rol predeterminado como "básico"
+        $post['rol'] = 'básico';
+
+        // Guarda el usuario en la base de datos.
+        $model = model(UserModel::class);
+        $model->save($post);
+
+        // Redirige al usuario a la página de inicio de sesión.
+        return view('templates/menuHeader', ['title' => 'Create a new User'])
+            . view('users/success')
+            . view('templates/footer');
+    }
+
     
     
    

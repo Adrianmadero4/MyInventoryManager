@@ -10,7 +10,7 @@
 
             <h4><?= esc($sect['nombre_seccion']) ?></h4>
 
-            <div class="col-2">
+            <div class="col-2 mb-4">
                 <img src="<?= esc($model->getImagenRuta($sect['id'])) ?>" alt="<?= esc('Imagen de: '.$sect['nombre_seccion']) ?>" width="100">
                 </div>
         

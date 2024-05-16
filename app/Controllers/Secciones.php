@@ -149,7 +149,8 @@ class Secciones extends BaseController
         if ($model->where('id', $id)->find()) {//busca la noticia del id
             $data = [
                 'sections' => $model ->where(['id' => $id])->first(),
-                'nombre_seccion' => 'Update section', //ojo si da error en la linea 224 del header que es por esto o por justo la de arriba
+                'nombre_seccion' => 'Update section', 
+                'imagen' => 'Imagen'
             ];
 
         }else{
@@ -169,7 +170,7 @@ class Secciones extends BaseController
         // Checks whether the submitted data passed the validation rules.
         if (! $this->validate([
             'nombre_seccion' => 'required|max_length[100]|min_length[2]',
-            //'localizacion'  => 'required|max_length[100]|min_length[2]'
+            //'imagen' => 'uploaded[imagen]|max_size[imagen,50000]'
         ])) {
             // The validation fails, so returns the form.
             return $this->update($id);
@@ -181,7 +182,7 @@ class Secciones extends BaseController
         $data = [
             'id' => $id,
             'nombre_seccion' => $post['nombre_seccion'],
-            //'location'  => $post['localizacion'],
+            //'imagen' => $post['imagen'],
         ];
         $model = model(SeccionesModel::class);
         $model->save($data);

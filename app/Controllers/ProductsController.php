@@ -44,6 +44,8 @@ class ProductsController extends BaseController
             'title' => 'Lista de productos',
             'model' => $model // Pasar el modelo a la vista
         ];
+        //var_dump($this->request->getPost()); Comprobar erorres
+
 
         return view('templates/menuHeader', $data)
             . view('Products/index')
@@ -55,6 +57,7 @@ class ProductsController extends BaseController
     public function show($id = null){ //Para ver un producto en especifico
         $model = model(ProductModel::class);
         $product = $model->getById($id);
+        //var_dump($this->request->getPost()); Comprobar erorres
 
         if (empty($product)) {
             throw new PageNotFoundException('No se puede encontrar el producto');
@@ -91,7 +94,7 @@ class ProductsController extends BaseController
 
     {
         helper('form'); // Ayuda para validar los datos.
-
+        //var_dump($this->request->getPost()); Comprobar erorres
 
         $data = $this->request->getPost(['nombreProducto', 'descripcion' ,'stock', 'guardado_en']);
 
@@ -104,8 +107,9 @@ class ProductsController extends BaseController
             'guardado_en' => 'max_length[50]|min_length[0]',
             'precio_compra' => 'min_length[0]',
             'precio_venta' => 'min_length[0]',
-            'fecha_compra' => 'min_length[0]',
-            'fecha_venta' => 'min_length[0]',
+            'fecha_compra' => 'permit_empty|valid_date', // Permite que sea opcional y valida si es una fecha válida si se proporciona
+
+            'fecha_venta' => 'permit_empty|valid_date',
             'imagen' => 'max_size[imagen,50000]',
             /*'documentos' => 'max_size[documentos,50000]'*/
         ])) {
