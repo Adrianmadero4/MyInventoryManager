@@ -5,6 +5,14 @@ use App\Models\SeccionesModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 class Secciones extends BaseController
 {
+    public function __construct()
+    {
+        // Agregar esto para asegurarse de que el usuario esté logueado antes de acceder a los métodos del controlador
+        if (!session()->get('user_id')) {
+            redirect()->to(base_url('login')); // Redirigir al usuario a la página de inicio de sesión si no está logueado
+        }
+    }
+
 
     public function new()
     {
@@ -18,8 +26,8 @@ class Secciones extends BaseController
                 . view('secciones/createSection', $data)
                 . view('templates/footer');
         } else {
-            return view('templates/menuHeader', ['title' => 'Error al intentar crear secciones'])
-                . view('secciones/errorNoSection')
+            return view('templates/menuHeader', ['title' => 'Crea tu sección del hogar'])
+                . view('secciones/createSection')
                 . view('templates/footer');
         }
     }
