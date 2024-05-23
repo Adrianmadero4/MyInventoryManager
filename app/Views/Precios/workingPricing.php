@@ -1,6 +1,10 @@
 <div class="container">
-<h2 class="text-center">Pronto ofreceremos este servicio, siguenos para estar conocer las novedades</h2>
-    <div class="mt-4 text-center">
+<h2 class="text-center mb-4">Pronto ofreceremos este servicio, siguenos para estar conocer las novedades</h2>
+<a class="btn col-7.5 bgLim text-light mb-4" href="<?php echo base_url('pricing'); ?>">Volver al listado de precios</a>
+<div class="text-center">
+    <img src="public/images/workingOnWbsite.jpg" class="" alt="...">
+</div>
+    <div class="mt-4 text-center mb-4">
         <!-- Instagram -->
         <a type="button" class="btn btn-floating bg-light btn-lg"><img src="<?php echo base_url('public/images/instagram.png'); ?>" alt="Instagram" ></a>
         <!-- Facebook -->
