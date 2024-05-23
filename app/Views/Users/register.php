@@ -21,7 +21,7 @@
                 <input type="password" class="form-control mb-2" name="password">
             </div>
 
-            <button type="submit" class="btn bgLim text-light">Registrarse</button>
+            <button type="submit" class="btn bgLim text-light mb-4">Registrarse</button>
         </form>
     </div>
 
