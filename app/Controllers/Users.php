@@ -25,12 +25,34 @@ class Users extends BaseController
 
     public function checkUser()
     {
-        helper('form');
+        // Inicializar la sesión
+        $session = session(); // Ininializar la sesión como con el session_start();
 
+        // Comprobar si el usuario ya ha iniciado sesión
+        if ($session->get('user_id') !== null) {
+            // Si el usuario ya ha iniciado sesión, lo redirige a la página de inicio.
+            $model = model(UserModel::class);
+            $data['user'] = $model->getById($session->get('user_id'));
+            $data['model'] = $model;
+
+            // Poder mostrar secciones y productos en la parte del admin
+            $model_secciones = model(SeccionesModel::class);
+            $data['secciones'] = $model_secciones->getSecciones();
+
+            $model_products = model(ProductModel::class);
+            $data['products'] = $model_products->getProducts();
+
+            return view('templates/menuHeader', ['title' => 'Backend'])
+                . view('users/admin', $data)
+                . view('templates/footer');
+        }
+
+        // Caso contrario, muestra el formulario de inicio de sesión.
+        helper('form');
         // Checks whether the submitted data passed the validation rules.
-        if (! $this->validate([
+        if (!$this->validate([
             'username' => 'required|max_length[255]|min_length[4]',
-            'password'  => 'required|max_length[5000]|min_length[4]',
+            'password' => 'required|max_length[5000]|min_length[4]',
         ])) {
             // The validation fails, so returns the form.
             return $this->loginForm();
@@ -38,13 +60,12 @@ class Users extends BaseController
 
         // Gets the validated data.
         $post = $this->validator->getValidated();
-
         $model = model(UserModel::class);
-        if($data['user'] = $model->checkUser($post['username'],$post['password'])){
-            
+        if ($data['user'] = $model->checkUser($post['username'], $post['password'])) {
+
             $session = session(); // Ininializar la sesión como con el session_start();
-            $session->set('user_id',$data['user']['id'] ); 
-            $session->set('user',$post['username']); 
+            $session->set('user_id', $data['user']['id']);
+            $session->set('user', $post['username']);
 
             //Poder mostrar secciones y productos en la parte del admin
             $model_secciones = model(SeccionesModel::class);
