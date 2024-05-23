@@ -86,7 +86,7 @@ class Secciones extends BaseController
             $existingSecciones = $seccionModel->where('id_usuario', $userId)->countAllResults();
 
             if ($existingSecciones >= 2) {
-                return redirect()->back()->with('error', 'No puedes crear más de 2 secciones.');
+                return redirect()->back()->with('error', 'Al tener usuario básico, no se puede crear más de 2 secciones.');
             }
         }
 
