@@ -10,7 +10,7 @@ class SeccionesModel extends Model
     protected $primaryKey = 'id';
     protected $allowedFields = ['nombre_seccion', 'id_usuario', 'imagen', 'created_at', 'updated_at'];
 
-    public function getSecciones($id = false)
+    /*public function getSecciones($id = false)
     {
         if ($id === false) {
             $sql = $this->select('secciones.*, usuarios.username');
@@ -27,6 +27,12 @@ class SeccionesModel extends Model
         $sql = $this->first();
         return $sql;
         //return $this->findAll();
+    }*/
+    public function getSecciones()
+    {
+        $session = session(); // Ininializar la sesión como con el session_start();
+        $user = $session->get('user_id');
+        return $this->where('id_usuario', $user)->findAll();
     }
 
     public function getById($id = false)
