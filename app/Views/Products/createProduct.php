@@ -7,7 +7,7 @@
     <?= session()->getFlashdata('error') ?>
     <?= validation_list_errors() ?>
 
-    <a class="btn col-7.5 bgLim text-light" href="<?php echo base_url('/products'); ?>">Volver al listado de productos</a>
+    <a class="btn col-7.5 bgLim text-light mb-4" href="<?php echo base_url('/products'); ?>">Volver al listado de productos</a>
 
     <div class="row">
         <div class="col-md-6">
@@ -18,12 +18,12 @@
 
                 <?= csrf_field() ?>
 
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label for="nombreProducto">Nombre del producto</label>
                     <input type="input" class="form-control" name="nombreProducto" value="<?= set_value('nombreProducto') ?>">
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label for="nombre_seccion">Sección</label>
                     <select name="id_seccion"> <!-- Corresponderá luego al campo de la validación de crar en el formulario en el controlador -->
                         <?php if (!empty($section) && is_array($section)): ?>
@@ -39,17 +39,17 @@
                     <!-- <input type="input" class="form-control" name="id_categoria" value="<?= set_value('id_categoria') ?>"> -->
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label for="descripcion">Descripcion</label>
                     <textarea name="descripcion" class="form-control" rows="4"><?= set_value('descripcion') ?></textarea>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label for="stock">Stock</label>
                     <input type="number" class="form-control" name="stock" value="<?= set_value('stock') ?>">
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label for="guardado_en">Guardado en</label>
                     <input type="input" class="form-control" name="guardado_en" value="<?= set_value('guardado_en') ?>">
                 </div>
@@ -57,18 +57,18 @@
 
         <div class="col-md-6">
 
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label for="precio_compra">Precio de compra</label>
                     <input type="text" class="form-control" name="precio_compra" value="<?= set_value('precio_compra') ?>" pattern="[0-9]+(\.[0-9]{1,2})?" title="Ingrese un número válido con máximo dos decimales">
                 </div>
 
 
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label for="precio_venta">Precio de venta</label>
                     <input type="text" class="form-control" name="precio_venta" value="<?= set_value('precio_venta') ?>" pattern="[0-9]+(\.[0-9]{1,2})?" title="Ingrese un número válido con máximo dos decimales">
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label for="fecha_compra">Fecha de compra</label>
                     <input type="date" class="form-control" name="fecha_compra" value="<?= set_value('fecha_compra') ?>">
                 </div>
@@ -106,11 +106,11 @@
                     <input type="file" class="form-control-file" name="imagen">
                 </div>
 
-                <div class="form-group mb-2">
+                <div class="form-group mb-4">
                     <label for="documentos">Documentos</label>
                     <input type="file" class="form-control-file" name="documentos">
                 </div>
-                <button type="submit" class="btn btn-primary">Crear producto</button>
+                <button type="submit" class="btn btn-primary mb-4">Crear producto</button>
             </form>
 
         </div>

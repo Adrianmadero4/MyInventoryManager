@@ -28,24 +28,23 @@
 }
 
 /*COLORES DEL LOGO*/
-/*Color para Eliminar*/
 .bgLim {
-    background-color: #06a5e4 !important; /*06a5e4*/
+    background-color: #06a5e4 !important; 
 }
 
 /*Color para ver*/
 .bgVer {
-    background-color: #cbdd00 !important;
+    background-color: #cbdd00 !important; 
 }
 
 .bgPurple {
-    background-color: #c8005f;
+    background-color: #c8005f; 
 }
 
 .bgOrange {
-    background-color: #ff8800;
+    background-color: #ff8800; 
 }
-
+/*Fin colores logo*/
 .nav-link {
     transition: background-color 0.5s ease;
     padding: 5px 10px; /* Relleno para que el área de hover sea más grande */

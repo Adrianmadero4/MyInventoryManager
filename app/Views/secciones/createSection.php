@@ -7,7 +7,7 @@
     <?= session()->getFlashdata('error') ?>
     <?= validation_list_errors() ?>
 
-    <a class="btn col-7.5 bgLim text-light" href="<?php echo base_url('/secciones'); ?>">Volver al listado de secciones</a>
+    <a class="btn col-7.5 bgLim text-light mb-4" href="<?php echo base_url('/secciones'); ?>">Volver al listado de secciones</a>
 
     <div class="row">
         <div class="col-md-6">
@@ -15,16 +15,16 @@
 
                 <?= csrf_field() ?>
 
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label for="nombre_seccion">Nombre de la sección</label>
                     <input type="input" class="form-control" name="nombre_seccion" value="<?= set_value('nombre_seccion') ?>">
                 </div>
 
-                <div class="form-group mb-2">
+                <div class="form-group mb-4">
                     <label for="imagen">Imagen</label>
                     <input type="file" class="form-control-file" name="imagen">
                 </div>
-                <button type="submit" class="btn btn-primary">Crear Sección</button>
+                <button type="submit" class="btn btn-primary mb-4">Crear Sección</button>
             </form>
 
         </div>

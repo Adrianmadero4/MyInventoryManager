@@ -1,4 +1,4 @@
-<?php namespace App\Models; //Ojo que eñ <?php tiene que ser si o si la primer linea o da error
+<?php namespace App\Models; //Ojo que el <?php tiene que ser si o si la primer linea o da error
 // Creamos un modelo porque necesitamos acceder a la tabla de secciones para el desplegable, que aparezcan las secciones
 
 
@@ -18,9 +18,12 @@ class SeccionesModel extends Model
             $sql = $this->findAll();
             return $sql;
         } // Abajo para un usuario en particular.
-        $sql = $this->select('secciones.*, usuarios.username');
-        $sql = $this->join('usuarios', 'secciones.id_usuario = usuarios.id'); // Esto es como si fuera el JOIN .. ON que hacíamos en php
-        $sql = $this->where(['id' => $id]);
+        // $sql = $this->select('secciones.*, usuarios.id');
+        // $sql = $this->join('usuarios', 'secciones.id_usuario = usuarios.id'); // Esto es como si fuera el JOIN .. ON que hacíamos en php
+        // $sql = $this->where(['secciones.id_usuario', $id]);
+        $sql = $this->select('secciones.*');
+        //$sql = $this->join('usuarios', 'secciones.id_usuario = usuarios.id'); // Esto es como si fuera el JOIN .. ON que hacíamos en php
+        $sql = $this->where(['secciones.id_usuario = usuarios.id']);
         $sql = $this->first();
         return $sql;
         //return $this->findAll();
@@ -32,7 +35,7 @@ class SeccionesModel extends Model
             return $this->findAll();
         }
 
-        return $this->where(['id' => $id])->first();
+        return $this->where(['id_usuario' => $id])->first();
     }
 
     public function getImagenRuta($id)

@@ -6,9 +6,12 @@ class ContactoController extends BaseController
 {
 
     public function index() {
-        return view('Templates/menuHeader')
-        . view('AboutUs/indexConocenos') //nombre de la carpeta/nombreArchivo.
-        . view('Templates/footer');
+        $nameProject = [
+            "nombreProyecto" => "My Inventory Manager"
+        ];
+        return view('Templates/menuHeader', $nameProject)
+        . view('AboutUs/indexConocenos', $nameProject) //nombre de la carpeta/nombreArchivo.
+        . view('Templates/footer', $nameProject);
     }
 
 }

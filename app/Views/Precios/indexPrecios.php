@@ -24,7 +24,7 @@
 
     <div class="container pricing-header p-3 pb-md-4 mx-auto text-center">
       <h1 class="display-4 fw-normal">Conozca nuestros planes y precios</h1>
-      <p class="fs-5 ">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
+      <p class="fs-5 "><?php echo $nombreProyecto ?> ofrece múltiples planes de precios por usuario para elegir, incluso un plan de un usuario gratis.</p>
       <div class="container text-center mt-4 ">
     </div>
   </div>
@@ -37,7 +37,7 @@
             <h4 class="my-0 fw-normal">Gratis</h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">0€<small class="text-muted fw-light">/mo</small></h1>
+            <h1 class="card-title pricing-card-title">0€<small class="text-muted fw-light">/mes</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
               <li>1 usuario incluido</li>
               <li>2 secciones incluidas</li>
@@ -46,7 +46,7 @@
               </li>
               <li>Con anuncios</li>
             </ul>
-            <a href="<?php echo base_url('admin'); ?>" class="btn btn-lg btn-outline-primary w-100">Regístrate gratis</a>
+            <a href="<?php echo base_url('register'); ?>" class="btn btn-lg btn-outline-primary w-100">Regístrate gratis</a>
           </div>
         </div>
       </div>
@@ -55,27 +55,27 @@
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
           <div class="bgLim card-header py-3 ">
-            <h4 class="my-0 fw-normal">Limitado</h4>
+            <h4 class="my-0 fw-normal text-light">Limitado</h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">1,99€<small class="text-muted fw-light">/mo</small></h1>
+            <h1 class="card-title pricing-card-title">1,99€<small class="text-muted fw-light">/mes</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li>2 usuarios incluidos</li>
+              <li>1 usuario incluido</li>
               <li>5 secciones incluidas</li>
               <li>30 elementos por sección
                 <small class="text-muted">(Total 150 artículos)</small> 
               </li>
               <li>Sin anuncios</li>
             </ul>
-            <a href="<?php echo base_url('admin'); ?>" class="w-100 btn btn-lg btn-outline-primary" style="text-decoration: none;">Contrátalo aquí</a>
+            <a href="<?php echo base_url('workingPricing'); ?>" class="w-100 btn btn-lg btn-outline-primary" style="text-decoration: none;">Contrátalo aquí</a>
           </div>
           <div class="py-3 col-12">
             <button type="button" class="btn col-sm-5">Mensual</button>
-            <button type="button" class="btn col-sm-5 bgLim">1,99€</button>
+            <button type="button" class="btn col-sm-5 bgLim text-light">1,99€</button>
           </div>
           <div class="py-3 ">
             <button type="button" class="btn col-sm-5">Anual</button>
-            <button type="button" class="btn bgLim col-sm-5">15,99€</button>
+            <button type="button" class="btn bgLim col-sm-5 text-light">15,99€</button>
           </div>
         </div>
       </div>
@@ -87,14 +87,14 @@
             <h4 class="my-0 fw-normal">Premium</h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">3.99€<small class="text-muted fw-light">/mo</small></h1>
+            <h1 class="card-title pricing-card-title">3,99€<small class="text-muted fw-light">/mes</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li>6 usuarios incluidas</li>
-              <li>10 secciones incluidas</li>
+              <li>Posibilidad de enlazar 2 cuentas</li>
+              <li>Secciones ilimitadas</li>
               <li>Elementos ilimitados</li>
               <li>Sin anuncios</li>
             </ul>
-            <a href="<?php echo base_url('admin'); ?>" class="w-100 btn btn-lg btn-primary" style="text-decoration: none;">Contrátalo aquí</a>
+            <a href="<?php echo base_url('workingPricing'); ?>" class="w-100 btn btn-lg btn-primary" style="text-decoration: none;">Contrátalo aquí</a>
           </div>
           <div class="py-3 col-12">
             <button type="button" class="btn col-sm-5">Mensual</button>

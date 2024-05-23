@@ -4,7 +4,7 @@
 
 <!-- El siguiente codigo es una plantilla de bootstrap -->
 <!-- Remove the container if you want to extend the Footer to full width. -->
-<div class="container-fluid my-5">
+<div class="container-fluid ">
 
   <footer class="text-white text-center text-lg-start" style="background-color: #23242a;">
     <!-- Grid container -->
@@ -28,25 +28,25 @@
 
         <!--Ini Grid column Business hours-->
         <div class="col-lg-4 col-md-6 mb-4 mb-md-0 text-center">
-          <h5 class="text-uppercase mb-4">Business hours</h5>
+          <h5 class="text-uppercase mb-4">HORARIO DE ATENCIÓN</h5>
 
           <table class="table text-center text-white">
             <tbody class="font-weight-normal">
               <tr>
-                <td>Mon - Wed:</td>
+                <td>Lunes - Miércoles:</td>
                 <td>8:00 - 12:00</td>
               </tr>
               <tr>
-                <td>Tue - Thu - Fri:</td>
+                <td>Martes - Jueves - Viernes:</td>
                 <td>16:00 - 20:00</td>
               </tr>
               <tr>
-                <td>Saturday:</td>
+                <td>Sábado:</td>
                 <td>11:00 - 15:00</td>
               </tr>
               <tr>
-                <td>Sunday:</td>
-                <td>Closed</td>
+                <td>Domingo:</td>
+                <td>Cerrado</td>
               </tr>
             </tbody>
           </table>
@@ -57,7 +57,7 @@
 
         <!--Ini Grid column Contact Information-->
         <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-4 pb-1 text-center">Contact Information</h5>
+          <h5 class="text-uppercase mb-4 pb-1 text-center">INFORMACIÓN DE CONTACTO</h5>
 
           
           <ul class="fa-ul" style="margin-left: 1.65em;">
@@ -73,12 +73,12 @@
           </ul>
 
           <div class="mt-4 text-center">
+            <!-- Instagram -->
+            <a type="button" class="btn btn-floating bg-light btn-sm"><img src="<?php echo base_url('public/images/instagram.png'); ?>" alt="Instagram" ></a>
             <!-- Facebook -->
-            <a type="button" class="btn btn-floating bgLim btn-sm"><img src="<?php echo base_url('public/images/facebook.svg'); ?>" alt="MyLogo" ></a>
-            <!-- Dribbble -->
-            <a type="button" class="btn btn-floating bgLim btn-sm"><img src="<?php echo base_url('public/images/instagram.svg'); ?>" alt="MyLogo" ></a>
+            <a type="button" class="btn btn-floating bg-light btn-sm"><img src="<?php echo base_url('public/images/facebook.png'); ?>" alt="Facebook" ></a>
             <!-- Linkedin -->
-            <a type="button" class="btn btn-floating bgLim btn-sm"><img src="<?php echo base_url('public/images/linkedin.svg'); ?>" alt="MyLogo" ></a>
+            <a type="button" class="btn btn-floating bg-light btn-sm"><img src="<?php echo base_url('public/images/linkedin.png'); ?>" alt="Linkedin" ></a>
           </div>
         </div>
         <!--Fin Grid column Contact Information-->
@@ -90,7 +90,7 @@
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
       © 2024 Copyright:
-      <a class="text-white" href="http://localhost/MyInventoryManager/">MyInventoryManager</a>
+      <a class="text-white" href="<?php echo base_url(''); ?>">MyInventoryManager</a>
     </div>
     <!-- Copyright -->
   </footer>

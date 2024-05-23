@@ -4,7 +4,7 @@
 
     <h2><?= esc($title) ?></h2> <!--Este title es el de la función index del controller-->
     <!-- -->
-    <a class="btn col-7.5 bgLim text-light" href="./products/new">Añadir Producto</a>
+    <a class="btn col-7.5 bgLim text-light mb-2" href="./products/new">Añadir Producto</a>
 
     <?php if (! empty($products) && is_array($products)): ?> <!--Si el array no está vacío y se puede recorrer: -->
 
