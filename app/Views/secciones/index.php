@@ -1,12 +1,12 @@
 <div class="container">
+<h2 class="mb-2" ><?= esc($title) ?></h2>
+<a class="btn col-7.5 bgLim text-light mb-2" href="./secciones/new">Añadir Sección</a>
 
 
     <?php if (! empty($secciones) && is_array($secciones)): ?> <!-- OJO MUY IMPORTANTES QUE ESTA VARIABLE SECCIONES DEBE SER LA MISMA A LA QUE NOMBRAMOS EN LOS DATOS DEL CONTROLADOR  -->
 
         <?php foreach ($secciones as $sect): ?>
-            <h2 class="mb-2" ><?= esc($title) ?></h2>
 
-            <a class="btn col-7.5 bgLim text-light mb-2" href="./secciones/new">Añadir Sección</a>
 
             <h4><?= esc($sect['nombre_seccion']) ?></h4>
 

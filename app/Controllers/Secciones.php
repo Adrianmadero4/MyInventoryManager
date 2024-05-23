@@ -73,36 +73,42 @@ class Secciones extends BaseController
             . view('templates/footer');
     }
 
-    public function create() //Método que recoge los datos del formulario del new al haber insertado la seccion.
-
+    public function create()
     {
-        helper('form'); // Ayuda para validar los datos.
+        helper('form');
+        $session = session();
+        $userId = $session->get('user_id');
+        $userRole = $session->get('user_role');
+
+        // Verifica si el usuario tiene más de 2 secciones
+        if ($userRole !== 'Administrador') {
+            $seccionModel = new SeccionesModel();
+            $existingSecciones = $seccionModel->where('id_usuario', $userId)->countAllResults();
+
+            if ($existingSecciones >= 2) {
+                return redirect()->back()->with('error', 'No puedes crear más de 2 secciones.');
+            }
+        }
 
         $data = $this->request->getPost(['nombre_seccion', 'imagen']);
 
-        // Chequear las validaciones del formulario de crear.
-        if (! $this->validate ([
+        if (! $this->validate([
             'nombre_seccion' => 'required|max_length[50]|min_length[2]',
             'imagen' => 'max_size[imagen,50000]',
-            //'id_usuario'  => 'required',
         ])) {
-            // Falla la validación, volvemos al formulario.
             return $this->new();
         }
 
-        // Recoge los datos ya validados en la variable $post.
         $post = $this->validator->getValidated();
-
         $foto = $this->request->getFile('imagen');
         $fotoName = $foto->getName();
-        $foto->move(ROOTPATH . 'public/images/imgPrivate',$fotoName);
+        $foto->move(ROOTPATH . 'public/images/imgPrivate', $fotoName);
 
         $model = model(SeccionesModel::class);
-
-        $model->save([ //Esto es como el insert into
-            'nombre_seccion' => $post['nombre_seccion'], //Esto viene del name del input en el formulario
-            'imagen'  => $fotoName,
-            'id_usuario' => $_SESSION['user_id']
+        $model->save([
+            'nombre_seccion' => $post['nombre_seccion'],
+            'imagen' => $fotoName,
+            'id_usuario' => $userId,
         ]);
 
         return view('templates/menuHeader', ['title' => 'Create a news item'])

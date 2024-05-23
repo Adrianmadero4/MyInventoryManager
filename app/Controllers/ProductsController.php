@@ -5,18 +5,7 @@ use App\Models\ProductModel;
 use App\Models\SeccionesModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 class ProductsController extends BaseController
-{
-
-    /*public function new() //Método para insertar datos en el formulario, llamando a createProduct.php
-    {
-        helper('form'); //Para devolver todo a la vista
-        
-
-        return view('templates/menuHeader', ['title' => 'Crea tu nuevo producto'] ) //El 'titulo' va luego al createProduct.php en las vistas
-            . view('Products/createProduct')
-            . view('templates/footer');
-    }*/
-    
+{    
     public function new() //Método para insertar datos en el formulario, llamando a createProduct.php
     {
         helper('form'); //Para devolver todo a la vista
@@ -90,55 +79,61 @@ class ProductsController extends BaseController
     }
 
 
-    public function create() //Método que recoge los datos del formulario del new al haber insertado el producto.
-
+    public function create()
     {
-        helper('form'); // Ayuda para validar los datos.
-        //var_dump($this->request->getPost()); Comprobar erorres
+        helper('form');
+        $session = session();
+        $userId = $session->get('user_id');
+        $userRole = $session->get('user_role');
 
-        $data = $this->request->getPost(['nombreProducto', 'descripcion' ,'stock', 'guardado_en']);
+        // Verifica si el usuario tiene más de 25 productos
+        if ($userRole !== 'Administrador') {
+            $productoModel = new ProductModel();
+            $existingProductos = $productoModel->select('Productos.*')
+                ->join('Secciones', 'Productos.id_seccion = Secciones.id')
+                ->where('Secciones.id_usuario', $userId)
+                ->countAllResults();
 
-        // Chequear las validaciones del formulario de crear.
-        if (! $this->validate ([
+            if ($existingProductos >= 24) {
+                return redirect()->back()->with('error', 'No puedes crear más de 24 productos.');
+            }
+        }
+
+        $data = $this->request->getPost(['nombreProducto', 'descripcion', 'stock', 'guardado_en']);
+
+        if (! $this->validate([
             'nombreProducto' => 'required|max_length[50]|min_length[2]',
-            'descripcion'  => 'required|max_length[250]|min_length[5]',
-            'id_seccion'  => 'required', // Viene de la vista createProduct, del: select name="id_seccion";
-            'stock' =>'min_length[0]',
+            'descripcion' => 'required|max_length[250]|min_length[5]',
+            'id_seccion' => 'required',
+            'stock' => 'min_length[0]',
             'guardado_en' => 'max_length[50]|min_length[0]',
             'precio_compra' => 'min_length[0]',
             'precio_venta' => 'min_length[0]',
-            'fecha_compra' => 'permit_empty|valid_date', // Permite que sea opcional y valida si es una fecha válida si se proporciona
-
+            'fecha_compra' => 'permit_empty|valid_date',
             'fecha_venta' => 'permit_empty|valid_date',
             'imagen' => 'max_size[imagen,50000]',
-            /*'documentos' => 'max_size[documentos,50000]'*/
         ])) {
-            // Falla la validación, volvemos al formulario.
             return $this->new();
         }
 
-        // Recoge los datos ya validados en la variable $post.
         $post = $this->validator->getValidated();
-
         $foto = $this->request->getFile('imagen');
         $fotoName = $foto->getName();
-        $foto->move(ROOTPATH . 'public/images/imgPrivate',$fotoName);
+        $foto->move(ROOTPATH . 'public/images/imgPrivate', $fotoName);
 
         $model = model(ProductModel::class);
-
-        $model->save([ //Esto es como el insert into
-            'nombreProducto' => $post['nombreProducto'], //Esto viene del name del input en el formulario
-            'slug'  => url_title($post['nombreProducto'], '-', true), //Generamos el slug automaticamente a partir del nombre del producto
-            'descripcion'  => $post['descripcion'],
-            'id_seccion'  => $post['id_seccion'], // El id_seccion de la derecha viene de la vista createProduct, del: select name="id_seccion"; el de la izq: campos de las tablas. lo de post viene siempre de formulario.
-            'guardado_en'  => $post['guardado_en'],
-            'stock'  => $post['stock'],
-            'precio_compra'  => $post['precio_compra'],
-            'precio_venta'  => $post['precio_venta'],
-            'fecha_compra'  => $post['fecha_compra'],
-            'fecha_venta'  => $post['fecha_venta'],
-            'imagen'  => $fotoName, //Aqui en el fotoName viene almacenado el nombre de la imagen
-            /*'documentos'  => $post['documentos'],*/
+        $model->save([
+            'nombreProducto' => $post['nombreProducto'],
+            'slug' => url_title($post['nombreProducto'], '-', true),
+            'descripcion' => $post['descripcion'],
+            'id_seccion' => $post['id_seccion'],
+            'guardado_en' => $post['guardado_en'],
+            'stock' => $post['stock'],
+            'precio_compra' => $post['precio_compra'],
+            'precio_venta' => $post['precio_venta'],
+            'fecha_compra' => $post['fecha_compra'],
+            'fecha_venta' => $post['fecha_venta'],
+            'imagen' => $fotoName,
         ]);
 
         return view('templates/menuHeader', ['title' => 'Create a news item'])

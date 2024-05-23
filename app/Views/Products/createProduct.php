@@ -11,11 +11,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <!-- <form action="./createProduct" method="post"> -->
-            <form action="<?= site_url('products/createProduct'); ?>" method="post" enctype="multipart/form-data">  <!-- enctype="multipart/form-data" para poder subir imagenes correctamente -->
-
-
-
+            <form action="<?= site_url('products/createProduct'); ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field() ?>
 
                 <div class="form-group mb-2">
@@ -25,18 +21,15 @@
 
                 <div class="form-group mb-2">
                     <label for="nombre_seccion">Sección</label>
-                    <select name="id_seccion"> <!-- Corresponderá luego al campo de la validación de crar en el formulario en el controlador -->
+                    <select name="id_seccion">
                         <?php if (!empty($section) && is_array($section)): ?>
-
-                            <?php foreach ($section as $section_item): ?> <!--$section_item es el nombre que le asigno a la variable del foreach -->
-
-                                <option value="<?= $section_item['id'] ?>"> <!-- Almacena el codigo de la sección y no el nombre de la sección -->
-                                    <?= $section_item['nombre_seccion'] ?> 
+                            <?php foreach ($section as $section_item): ?>
+                                <option value="<?= $section_item['id'] ?>">
+                                    <?= $section_item['nombre_seccion'] ?>
                                 </option>
                             <?php endforeach ?>
                         <?php endif ?>
                     </select>
-                    <!-- <input type="input" class="form-control" name="id_categoria" value="<?= set_value('id_categoria') ?>"> -->
                 </div>
 
                 <div class="form-group mb-2">
@@ -56,12 +49,10 @@
         </div>
 
         <div class="col-md-6">
-
                 <div class="form-group mb-2">
                     <label for="precio_compra">Precio de compra</label>
                     <input type="text" class="form-control" name="precio_compra" value="<?= set_value('precio_compra') ?>" pattern="[0-9]+(\.[0-9]{1,2})?" title="Ingrese un número válido con máximo dos decimales">
                 </div>
-
 
                 <div class="form-group mb-2">
                     <label for="precio_venta">Precio de venta</label>
@@ -77,29 +68,6 @@
                     <label for="fecha_venta">Fecha de venta</label>
                     <input type="date" class="form-control" name="fecha_venta" value="<?= set_value('fecha_venta') ?>">
                 </div>
-                <script>
-                    // Obtener los elementos de entrada de fecha
-                    const fechaCompraInput = document.getElementById('fecha_compra');
-                    const fechaVentaInput = document.getElementById('fecha_venta');
-
-                    // Función para formatear la fecha en formato dd/mm/yyyy
-                    function formatDate(date) {
-                        const day = String(date.getDate()).padStart(2, '0');
-                        const month = String(date.getMonth() + 1).padStart(2, '0');
-                        const year = date.getFullYear();
-                        return `${day}/${month}/${year}`;
-                    }
-
-                    // Función para establecer el valor del campo de entrada de fecha en el formato deseado
-                    function setFormattedDate(input) {
-                        const date = new Date(input.value);
-                        input.value = formatDate(date);
-                    }
-
-                    // Establecer el valor inicial de los campos de entrada de fecha
-                    setFormattedDate(fechaCompraInput);
-                    setFormattedDate(fechaVentaInput);
-                </script>
 
                 <div class="form-group mb-2">
                     <label for="imagen">Imagen</label>
@@ -112,7 +80,6 @@
                 </div>
                 <button type="submit" class="btn btn-primary mb-4">Crear producto</button>
             </form>
-
         </div>
     </div>
 </div>
