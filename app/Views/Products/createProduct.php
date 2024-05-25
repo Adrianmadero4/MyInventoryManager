@@ -4,7 +4,18 @@
 <div class="container">
     <h2><?= esc($title)?></h2>
 
-    <p class="text-danger"><?= session()->getFlashdata('error') ?></p>
+    <?php if ($errors = session()->getFlashdata('error')): ?>
+        <div class="text-danger">
+            <?php if (is_array($errors)): ?>
+                <?php foreach ($errors as $error): ?>
+                    <p><?= esc($error) ?></p>
+                <?php endforeach ?>
+            <?php else: ?>
+                <p><?= esc($errors) ?></p>
+            <?php endif ?>
+        </div>
+    <?php endif ?>
+
     <?= validation_list_errors() ?>
 
     <a class="btn col-7.5 bgLim text-light mb-4" href="<?php echo base_url('/products'); ?>">Volver al listado de productos</a>
@@ -20,8 +31,8 @@
                 </div>
 
                 <div class="form-group mb-2">
-                    <label for="nombre_seccion">Sección</label>
-                    <select name="id_seccion">
+                    <label for="id_seccion">Sección</label>
+                    <select name="id_seccion" class="form-control">
                         <?php if (!empty($section) && is_array($section)): ?>
                             <?php foreach ($section as $section_item): ?>
                                 <option value="<?= $section_item['id'] ?>">
@@ -70,12 +81,12 @@
                 </div>
 
                 <div class="form-group mb-2">
-                    <label for="imagen">Imagen</label>
+                    <label for="imagen">Imagen (opcional)</label>
                     <input type="file" class="form-control-file" name="imagen">
                 </div>
 
                 <div class="form-group mb-4">
-                    <label for="documentos">Documentos</label>
+                    <label for="documentos">Documentos (opcional)</label>
                     <input type="file" class="form-control-file" name="documentos">
                 </div>
                 <button type="submit" class="btn btn-primary mb-4">Crear producto</button>
