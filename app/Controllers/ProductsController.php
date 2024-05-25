@@ -163,6 +163,7 @@ class ProductsController extends BaseController
             . view('Products/delete')
             . view('templates/footer');
     }
+
     public function update($id){//le pasamos como identificador la variable id y abajo hace falta el helper form
         helper('form');
         if ($id==null){
@@ -174,7 +175,7 @@ class ProductsController extends BaseController
         if ($model->where('id', $id)->find()) {//busca la noticia del id
             $data = [
                 'products' => $model ->where(['id' => $id])->first(), // Contendrá todas las noticias
-                'title' => 'Actualizar ' , //ojo si da error en la linea 224 del header que es por esto o por justo la de arriba
+                'title' => 'Actualizar ' ,
                 'id_seccion' => $Sectionmodel->findAll(), // Buscará todas las categorías
             ]; // Ahora habría que modificar la vista de update.php
         }else{

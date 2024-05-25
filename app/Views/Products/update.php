@@ -16,6 +16,12 @@
                 <input type="file" class="form-control-file" name="imagen">
             </div>
 
+            <div class="form-group mb-2">
+                <label for="descripcion">Descripción</label>
+                <textarea name="descripcion" class="form-control"><?= esc($products['descripcion']) ?></textarea>
+            </div>
+
+
             <label for="nombre_seccion" class="mb-4">Sección</label>
             <select name="id_seccion">
                 <?php if (!empty($sections) && is_array($sections)): ?>
