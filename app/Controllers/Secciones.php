@@ -101,7 +101,8 @@ class Secciones extends BaseController
         }
 
         if ($existingSecciones >= $maxSecciones) {
-            return redirect()->back()->with('error', 'Su usuario ha alcanzalo el límite máximo de secciones.');
+            return redirect()->back()->with('error', 'Su usuario ha alcanzado el límite máximo de secciones.<br><a href="' . base_url('/pricing') . '">Encuentra aquí un plan que se ajuste mejor a tus necesidades.</a>');
+
         }
 
         $data = $this->request->getPost(['nombre_seccion', 'imagen']);

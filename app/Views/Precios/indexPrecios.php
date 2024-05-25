@@ -27,10 +27,10 @@
       <?php $session = session()?>
       <!-- <h3><?//= "Bienvenid@ ". $session->get('user')?></h3> Código de prueba para comprobar si había sesión iniciada-->
       <div class="container pricing-header p-3 pb-md-4 mx-auto text-center">
-        <h1 class="display-4 fw-normal">Conozca nuestros planes y precios</h1>
-        <p class="fs-5 "><?php echo $nombreProyecto ?> ofrece múltiples planes de precios por usuario para elegir, incluso un plan de un usuario gratis.</p>
+        <h1 class="display-4 fw-normal">Planes y precios</h1>
+        <p class="fs-5">Ofrecemos varios planes para usuarios, incluido uno gratuito.</p>
         <div class="container text-center mt-4 ">
-      </div>
+        </div>
       </div>
 
       <main class="container">
@@ -169,10 +169,10 @@
     <!-- <div class="container-fluid py-3"> -->
 
       <div class="container pricing-header p-3 pb-md-4 mx-auto text-center">
-        <h1 class="display-4 fw-normal">Conozca nuestros planes y precios</h1>
-        <p class="fs-5 "><?php echo $nombreProyecto ?> ofrece múltiples planes de precios por usuario para elegir, incluso un plan de un usuario gratis.</p>
+        <h1 class="display-4 fw-normal">Planes y precios</h1>
+        <p class="fs-5">Ofrecemos varios planes para usuarios, incluido uno gratuito.</p>
         <div class="container text-center mt-4 ">
-      </div>
+        </div>
       </div>
 
       <main class="container">
