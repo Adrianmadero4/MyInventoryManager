@@ -8,7 +8,7 @@ class SeccionesModel extends Model
 {
     protected $table = 'secciones';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['nombre_seccion', 'id_usuario', 'imagen', 'created_at', 'updated_at'];
+    protected $allowedFields = ['nombre_seccion', 'id_usuario', 'imagen', 'created_at', 'updated_at']; // Todos los campos editables
 
     public function getSecciones()
     {

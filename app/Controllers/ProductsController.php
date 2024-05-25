@@ -164,75 +164,99 @@ class ProductsController extends BaseController
             . view('templates/footer');
     }
 
-    public function update($id){//le pasamos como identificador la variable id y abajo hace falta el helper form
+    public function update($id) {
         helper('form');
-        if ($id==null){
+        if ($id == null) {
             throw new PageNotFoundException('No se puede actualizar el producto');
         }
-        //si no es null:
-        $model = model(ProductModel::class); // Apunta a product
-        $Sectionmodel = model(SeccionesModel::class); // Apunta a secciones
-        if ($model->where('id', $id)->find()) {//busca la noticia del id
+        $model = model(ProductModel::class);
+        $Sectionmodel = model(SeccionesModel::class);
+        if ($model->where('id', $id)->find()) {
             $data = [
-                'products' => $model ->where(['id' => $id])->first(), // Contendrá todas las noticias
-                'title' => 'Actualizar ' ,
-                'id_seccion' => $Sectionmodel->findAll(), // Buscará todas las categorías
-            ]; // Ahora habría que modificar la vista de update.php
-        }else{
+                'products' => $model->where(['id' => $id])->first(),
+                'title' => 'Actualizar ',
+                'sections' => $Sectionmodel->findAll(), // Cambiado a 'sections'
+                'imagen' => 'Imagen'
+            ];
+        } else {
             throw new PageNotFoundException('El producto seleccionado no existe');
-        }// y si no hay noticia con ID, sacamos otro mensaje.
+        }
         return view('templates/menuHeader', $data)
             . view('Products/update')
             . view('templates/footer');
     }
-    public function updatedItem($id)
-    {
+    
+    public function updatedItem($id) {
         helper('form');
- 
-        // Checks whether the submitted data passed the validation rules.
-        if (! $this->validate([
+    
+        // Define las reglas de validación
+        $validationRules = [
             'nombreProducto' => 'required|max_length[50]|min_length[2]',
-            'descripcion'  => 'required|max_length[250]|min_length[5]',
-            'id_seccion'  => 'required', // Viene de la vista createProduct, del: select name="id_seccion";
-            'stock' =>'min_length[0]',
-            'guardado_en' => 'max_length[50]|min_length[0]',
-            'precio_compra' => 'min_length[0]',
-            'precio_venta' => 'min_length[0]',
-            'fecha_compra' => 'min_length[0]',
-            'fecha_venta' => 'min_length[0]',
-            'imagen' => 'max_size[imagen,50000]',
-            /*'documentos' => 'max_size[documentos,50000]'*/
-        ])) {
-            // The validation fails, so returns the form.
-            return $this->update($id);
-        }
- 
-        // Gets the validated data.
-        $post = $this->validator->getValidated();
- 
-        $data = [
-            'id' => $id, //Aqui hay que recoger el id para que el método save modifique y no inserte. (Diferencia principal entre insertar y modificar)
-            'nombreProducto' => $post['nombreProducto'], //Esto viene del name del input en el formulario
-            'slug'  => url_title($post['nombreProducto'], '-', true), //Generamos el slug automaticamente a partir del nombre del producto
-            'descripcion'  => $post['descripcion'],
-            'id_seccion'  => $post['id_seccion'], // El id_seccion de la derecha viene de la vista createProduct, del: select name="id_seccion"; el de la izq: campos de las tablas. lo de post viene siempre de formulario.
-            'guardado_en'  => $post['guardado_en'],
-            'stock'  => $post['stock'],
-            'precio_compra'  => $post['precio_compra'],
-            'precio_venta'  => $post['precio_venta'],
-            'fecha_compra'  => $post['fecha_compra'],
-            'fecha_venta'  => $post['fecha_venta'],
-            /*'imagen'  => $post['imagen'],
-            'documentos'  => $post['documentos'],*/
+            'descripcion' => 'required|max_length[250]|min_length[5]',
+            'id_seccion' => 'required',
+            'stock' => 'permit_empty|integer',
+            'guardado_en' => 'permit_empty|max_length[50]',
+            'precio_compra' => 'permit_empty|decimal',
+            'precio_venta' => 'permit_empty|decimal',
+            'fecha_compra' => 'permit_empty|valid_date',
+            'fecha_venta' => 'permit_empty|valid_date',
+            'imagen' => 'permit_empty|max_size[imagen,50000]|is_image[imagen]|mime_in[imagen,image/jpg,image/jpeg,image/png]',
         ];
+    
+        // Checks whether the submitted data passed the validation rules.
+        if (!$this->validate($validationRules)) {
+            // The validation fails, so returns the form with errors.
+            $errors = $this->validator->getErrors();
+            $model = model(ProductModel::class);
+            $Sectionmodel = model(SeccionesModel::class);
+            $data = [
+                'products' => $model->where(['id' => $id])->first(),
+                'title' => 'Actualizar ',
+                'sections' => $Sectionmodel->findAll(),
+                'errors' => $errors, // Pass errors to the view
+            ];
+            return view('templates/menuHeader', $data)
+                . view('Products/update')
+                . view('templates/footer');
+        }
+    
+        // Gets the validated data.
+        $post = $this->request->getPost();
+    
+        // Prepare the data array with optional fields checked
+        $data = [
+            'id' => $id,
+            'nombreProducto' => $post['nombreProducto'],
+            'slug' => url_title($post['nombreProducto'], '-', true),
+            'descripcion' => $post['descripcion'],
+            'id_seccion' => $post['id_seccion'],
+            'guardado_en' => $post['guardado_en'] ?? null,
+            'stock' => $post['stock'] ?? null,
+            'precio_compra' => $post['precio_compra'] ?? null,
+            'precio_venta' => $post['precio_venta'] ?? null,
+            'fecha_compra' => $post['fecha_compra'] ?? null,
+            'fecha_venta' => $post['fecha_venta'] ?? null,
+        ];
+    
+        // Manejar la imagen si es cargada
+        $foto = $this->request->getFile('imagen');
+        if ($foto && $foto->isValid()) {
+            $fotoName = $foto->getName();
+            $foto->move(ROOTPATH . 'public/images/imgPrivate', $fotoName);
+            $data['imagen'] = $fotoName;
+        }
+    
         $model = model(ProductModel::class);
-        $model->save($data);
-        //Nos vamos directamente a la pag. principal
-        /*return redirect()->to(base_url());*/
-       
-        
+        if ($model->update($id, $data)) {
+            return redirect()->to(base_url('products'))->with('success', 'Sección actualizada con éxito');
+        } else {
+            return redirect()->back()->with('error', 'No se pudo actualizar la sección');
+        }
+        /*$model->save($data);
+    
         return view('templates/menuHeader', ['title' => 'Item updated'])
-            . view('Products/succes')
-            . view('templates/footer');
-    }
+            . view('Products/success')
+            . view('templates/footer');*/
+    }    
+    
 }

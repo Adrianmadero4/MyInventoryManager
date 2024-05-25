@@ -187,7 +187,7 @@ class Secciones extends BaseController
                 'imagen' => 'Imagen'
             ];
         } else {
-            throw new PageNotFoundException('Selected section does not exist in database');
+            throw new PageNotFoundException('La sección seleccionada no existe.');
         }
     
         return view('templates/menuHeader', $data)
