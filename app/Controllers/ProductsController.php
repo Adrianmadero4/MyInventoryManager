@@ -74,17 +74,36 @@ class ProductsController extends BaseController
         $userId = $session->get('user_id');
         $userRole = $session->get('user_role');
 
-        // Verifica si el usuario tiene más de 25 productos
-        if ($userRole !== 'Administrador') {
-            $productoModel = new ProductModel();
-            $existingProductos = $productoModel->select('Productos.*')
-                ->join('Secciones', 'Productos.id_seccion = Secciones.id')
-                ->where('Secciones.id_usuario', $userId)
-                ->countAllResults();
+        // Obtenemos el modelo de secciones y productos
+        $seccionModel = new SeccionesModel();
+        $productModel = new ProductModel();
 
-            if ($existingProductos >= 24) {
-                return redirect()->back()->with('error', 'No puedes crear más de 24 productos.');
-            }
+        // Obtenemos las secciones del usuario
+        $seccionesUsuario = $seccionModel->where('id_usuario', $userId)->findAll();
+        $seccionIds = array_column($seccionesUsuario, 'id');
+
+        // Contamos los productos del usuario basándonos en las secciones a las que pertenece
+        $existingProducts = $productModel->whereIn('id_seccion', $seccionIds)->countAllResults();
+
+        // Límites de productos según el rol del usuario
+        switch ($userRole) {
+            case 'Basico':
+                $maxProducts = 10;
+                break;
+            case 'Advanced':
+                $maxProducts = 30;
+                break;
+            case 'Administrador':
+            case 'Premium':
+                $maxProducts = PHP_INT_MAX; // Sin límites
+                break;
+            default:
+                $maxProducts = 10; // Valor por defecto en caso de rol desconocido
+                break;
+        }
+
+        if ($existingProducts >= $maxProducts) {
+            return redirect()->back()->with('error', 'Su usuario ha alcanzado el límite máximo de productos.<br><a href="' . base_url('/pricing') . '">Encuentra aquí un plan que se ajuste mejor a tus necesidades.</a>');
         }
 
         $data = $this->request->getPost(['nombreProducto', 'descripcion', 'stock', 'guardado_en']);
@@ -120,7 +139,7 @@ class ProductsController extends BaseController
         }
 
         $model = model(ProductModel::class);
-        $model->save([
+        if ($model->save([
             'nombreProducto' => $post['nombreProducto'],
             'slug' => url_title($post['nombreProducto'], '-', true),
             'descripcion' => $post['descripcion'],
@@ -132,11 +151,17 @@ class ProductsController extends BaseController
             'fecha_compra' => $post['fecha_compra'],
             'fecha_venta' => $post['fecha_venta'],
             'imagen' => $fotoName,
-        ]);
+        ])) {
+        // Redirigir al usuario al listado de secciones
+        return redirect()->to(base_url('products'))->with('success', 'Producto creado con éxito');
+        } else {
+            // Si la creación falla, redirigir de nuevo al formulario de creación con un mensaje de error
+            return redirect()->back()->with('error', 'No se pudo crear el producto');
+        }
 
-        return view('templates/menuHeader', ['title' => 'Create a news item'])
+        /*return view('templates/menuHeader', ['title' => 'Create a news item'])
             . view('Products/success')
-            . view('templates/footer');
+            . view('templates/footer');*/
     }
     
     public function delete($id){//le pasamos como identificador la variable id
@@ -158,10 +183,15 @@ class ProductsController extends BaseController
             throw new PageNotFoundException('El producto seleccionado no existe');
         }// y si no hay noticia con ID, sacamos otro mensaje.
         /*Nos vamos directamente a la pag. principal*/
-        
-        return view('templates/menuHeader', ['title'=> 'Delete item'])
+        // Intentar eliminar la sección
+        if ($model->delete($id)) {
+            return redirect()->to(base_url('products'))->with('success', 'Producto eliminado con éxito');
+        } else {
+            return redirect()->back()->with('error', 'No se pudo eliminar el producto');
+        }
+        /*return view('templates/menuHeader', ['title'=> 'Delete item'])
             . view('Products/delete')
-            . view('templates/footer');
+            . view('templates/footer');*/
     }
 
     public function update($id) {
@@ -248,9 +278,9 @@ class ProductsController extends BaseController
     
         $model = model(ProductModel::class);
         if ($model->update($id, $data)) {
-            return redirect()->to(base_url('products'))->with('success', 'Sección actualizada con éxito');
+            return redirect()->to(base_url('products'))->with('success', 'Producto con éxito');
         } else {
-            return redirect()->back()->with('error', 'No se pudo actualizar la sección');
+            return redirect()->back()->with('error', 'No se pudo actualizar el producto');
         }
         /*$model->save($data);
     

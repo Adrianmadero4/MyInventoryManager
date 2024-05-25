@@ -4,18 +4,7 @@
 <div class="container">
     <h2><?= esc($title)?></h2>
 
-    <?php if ($errors = session()->getFlashdata('error')): ?>
-        <div class="text-danger">
-            <?php if (is_array($errors)): ?>
-                <?php foreach ($errors as $error): ?>
-                    <p><?= esc($error) ?></p>
-                <?php endforeach ?>
-            <?php else: ?>
-                <p><?= esc($errors) ?></p>
-            <?php endif ?>
-        </div>
-    <?php endif ?>
-
+    <p class="text-danger"><?= session()->getFlashdata('error') ?></p>
     <?= validation_list_errors() ?>
 
     <a class="btn col-7.5 bgLim text-light mb-4" href="<?php echo base_url('/products'); ?>">Volver al listado de productos</a>

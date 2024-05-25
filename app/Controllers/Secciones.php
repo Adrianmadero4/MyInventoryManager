@@ -88,7 +88,7 @@ class Secciones extends BaseController
             case 'Basico':
                 $maxSecciones = 2;
                 break;
-            case 'Limitado':
+            case 'Advanced':
                 $maxSecciones = 5;
                 break;
             case 'Administrador':
@@ -127,10 +127,10 @@ class Secciones extends BaseController
         ])) {
             // Redirigir al usuario al listado de secciones
             return redirect()->to(base_url('secciones'))->with('success', 'Sección creada con éxito');
-        } else {
-            // Si la creación falla, redirigir de nuevo al formulario de creación con un mensaje de error
-            return redirect()->back()->with('error', 'No se pudo crear la sección');
-        }
+            } else {
+                // Si la creación falla, redirigir de nuevo al formulario de creación con un mensaje de error
+                return redirect()->back()->with('error', 'No se pudo crear la sección');
+            }
         /* Modelo con succes, pero mejor que redirija automáticamente
         $model->save([
             'nombre_seccion' => $post['nombre_seccion'],
