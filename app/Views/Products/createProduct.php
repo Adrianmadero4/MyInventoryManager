@@ -4,7 +4,7 @@
 <div class="container">
     <h2><?= esc($title)?></h2>
 
-    <?= session()->getFlashdata('error') ?>
+    <p class="text-danger"><?= session()->getFlashdata('error') ?></p>
     <?= validation_list_errors() ?>
 
     <a class="btn col-7.5 bgLim text-light mb-4" href="<?php echo base_url('/products'); ?>">Volver al listado de productos</a>

@@ -22,7 +22,74 @@ class Users extends BaseController
                 . view('templates/footer');
         }
     }
+    public function login()
+    {
+        $session = session();
+        $model = new UserModel();
 
+        $username = $this->request->getPost('username');
+        $password = $this->request->getPost('password');
+
+        $user = $model->where('username', $username)->first();
+
+        if ($user) {
+            if (password_verify($password, $user['password'])) {
+                $sessionData = [
+                    'user_id' => $user['id'],
+                    'username' => $user['username'],
+                    'user_role' => $user['rol'], // Aquí se guarda el rol del usuario en la sesión
+                    'logged_in' => TRUE
+                ];
+
+                $session->set($sessionData);
+                return redirect()->to('/dashboard');
+            } else {
+                $session->setFlashdata('error', 'Contraseña incorrecta.');
+                return redirect()->back();
+            }
+        } else {
+            $session->setFlashdata('error', 'Usuario no encontrado.');
+            return redirect()->back();
+        }
+    }
+
+    public function registerForm()
+{
+    helper('form');
+    return view('templates/menuHeader', ['title' => 'Registro de usuario'])
+        . view('users/register', ['error' => ''])
+        . view('templates/footer');
+}
+
+    public function register()
+    {
+        helper('form');
+
+        // Chequea si los datos enviados pasan las reglas de validación.
+        if (! $this->validate([
+            'username' => 'required|max_length[255]|min_length[4]',
+            'email' => 'required|valid_email|max_length[255]|is_unique[usuarios.email]',
+            'password'  => 'required|max_length[5000]|min_length[4]',
+        ])) {
+            // La validación falla, devuelve el formulario.
+            return $this->registerForm();
+        }
+
+        // Obtiene los datos validados.
+        $post = $this->request->getPost(['username', 'email', 'password']);
+
+        // Define el rol predeterminado como "básico"
+        $post['rol'] = 'básico';
+
+        // Guarda el usuario en la base de datos.
+        $model = model(UserModel::class);
+        $model->save($post);
+
+        // Redirige al usuario a la página de inicio de sesión.
+        return view('templates/menuHeader', ['title' => 'Create a new User'])
+            . view('users/success')
+            . view('templates/footer');
+    }
     public function checkUser()
     {
         // Inicializar la sesión
@@ -84,9 +151,6 @@ class Users extends BaseController
             return $this->loginForm("Error");
         }
     }
-
-    
-
     public function closeSession()
     {
         $session = session();
@@ -97,45 +161,6 @@ class Users extends BaseController
 
         return redirect()->to(base_url());
     }
-
-    public function registerForm()
-{
-    helper('form');
-    return view('templates/menuHeader', ['title' => 'Registro de usuario'])
-        . view('users/register', ['error' => ''])
-        . view('templates/footer');
-}
-
-    public function register()
-    {
-        helper('form');
-
-        // Chequea si los datos enviados pasan las reglas de validación.
-        if (! $this->validate([
-            'username' => 'required|max_length[255]|min_length[4]',
-            'email' => 'required|valid_email|max_length[255]|is_unique[usuarios.email]',
-            'password'  => 'required|max_length[5000]|min_length[4]',
-        ])) {
-            // La validación falla, devuelve el formulario.
-            return $this->registerForm();
-        }
-
-        // Obtiene los datos validados.
-        $post = $this->request->getPost(['username', 'email', 'password']);
-
-        // Define el rol predeterminado como "básico"
-        $post['rol'] = 'básico';
-
-        // Guarda el usuario en la base de datos.
-        $model = model(UserModel::class);
-        $model->save($post);
-
-        // Redirige al usuario a la página de inicio de sesión.
-        return view('templates/menuHeader', ['title' => 'Create a new User'])
-            . view('users/success')
-            . view('templates/footer');
-    }
-
     
     
 

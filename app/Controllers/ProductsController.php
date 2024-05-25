@@ -79,67 +79,81 @@ class ProductsController extends BaseController
     }
 
 
-    public function create()
-    {
-        helper('form');
-        $session = session();
-        $userId = $session->get('user_id');
-        $userRole = $session->get('user_role');
+public function createProduct()
+{
+    helper('form');
+    $session = session();
+    $userId = $session->get('user_id');
+    $userRole = $session->get('user_role');
 
-        // Verifica si el usuario tiene más de 25 productos
-        if ($userRole !== 'Administrador') {
-            $productoModel = new ProductModel();
-            $existingProductos = $productoModel->select('Productos.*')
-                ->join('Secciones', 'Productos.id_seccion = Secciones.id')
-                ->where('Secciones.id_usuario', $userId)
-                ->countAllResults();
+    $productoModel = new ProductModel();
+    $seccionModel = new SeccionesModel();
 
-            if ($existingProductos >= 24) {
-                return redirect()->back()->with('error', 'No puedes crear más de 24 productos.');
-            }
-        }
+    $secciones = $seccionModel->where('id_usuario', $userId)->findAll();
+    $maxProductosPorSeccion = 0;
 
-        $data = $this->request->getPost(['nombreProducto', 'descripcion', 'stock', 'guardado_en']);
-
-        if (! $this->validate([
-            'nombreProducto' => 'required|max_length[50]|min_length[2]',
-            'descripcion' => 'required|max_length[250]|min_length[5]',
-            'id_seccion' => 'required',
-            'stock' => 'min_length[0]',
-            'guardado_en' => 'max_length[50]|min_length[0]',
-            'precio_compra' => 'min_length[0]',
-            'precio_venta' => 'min_length[0]',
-            'fecha_compra' => 'permit_empty|valid_date',
-            'fecha_venta' => 'permit_empty|valid_date',
-            'imagen' => 'max_size[imagen,50000]',
-        ])) {
-            return $this->new();
-        }
-
-        $post = $this->validator->getValidated();
-        $foto = $this->request->getFile('imagen');
-        $fotoName = $foto->getName();
-        $foto->move(ROOTPATH . 'public/images/imgPrivate', $fotoName);
-
-        $model = model(ProductModel::class);
-        $model->save([
-            'nombreProducto' => $post['nombreProducto'],
-            'slug' => url_title($post['nombreProducto'], '-', true),
-            'descripcion' => $post['descripcion'],
-            'id_seccion' => $post['id_seccion'],
-            'guardado_en' => $post['guardado_en'],
-            'stock' => $post['stock'],
-            'precio_compra' => $post['precio_compra'],
-            'precio_venta' => $post['precio_venta'],
-            'fecha_compra' => $post['fecha_compra'],
-            'fecha_venta' => $post['fecha_venta'],
-            'imagen' => $fotoName,
-        ]);
-
-        return view('templates/menuHeader', ['title' => 'Create a news item'])
-            . view('Products/success')
-            . view('templates/footer');
+    // Límites de productos según el rol del usuario
+    switch ($userRole) {
+        case 'Basico':
+            $maxProductosPorSeccion = 2;
+            break;
+        case 'Limitado':
+            $maxProductosPorSeccion = 30;
+            break;
+        case 'Administrador':
+        case 'Premium':
+            $maxProductosPorSeccion = PHP_INT_MAX; // Sin límites
+            break;
+        default:
+            $maxProductosPorSeccion = 2; // Valor por defecto en caso de rol desconocido
+            break;
     }
+
+    foreach ($secciones as $seccion) {
+        $existingProductos = $productoModel->where('id_seccion', $seccion['id'])->countAllResults();
+
+        if ($existingProductos >= $maxProductosPorSeccion) {
+            return redirect()->back()->with('error', 'Su usuario ha alcanzalo el límite máximo de productos.');
+        }
+    }
+
+    $data = $this->request->getPost(['nombreProducto', 'codigo', 'descripcion', 'stock', 'guardado_en', 'precio_compra', 'precio_venta', 'fecha_compra', 'fecha_venta', 'id_seccion', 'imagen', 'documentos']);
+
+    if (! $this->validate([
+        'nombreProducto' => 'required|max_length[100]',
+        'codigo' => 'required|max_length[50]',
+        'imagen' => 'max_size[imagen,50000]',
+        'documentos' => 'max_size[documentos,50000]'
+    ])) {
+        return $this->new();
+    }
+
+    $post = $this->validator->getValidated();
+    $foto = $this->request->getFile('imagen');
+    $fotoName = $foto->getName();
+    $foto->move(ROOTPATH . 'public/images/imgPrivate', $fotoName);
+
+    $model = model(ProductModel::class);
+    $model->save([
+        'nombreProducto' => $post['nombreProducto'],
+        'codigo' => $post['codigo'],
+        'descripcion' => $post['descripcion'],
+        'stock' => $post['stock'],
+        'guardado_en' => $post['guardado_en'],
+        'precio_compra' => $post['precio_compra'],
+        'precio_venta' => $post['precio_venta'],
+        'fecha_compra' => $post['fecha_compra'],
+        'fecha_venta' => $post['fecha_venta'],
+        'id_seccion' => $post['id_seccion'],
+        'imagen' => $fotoName,
+        'documentos' => $post['documentos'],
+    ]);
+
+    return view('templates/menuHeader', ['title' => 'Crear producto'])
+        . view('productos/success')
+        . view('templates/footer');
+}
+
 
     
 

@@ -80,14 +80,28 @@ class Secciones extends BaseController
         $userId = $session->get('user_id');
         $userRole = $session->get('user_role');
 
-        // Verifica si el usuario tiene más de 2 secciones
-        if ($userRole !== 'Administrador') {
-            $seccionModel = new SeccionesModel();
-            $existingSecciones = $seccionModel->where('id_usuario', $userId)->countAllResults();
+        $seccionModel = new SeccionesModel();
+        $existingSecciones = $seccionModel->where('id_usuario', $userId)->countAllResults();
 
-            if ($existingSecciones >= 2) {
-                return redirect()->back()->with('error', 'Al tener usuario básico, no se puede crear más de 2 secciones.');
-            }
+        // Límites de secciones según el rol del usuario
+        switch ($userRole) {
+            case 'Basico':
+                $maxSecciones = 2;
+                break;
+            case 'Limitado':
+                $maxSecciones = 5;
+                break;
+            case 'Administrador':
+            case 'Premium':
+                $maxSecciones = PHP_INT_MAX; // Sin límites
+                break;
+            default:
+                $maxSecciones = 2; // Valor por defecto en caso de rol desconocido
+                break;
+        }
+
+        if ($existingSecciones >= $maxSecciones) {
+            return redirect()->back()->with('error', 'Su usuario ha alcanzalo el límite máximo de secciones.');
         }
 
         $data = $this->request->getPost(['nombre_seccion', 'imagen']);
@@ -111,10 +125,11 @@ class Secciones extends BaseController
             'id_usuario' => $userId,
         ]);
 
-        return view('templates/menuHeader', ['title' => 'Create a news item'])
+        return view('templates/menuHeader', ['title' => 'Crear sección'])
             . view('secciones/success')
             . view('templates/footer');
     }
+
 
     public function delete($id){//le pasamos como identificador la variable id
         if ($id==null){
