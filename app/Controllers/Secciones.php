@@ -119,6 +119,18 @@ class Secciones extends BaseController
         $foto->move(ROOTPATH . 'public/images/imgPrivate', $fotoName);
 
         $model = model(SeccionesModel::class);
+        if ($model->save([
+            'nombre_seccion' => $post['nombre_seccion'],
+            'imagen' => $fotoName,
+            'id_usuario' => $userId,
+        ])) {
+            // Redirigir al usuario al listado de secciones
+            return redirect()->to(base_url('secciones'))->with('success', 'Sección creada con éxito');
+        } else {
+            // Si la creación falla, redirigir de nuevo al formulario de creación con un mensaje de error
+            return redirect()->back()->with('error', 'No se pudo crear la sección');
+        }
+        /* Modelo con succes, pero mejor que redirija automáticamente
         $model->save([
             'nombre_seccion' => $post['nombre_seccion'],
             'imagen' => $fotoName,
@@ -127,91 +139,107 @@ class Secciones extends BaseController
 
         return view('templates/menuHeader', ['title' => 'Crear sección'])
             . view('secciones/success')
-            . view('templates/footer');
+            . view('templates/footer');*/
     }
 
 
-    public function delete($id){//le pasamos como identificador la variable id
-        if ($id==null){
+    public function delete($id)
+    {
+        // Verificar si el ID es nulo
+        if ($id == null) {
             throw new PageNotFoundException('No se puede borrar la sección');
         }
-
-        //si no es null:
+    
+        // Obtener el modelo
         $model = model(SeccionesModel::class);
-
-        if ($model ->getById($id)) {
-            if ($model ->delete($id)){
-                //return redirect()->to(base_url(''));
-
-            }
-        }else{
+    
+        // Verificar si la sección existe
+        $seccion = $model->find($id);
+        if (!$seccion) {
             throw new PageNotFoundException('La sección seleccionada no existe');
-        }// y si no hay noticia con ID, sacamos otro mensaje.
-
-        /*Nos vamos directamente a la pag. principal*/
-
-        
-        return view('templates/menuHeader', ['title'=> 'Deleted section'])
-            . view('secciones/delete')
-            . view('templates/footer');
+        }
+    
+        // Intentar eliminar la sección
+        if ($model->delete($id)) {
+            return redirect()->to(base_url('secciones'))->with('success', 'Sección eliminada con éxito');
+        } else {
+            return redirect()->back()->with('error', 'No se pudo eliminar la sección');
+        }
     }
+    
 
-    public function update($id){//le pasamos como identificador la variable id y abajo hace falta el helper form
-
+    public function update($id)
+    {
         helper('form');
-
-        if ($id==null){
+    
+        if ($id == null) {
             throw new PageNotFoundException('Cannot update the section');
         }
-
-        //si no es null:
+    
+        // Buscar la sección por ID
         $model = model(SeccionesModel::class);
-
-        if ($model->where('id', $id)->find()) {//busca la noticia del id
+    
+        if ($model->where('id', $id)->find()) {
             $data = [
-                'sections' => $model ->where(['id' => $id])->first(),
-                'nombre_seccion' => 'Update section', 
+                'sections' => $model->where(['id' => $id])->first(),
+                'nombre_seccion' => 'Update section',
                 'imagen' => 'Imagen'
             ];
-
-        }else{
+        } else {
             throw new PageNotFoundException('Selected section does not exist in database');
-        }// y si no hay noticia con ID, sacamos otro mensaje.
-
-
+        }
+    
         return view('templates/menuHeader', $data)
             . view('secciones/update')
             . view('templates/footer');
     }
-
+    
+    
+    
     public function updatedSection($id)
     {
         helper('form');
- 
+     
         // Checks whether the submitted data passed the validation rules.
         if (! $this->validate([
             'nombre_seccion' => 'required|max_length[100]|min_length[2]',
-            //'imagen' => 'uploaded[imagen]|max_size[imagen,50000]'
+            'imagen' => 'max_size[imagen,50000]' // Verifica el tamaño de la imagen
         ])) {
             // The validation fails, so returns the form.
             return $this->update($id);
         }
- 
+     
         // Gets the validated data.
         $post = $this->validator->getValidated();
- 
+    
         $data = [
             'id' => $id,
             'nombre_seccion' => $post['nombre_seccion'],
-            //'imagen' => $post['imagen'],
         ];
+    
+        // Manejar la imagen si es cargada
+        $foto = $this->request->getFile('imagen');
+        if ($foto && $foto->isValid()) {
+            $fotoName = $foto->getName();
+            $foto->move(ROOTPATH . 'public/images/imgPrivate', $fotoName);
+            $data['imagen'] = $fotoName;
+        }
+    
+        $model = model(SeccionesModel::class);
+        if ($model->update($id, $data)) {
+            return redirect()->to(base_url('secciones'))->with('success', 'Sección actualizada con éxito');
+        } else {
+            return redirect()->back()->with('error', 'No se pudo actualizar la sección');
+        }
+        /* Con el success, pero mejor que me redirija sin avisar.
         $model = model(SeccionesModel::class);
         $model->save($data);
-
+    
         return view('templates/menuHeader', ['title' => 'Item updated'])
             . view('secciones/success')
-            . view('templates/footer');
+            . view('templates/footer');*/ 
     }
+     
 
 }
 

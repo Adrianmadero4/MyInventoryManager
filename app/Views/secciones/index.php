@@ -1,9 +1,9 @@
 <div class="container">
 <h2 class="mb-2" ><?= esc($title) ?></h2>
-<a class="btn col-7.5 bgLim text-light mb-2" href="./secciones/new">Añadir Sección</a>
 
 
     <?php if (! empty($secciones) && is_array($secciones)): ?> <!-- OJO MUY IMPORTANTES QUE ESTA VARIABLE SECCIONES DEBE SER LA MISMA A LA QUE NOMBRAMOS EN LOS DATOS DEL CONTROLADOR  -->
+        <a class="btn col-7.5 bgLim text-light mb-2" href="<?= base_url('secciones/new') ?>">Añadir Sección</a>
 
         <?php foreach ($secciones as $sect): ?>
 
@@ -32,7 +32,8 @@
         <h3>No hay secciones creadas</h3>
 
         <p>Crea una parte del hogar y empieza a controlar todos tus productos!!.</p>
-        <a href="<?= base_url('secciones/new') ?>">Añadir Sección</a>
+        <a class="btn col-7.5 bgLim text-light mb-4" href="<?= base_url('secciones/new') ?>">Añadir Sección</a>
+
 
 
     <?php endif ?>
