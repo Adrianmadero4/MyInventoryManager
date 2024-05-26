@@ -2,16 +2,16 @@
     <link href="<?php echo base_url('public/assets/bootstrap.min.css'); ?>" rel="stylesheet">
     <script src="<?php echo base_url('public/assets/bootstrap.min.js'); ?>"></script>
 
-    <h2><?= esc($title) ?></h2> <!--Este title es el de la función index del controller-->
-    <!-- -->
+    <h2><?= esc($title) ?></h2>
     <a class="btn col-7.5 bgLim text-light mb-2" href="./products/new">Añadir Producto</a>
 
-    <?php if (! empty($products) && is_array($products)): ?> <!--Si el array no está vacío y se puede recorrer: -->
+    <!-- El código de abajo permitirá filtrar por nombre de producto según el javascript del final de esta vista -->
+    <input class="form-control mb-3" id="product-search" type="text" placeholder="Buscar productos...">
 
-        <div class="container mt-4 mb-4">
+    <?php if (! empty($products) && is_array($products)): ?> 
+        <div class="container mt-4 mb-4" id="product-list">
             <!-- Primera fila con background gris claro -->
             <div class="row bg-light text-center">
-                <!-- Columnas -->
                 <div class="col-2">
                     <h6>Nombre del Producto</h6>
                 </div>
@@ -24,26 +24,17 @@
                 <div class="col-2">
                     <h6>Ubicado en la sección</h6>
                 </div>
-                
-
                 <div class="col-3">
                     <h6>Acciones</h6>
                 </div>
-                <!-- Agrega más columnas según sea necesario -->
             </div>
             
-            <?php foreach ($products as $new_product): ?> <!--Recorremos el array de productos y nos inventamos el new_product -->
-                <!-- <h4><?= esc($new_product['id_seccion']) ?> Este id_seccion es el campo seccion del select, si no funciona, probar con secciones o secciones.id</h4> -->
-
-                <!-- Segunda fila sin fondo -->
-                <div class="row align-items-center text-center border mb-2">
-                    <!-- Aquí puedes iterar sobre tus productos -->
-
+            <?php foreach ($products as $new_product): ?>
+                <div class="row align-items-center text-center border mb-2 product-item">
                     <div class="col-2">
-                        <!-- Contenedor con margen lateral -->
                         <div class="d-flex justify-content-start align-items-center">
                             <img src="<?= esc($model->getImagenRuta($new_product['id'])) ?>" alt="" style="width: 80px; margin-right: 10px;">
-                            <p><?= esc($new_product['nombreProducto']) ?></p>
+                            <p class="product-name"><?= esc($new_product['nombreProducto']) ?></p>
                         </div>
                     </div>
                     <div class="col-4">
@@ -56,23 +47,13 @@
                         <p><?= esc($new_product['nombre_seccion']) ?></p>
                     </div>
                     <div class="col-3">
-                        <!-- <button class="col-7.5 bg-light">Ver producto/Editar</button> 
-                        <button class="col-4 bg-light">Eliminar</button> -->
                         <a class="btn col-7.5 bg-secondary text-light" href="./products/<?= esc($new_product['id'], 'url')?>">Ver producto/Editar</a>
-
-                        
-                        <!-- <a class="btn col-7.5 bgVer" href="./products/<?= esc($new_product['id'], 'url')?>">Ver producto/Editar</a>-->
-                        <a class="btn col-4 bgDelete text-light" href="./products/del/<?= esc($new_product['id'], 'url')?>">Eliminar</a> 
-
+                        <a class="btn col-4 bgDelete text-light" href="./products/del/<?= esc($new_product['id'], 'url')?>">Eliminar</a>
                     </div>
-
-                    <!-- Agrega más columnas según sea necesario -->
                 </div>
             <?php endforeach ?>
         </div>
-
     <?php else: ?>
-
         <div class="container">
             <h3>No hay productos</h3>
             <p>Clique en el botón de arriba para crear un producto</p>
@@ -89,9 +70,27 @@
                 </div>
             </div>
         </div>
-
-
-
     <?php endif ?>
-
 </div>
+
+<!-- El siguiente script permite hacer un filtro de los productos a partir de la segunda letra escrita
+al escribir algo en el buscador de productos -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const searchInput = document.getElementById('product-search');
+        const productList = document.getElementById('product-list');
+        const productItems = productList.getElementsByClassName('product-item');
+
+        searchInput.addEventListener('keyup', function() {
+            const filter = searchInput.value.toLowerCase();
+            Array.from(productItems).forEach(function(item) {
+                const productName = item.querySelector('.product-name').textContent.toLowerCase();
+                if (productName.includes(filter)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
