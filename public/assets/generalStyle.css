@@ -56,3 +56,55 @@
     border-radius: 5px; /* Botón más redondo para que el hover no tenga solo el tamaño de las letras sino que sea un poco mas grande */
 }
 
+
+.headerColor {
+    background: linear-gradient(to bottom, #06a5e4, #a2d8f0) !important;
+    padding-bottom: 3em;
+    color: white;
+}
+
+.headerH1PTop {
+    padding-top: 3em;
+}
+
+.headerColor h {
+    font-weight: bold;
+    color: white;
+}
+
+.h2-padding {
+    padding: 0 6em; /* Ajusta el valor para más o menos espacio */
+    display: inline-block;
+    max-width: 100%;
+}
+
+.bgSeccionesPagPrincipal {
+    background-color: #ededed53;
+    padding-top: 3em;
+    padding-bottom: 3em;
+
+}
+
+/* Estilo para las líneas entre cada producto */
+/*.product-line {
+    border-bottom: 10px solid #000000;
+}*/
+
+.card:hover {
+    background-color: #f2f2f2;
+}
+
+.usSectionColor {
+    background: linear-gradient(to bottom, #06a5e4, #a2d8f0) !important;
+    padding-bottom: 3em;
+    color: white;
+}
+
+.paddingTopBottom {
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+
+.paddingLeftImg {
+    padding-left: 3em;
+}

@@ -25,9 +25,10 @@
         if (empty($session->get('user'))) :
         ?>
         <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url(''); ?>">Inicio</a>
-        <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('conocenos'); ?>">Conocenos</a>
+        <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('conocenos'); ?>">Conócenos</a>
         <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('pricing'); ?>">Precios</a>
-        <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('login'); ?>">Login</a>
+        <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('login'); ?>">Iniciar sesión 👲</a>
+        <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('register'); ?>">Regístrate</a>
         <?php endif ?>
 
         <?php
@@ -35,7 +36,7 @@
         if (!empty($session->get('user'))) :
         ?>
         <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url(''); ?>">Inicio</a>
-        <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('conocenos'); ?>">Conocenos</a>
+        <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('conocenos'); ?>">Conócenos</a>
         <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?php echo base_url('pricing'); ?>">Precios</a>
         <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?= base_url('secciones')?>">Secciones</a>
         <a class="me-3 py-2 text-dark text-decoration-none nav-link" href="<?= base_url('products')?>">Productos</a>

@@ -81,7 +81,7 @@ al escribir algo en el buscador de productos -->
         const productList = document.getElementById('product-list');
         const productItems = productList.getElementsByClassName('product-item');
 
-        searchInput.addEventListener('keyup', function() {
+        searchInput.addEventListener('keyup', function() { //Evento que se dispara cuando se suelta una tecla en el teclado después de haber sido presionada.
             const filter = searchInput.value.toLowerCase();
             Array.from(productItems).forEach(function(item) {
                 const productName = item.querySelector('.product-name').textContent.toLowerCase();

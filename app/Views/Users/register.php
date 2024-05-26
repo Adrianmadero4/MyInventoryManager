@@ -1,7 +1,8 @@
+<div class="container-fluid bgSeccionesPagPrincipal">
 <div class="container mt-4">
     <div class="row d-flex justify-content-center">
         <form action="<?= site_url('/register'); ?>" method="post" class="col-4">
-        <h1 class="text-center">¡Registrate!</h1>
+        <h1 class="text-center">¡Regístrate!</h1>
         <h6 class="mt-4">Solo se necesita nombre de usuario, mail y contraseña</h6>
 
             <?= csrf_field() ?>
@@ -25,4 +26,5 @@
         </form>
     </div>
 
+</div>
 </div>
