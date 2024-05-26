@@ -30,26 +30,28 @@ class ProductModel extends Model
 
     public function getProducts($slug = false)
     {
+        $session = session();
+        $user = $session->get('user_id');
+
         if ($slug === false) {
             return $this->select('productos.*, secciones.nombre_seccion')
                         ->join('secciones', 'productos.id_seccion = secciones.id')
+                        ->where('secciones.id_usuario', $user)
                         ->findAll();
         }
 
         return $this->select('productos.*, secciones.nombre_seccion')
                     ->join('secciones', 'productos.id_seccion = secciones.id')
-                    ->where(['slug' => $slug])
+                    ->where(['slug' => $slug, 'secciones.id_usuario' => $user])
                     ->first();
     }
 
-    public function getById($id = false)
+    public function getById($id)
     {
-        if ($id === false) {
-            return $this->findAll();
-        }
-
-        return $this->where(['id' => $id])->first();
+        return $this->find($id);
     }
+
+
 
     public function getImagenRuta($id)
     {

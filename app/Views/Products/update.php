@@ -18,6 +18,17 @@
                 <input type="input" name="nombreProducto" value="<?= esc($products['nombreProducto']) ?>" class="form-control">
             </div>
 
+            <label for="nombre_seccion" class="">Sección</label>
+            <select name="id_seccion" class="form-control mb-2">
+                <?php if (!empty($sections) && is_array($sections)): ?>
+                    <?php foreach ($sections as $section): ?>
+                        <option value="<?= $section['id'] ?>" <?= ($section['id'] == $products['id_seccion']) ? 'selected' : '' ?>>
+                            <?= $section['nombre_seccion'] ?>
+                        </option>
+                    <?php endforeach ?>
+                <?php endif ?>
+            </select>
+
             <div class="form-group mb-2">
                 <label for="descripcion">Descripción</label>
                 <textarea name="descripcion" class="form-control"><?= esc($products['descripcion']) ?></textarea>
@@ -53,21 +64,15 @@
                 <input type="date" name="fecha_venta" value="<?= esc($products['fecha_venta']) ?>" class="form-control">
             </div>
 
+            <div class="form-group mb-2">
+                <label for="documentos">Documentos</label>
+                <input type="file" class="form-control-file" name="documentos">
+            </div>
+
             <div class="form-group mb-4">
                 <label for="imagen">Imagen</label>
                 <input type="file" class="form-control-file" name="imagen">
             </div>
-
-            <label for="nombre_seccion" class="mb-4">Sección</label>
-            <select name="id_seccion" class="form-control">
-                <?php if (!empty($sections) && is_array($sections)): ?>
-                    <?php foreach ($sections as $section): ?>
-                        <option value="<?= $section['id'] ?>" <?= ($section['id'] == $products['id_seccion']) ? 'selected' : '' ?>>
-                            <?= $section['nombre_seccion'] ?>
-                        </option>
-                    <?php endforeach ?>
-                <?php endif ?>
-            </select>
 
             <div class="form-group mb-4">
                 <input type="submit" name="submit" value="Actualizar producto" class="btn btn-primary">

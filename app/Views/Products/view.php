@@ -14,7 +14,12 @@
             <p><?= esc('Precio de venta: '.$product['precio_venta'])?></p>
             <p><?= esc('Fecha de compra: '.date('d/m/Y', strtotime($product['fecha_compra'])))?></p>
             <p><?= isset($product['fecha_venta']) ? esc('Fecha de venta: '. date('d/m/Y', strtotime($product['fecha_venta']))) : 'Fecha de venta no disponible' ?></p>
-            <p><?= esc('Documentos: '.$product['documentos'])?></p>
+            
+            <?php if (!empty($product['documentos'])): ?>
+                <p>Documentos: <a href="<?= base_url('public/documents/' . $product['documentos']) ?>" target="_blank"><?= esc($product['documentos']) ?></a></p>
+            <?php else: ?>
+                <p>Documentos: No disponible</p>
+            <?php endif; ?>        
         </div>
         <div class="col-md-6 mt-4">
             <img src="<?= esc($model->getImagenRuta($product['id'])) ?>" alt="<?= esc('Imagen de: '.$product['nombreProducto']) ?>">

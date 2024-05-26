@@ -120,7 +120,7 @@ class ProductsController extends BaseController
             'fecha_compra' => 'permit_empty|valid_date', // Permite que sea opcional y valida si es una fecha válida si se proporciona
             'fecha_venta' => 'permit_empty|valid_date',
             'imagen' => 'permit_empty|uploaded[imagen]|max_size[imagen,50000]|is_image[imagen]',
-            /*'documentos' => 'max_size[documentos,50000]'*/
+            'documentos' => 'max_size[documentos,50000]'
         ])) {
             // Falla la validación, volvemos al formulario.
             return redirect()->back()->withInput()->with('error', $this->validator->getErrors());
@@ -137,6 +137,13 @@ class ProductsController extends BaseController
                 $foto->move(ROOTPATH . 'public/images/imgPrivate', $fotoName);
             }
         }
+        $documentoName = null;
+        if ($doc = $this->request->getFile('documentos')) {
+            if ($doc->isValid() && !$doc->hasMoved()) {
+                $documentoName = $doc->getName();
+                $doc->move(ROOTPATH . 'public/documents', $documentoName);
+            }
+        }
 
         $model = model(ProductModel::class);
         if ($model->save([
@@ -151,6 +158,7 @@ class ProductsController extends BaseController
             'fecha_compra' => $post['fecha_compra'],
             'fecha_venta' => $post['fecha_venta'],
             'imagen' => $fotoName,
+            'documentos' => $documentoName,
         ])) {
         // Redirigir al usuario al listado de secciones
         return redirect()->to(base_url('products'))->with('success', 'Producto creado con éxito');
@@ -206,7 +214,8 @@ class ProductsController extends BaseController
                 'products' => $model->where(['id' => $id])->first(),
                 'title' => 'Actualizar ',
                 'sections' => $Sectionmodel->findAll(), // Cambiado a 'sections'
-                'imagen' => 'Imagen'
+                'imagen' => 'Imagen',
+                'documentos' => 'Documentos'
             ];
         } else {
             throw new PageNotFoundException('El producto seleccionado no existe');
@@ -231,6 +240,7 @@ class ProductsController extends BaseController
             'fecha_compra' => 'permit_empty|valid_date',
             'fecha_venta' => 'permit_empty|valid_date',
             'imagen' => 'permit_empty|max_size[imagen,50000]|is_image[imagen]|mime_in[imagen,image/jpg,image/jpeg,image/png]',
+            'documentos' => 'permit_empty|uploaded[documentos]|max_size[documentos,50000]|ext_in[documentos,pdf,doc,docx]',
         ];
     
         // Checks whether the submitted data passed the validation rules.
@@ -274,6 +284,12 @@ class ProductsController extends BaseController
             $fotoName = $foto->getName();
             $foto->move(ROOTPATH . 'public/images/imgPrivate', $fotoName);
             $data['imagen'] = $fotoName;
+        }
+        $doc = $this->request->getFile('documentos');
+        if ($doc && $doc->isValid()) {
+            $documentoName = $doc->getName();
+            $doc->move(ROOTPATH . 'public/documents', $documentoName);
+            $data['documentos'] = $documentoName;
         }
     
         $model = model(ProductModel::class);

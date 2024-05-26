@@ -70,7 +70,7 @@
                 </div>
 
                 <div class="form-group mb-2">
-                    <label for="imagen">Imagen (opcional)</label>
+                    <label for="imagen">Imagen</label>
                     <input type="file" class="form-control-file" name="imagen">
                 </div>
 
