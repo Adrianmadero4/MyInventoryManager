@@ -45,8 +45,7 @@
                 <ul class="list-unstyled mt-3 mb-4">
                   <li>1 usuario incluido</li>
                   <li>2 secciones incluidas</li>
-                  <li>10 elementos por sección
-                    <small class="text-muted">(Total 20 artículos)</small> 
+                  <li>20 elementos en total
                   </li>
                   <li>Con anuncios</li>
                 </ul>
@@ -187,8 +186,7 @@
                 <ul class="list-unstyled mt-3 mb-4">
                   <li>1 usuario incluido</li>
                   <li>2 secciones incluidas</li>
-                  <li>10 elementos por sección
-                    <small class="text-muted">(Total 20 artículos)</small> 
+                  <li>20 elementos en total 
                   </li>
                   <li>Con anuncios</li>
                 </ul>

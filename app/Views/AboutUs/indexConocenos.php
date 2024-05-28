@@ -55,8 +55,7 @@
         <div class="mb-4 faq-item bgWhite">
           <p class="lead faq-question">¿Cómo me inscribo? <span class="toggle-symbol">+</span></p>
           <p class="faq-answer"> Todas las cuentas, incluidas las suscripciones de pago, comienzan con nuestro proceso de registro gratuito. 
-            Haga clic en el enlace <a class="me-3 py-2 text-dark text-decoration-none" style="font-weight: bold;" href="<?php echo base_url('register'); ?>">Regístrese</a>
-            para comenzar su registro.
+            Haga clic en el enlace <a class="me-3 py-2 text-dark text-decoration-none" style="font-weight: bold;" href="<?php echo base_url('register'); ?>">Regístrese</a>para comenzar su registro.
           </p>
         </div>
         <div class="mb-4 faq-item bgWhite">
@@ -66,8 +65,8 @@
           </p>
         </div>
         <div class="mb-4 faq-item bgWhite">
-          <p class="lead faq-question">¿Solo trabajamos en el horario abajo indicado? <span class="toggle-symbol">+</span></p>
-          <p class="faq-answer"> Además del horario indicado, revisamos en otros momentos el funcionamiento del sistema así como 
+          <p class="lead faq-question">¿Solo trabajamos en el horario indicado? <span class="toggle-symbol">+</span></p>
+          <p class="faq-answer"> Además del horario indicado más abajo, revisamos en otros momentos el funcionamiento del sistema así como 
             respondemos correos con indidencias a la mayor brevedad.
           </p>
         </div>

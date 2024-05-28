@@ -108,7 +108,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <div class="card text-center shadow-sm mb-5 h-100">
+                <div class="card text-center shadow-sm mb-5 h-100 card2" >
                     <div class="card-body d-flex flex-column align-items-center">
                         <!-- Aquí está el icono SVG -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-house-add-fill mb-3" viewBox="0 0 16 16">
@@ -128,7 +128,7 @@
 
 
             <div class="col-md-4">
-                <div class="card text-center shadow-sm mb-5 h-100">
+                <div class="card text-center shadow-sm mb-5 h-100 card2">
                     <div class="card-body d-flex flex-column align-items-center">
                         <!-- Aquí está el icono SVG -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-card-checklist mb-3" viewBox="0 0 16 16">
@@ -145,7 +145,7 @@
             </div>
                     
             <div class="col-md-4">
-                <div class="card text-center shadow-sm mb-5 h-100">
+                <div class="card text-center shadow-sm mb-5 h-100 card2">
                     <div class="card-body d-flex flex-column align-items-center">
                         <!-- Aquí está el icono SVG -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-file-earmark-arrow-up mb-3" viewBox="0 0 16 16">
@@ -176,7 +176,7 @@
                     <h2>Conoce más sobre My Inventory Manager</h2>
                     <p>My Inventory Manager nació en 2024 como un proyecto de final de grado. Desde entonces, hemos mejorado nuestras funcionalidades para ofrecerte la mejor solución de inventariado online.</p>
                     <p>Proporcionamos una manera intuitiva de llevar un registro de todos tus productos, desde electrodomésticos hasta muebles y dispositivos electrónicos.</p>
-                    <a href="ruta_de_mas_informacion" class="btn btn-primary">Leer más sobre nosotros</a>
+                    <a href="<?php echo base_url('conocenos'); ?>" class="btn btn-primary">Leer más sobre nosotros</a>
                 </div>
             </div>
         </div>
