@@ -109,15 +109,20 @@ class Secciones extends BaseController
 
         if (! $this->validate([
             'nombre_seccion' => 'required|max_length[50]|min_length[2]',
-            'imagen' => 'max_size[imagen,50000]',
+            'imagen' => 'permit_empty|uploaded[imagen]|max_size[imagen,50000]|is_image[imagen]',
         ])) {
             return $this->new();
         }
 
         $post = $this->validator->getValidated();
-        $foto = $this->request->getFile('imagen');
-        $fotoName = $foto->getName();
-        $foto->move(ROOTPATH . 'public/images/imgPrivate', $fotoName);
+        // Manejo de la imagen
+        $fotoName = null;
+        if ($foto = $this->request->getFile('imagen')) { // Comprobación para que no salte error si no subimos imagen
+            if ($foto->isValid() && !$foto->hasMoved()) {
+                $fotoName = $foto->getName();
+                $foto->move(ROOTPATH . 'public/images/imgPrivate', $fotoName);
+            }
+        }
 
         $model = model(SeccionesModel::class);
         if ($model->save([
