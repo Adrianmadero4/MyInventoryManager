@@ -5,22 +5,32 @@ use App\Models\SeccionesModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 class ProductsController extends BaseController
 { 
-    public function new() //Método para insertar datos en el formulario, llamando a createProduct.php
+    public function new()
     {
-        helper('form'); //Para devolver todo a la vista
-        //Pero si además, queremos controlar las categorías para que el usuario no pueda indicar alguna que no existe:
+        helper('form');
+        
         $model = model(SeccionesModel::class);
-        if ($data['section'] = $model->findAll()) { //el campo section está inventado ['inventado'] (izquierda del igual inventado).
-            return view('templates/menuHeader', ['title' => 'Crea tu nuevo producto'] ) //El 'titulo' va luego al createProduct.php en las vistas
-            . view('Products/createProduct', $data)
-            . view('templates/footer');
+        $session = session();
+        $userId = $session->get('user_id');
+        
+        // Obtener las secciones del usuario actual
+        $seccionesUsuario = $model->where('id_usuario', $userId)->findAll();
+        
+        // Verificar si se encontraron secciones para el usuario actual
+        if ($seccionesUsuario) {
+            $data['seccionesUsuario'] = $seccionesUsuario;
+            
+            return view('templates/menuHeader', ['title' => 'Crea tu nuevo producto'])
+                . view('Products/createProduct', $data)
+                . view('templates/footer');
         } else {
-            // Si no se encuentran secciones, mostramos página de error no hay secciones
-            return view('templates/menuHeader', ['title' => 'Error al intentar crear producto'] ) //El 'titulo' va luego al createProduct.php en las vistas
-            . view('Products/errorNoSection')
-            . view('templates/footer');
+            // Si no se encuentran secciones, mostrar página de error
+            return view('templates/menuHeader', ['title' => 'Error al intentar crear producto'])
+                . view('Products/errorNoSection')
+                . view('templates/footer');
         }
     }
+    
     
     public function index()
     {
@@ -83,26 +93,24 @@ class ProductsController extends BaseController
         return !empty($categories);
     }
 
-
-    public function create() //Método que recoge los datos del formulario del new al haber insertado el producto.
+    public function create()
     {
-        helper('form'); // Ayuda para validar los datos.
-        //var_dump($this->request->getPost()); Comprobar erorres
+        helper('form');
         $session = session();
         $userId = $session->get('user_id');
         $userRole = $session->get('user_role');
-
+    
         // Obtenemos el modelo de secciones y productos
         $seccionModel = new SeccionesModel();
         $productModel = new ProductModel();
-
+    
         // Obtenemos las secciones del usuario
         $seccionesUsuario = $seccionModel->where('id_usuario', $userId)->findAll();
         $seccionIds = array_column($seccionesUsuario, 'id');
-
+    
         // Contamos los productos del usuario basándonos en las secciones a las que pertenece
         $existingProducts = $productModel->whereIn('id_seccion', $seccionIds)->countAllResults();
-
+    
         // Límites de productos según el rol del usuario
         switch ($userRole) {
             case 'Basico':
@@ -119,13 +127,17 @@ class ProductsController extends BaseController
                 $maxProducts = 20; // Valor por defecto en caso de rol desconocido
                 break;
         }
-
+    
         if ($existingProducts >= $maxProducts) {
             return redirect()->back()->with('error', 'Su usuario ha alcanzado el límite máximo de productos.<br><a href="' . base_url('/pricing') . '">Encuentra aquí un plan que se ajuste mejor a tus necesidades.</a>');
         }
-
-        $data = $this->request->getPost(['nombreProducto', 'descripcion', 'stock', 'guardado_en']);
-
+    
+        // Paso las secciones a la vista
+        $data = [
+            'title' => 'Crear un nuevo producto',
+            'secciones' => $seccionesUsuario // Pasa solo las secciones del usuario actual a la vista
+        ];
+    
         // Chequear las validaciones del formulario de crear.
         if (! $this->validate([
             'nombreProducto' => 'required|max_length[50]|min_length[2]',
@@ -143,10 +155,10 @@ class ProductsController extends BaseController
             // Falla la validación, volvemos al formulario.
             return redirect()->back()->withInput()->with('error', $this->validator->getErrors());
         }
-
+    
         // Recoge los datos ya validados en la variable $post.
         $post = $this->validator->getValidated();
-
+    
         // Manejo de la imagen
         $fotoName = null;
         if ($foto = $this->request->getFile('imagen')) { // Comprobación para que no salte error si no subimos imagen
@@ -162,7 +174,7 @@ class ProductsController extends BaseController
                 $doc->move(ROOTPATH . 'public/documents', $documentoName);
             }
         }
-
+    
         $model = model(ProductModel::class);
         if ($model->save([
             'nombreProducto' => $post['nombreProducto'],
@@ -178,17 +190,14 @@ class ProductsController extends BaseController
             'imagen' => $fotoName,
             'documentos' => $documentoName,
         ])) {
-        // Redirigir al usuario al listado de secciones
-        return redirect()->to(base_url('products'))->with('success', 'Producto creado con éxito');
+            // Redirigir al usuario al listado de secciones
+            return redirect()->to(base_url('products'))->with('success', 'Producto creado con éxito');
         } else {
             // Si la creación falla, redirigir de nuevo al formulario de creación con un mensaje de error
             return redirect()->back()->with('error', 'No se pudo crear el producto');
         }
-
-        /*return view('templates/menuHeader', ['title' => 'Create a news item'])
-            . view('Products/success')
-            . view('templates/footer');*/
     }
+    
     
     public function delete($id){//le pasamos como identificador la variable id
         if ($id==null){

@@ -22,13 +22,11 @@
                 <div class="form-group mb-2">
                     <label for="id_seccion">Sección</label>
                     <select name="id_seccion" class="form-control">
-                        <?php if (!empty($section) && is_array($section)): ?>
-                            <?php foreach ($section as $section_item): ?>
-                                <option value="<?= $section_item['id'] ?>">
-                                    <?= $section_item['nombre_seccion'] ?>
-                                </option>
-                            <?php endforeach ?>
-                        <?php endif ?>
+                        <?php foreach ($seccionesUsuario as $seccion): ?>
+                            <option value="<?= $seccion['id'] ?>">
+                                <?= $seccion['nombre_seccion'] ?>
+                            </option>
+                        <?php endforeach ?>
                     </select>
                 </div>
 
