@@ -1,8 +1,8 @@
 <div class="container">
-    <h2 class="mb-4"><?= esc($title) ?></h2>
+    <h2 class="text-center"><?= esc($title) ?></h2>
 
     <?php if (!empty($secciones) && is_array($secciones)): ?>
-        <a class="btn btn-primary mb-4" href="<?= base_url('secciones/new') ?>">Añadir Sección</a>
+        <a class="btn col-7.5 bgLim text-light mb-2" href="<?= base_url('secciones/new') ?>">Añadir Sección</a>
         <div class="row">
             <?php foreach ($secciones as $sect): ?>
                 <div class="col-md-4 mb-4">

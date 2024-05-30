@@ -27,7 +27,7 @@ class ProductsController extends BaseController
         $model = model(ProductModel::class);
         $data = [
             'products' => $model->getProducts(),
-            'title' => 'Lista de productos',
+            'title' => 'Listado de productos',
             'model' => $model // Pasar el modelo a la vista
         ];
         //var_dump($this->request->getPost()); Comprobar erorres

@@ -1,4 +1,4 @@
-<!-- Vista account.php 
+<!-- Vista account.php  -->
 <div class="container">
     <h2>Bienvenido, <?= esc($user['username']) ?></h2>
     <h3>Secciones:</h3>

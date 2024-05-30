@@ -4,7 +4,7 @@
     <?php if (! empty($user)): ?> <!--$User es un array que contiene los usuarios que hemos obtenido-->
     <h3><?= "Bienvenid@ ". $session->get('user')?></h3>
     <p>Aquí encontrarás tus secciones del hogar así como un breve listado con 4 productos, pero con la posibilidad de acceder a todos ellos</p>
-    <div class="container mt-4">
+    <div class="container mt-4 mb-4">
         <h2 class="text-center">Secciones y productos</h2>
         <div class="row mt-4">
             <?php foreach ($secciones as $seccion): ?>

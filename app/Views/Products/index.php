@@ -2,7 +2,7 @@
     <link href="<?php echo base_url('public/assets/bootstrap.min.css'); ?>" rel="stylesheet">
     <script src="<?php echo base_url('public/assets/bootstrap.min.js'); ?>"></script>
 
-    <h2><?= esc($title) ?></h2>
+    <h2 class="text-center"><?= esc($title) ?></h2>
     <a class="btn col-7.5 bgLim text-light mb-2" href="./products/new">Añadir Producto</a>
 
     <!-- El código de abajo permitirá filtrar por nombre de producto según el javascript del final de esta vista -->
@@ -13,7 +13,7 @@
             <!-- Primera fila con background gris claro -->
             <div class="row bg-light text-center">
                 <div class="col-2">
-                    <h6>Nombre del Producto</h6>
+                    <h6>Producto</h6>
                 </div>
                 <div class="col-4">
                     <h6>Descripción</h6>

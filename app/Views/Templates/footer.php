@@ -65,7 +65,7 @@
               <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">Paiporta, Valencia, 46200, Spain</span>
             </li>
             <li class="mb-3">
-              <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">adrianmc1998@gmail.com</span>
+              <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">support@myinventorymanager.com</span>
             </li>
             <li class="mb-3">
               <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+ 34 610 840 367</span>

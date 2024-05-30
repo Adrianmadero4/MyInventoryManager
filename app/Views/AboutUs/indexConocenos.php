@@ -25,7 +25,7 @@
           no se ha parado de desarrollar y mejorar las funcionalidades de nuestra web para poder ofrecer los mejores
           servicios de inventariado online.
         </p>
-        <img src="public/images/abousUsImgIni.png" class="img-fluid" alt="Imagen de referencia">
+        <img src="public/images/abousUsImgConocenos.jpg" class="img-fluid" alt="Imagen de referencia">
 
           <!-- <img src="public/images/imgProducts.png" alt="Imagen 1" style="width: 100%;" class="me-2"> -->
 			</div>
