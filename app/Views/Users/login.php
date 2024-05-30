@@ -3,13 +3,13 @@
     <section class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h2><?= esc($title) ?></h2> <!--Aquí el title viene del controlador Users.php -->
+                <h2 class="text-center"><?= esc($title) ?></h2> <!--Aquí el title viene del controlador Users.php -->
                 <!-- <h2>Area Privada</h2> -->
 
                 <?= session()->getFlashdata('error') ?>
                 <?= validation_list_errors() ?>
 
-                <h2><?= esc($error) ?></h2>
+                <h4 class="text-danger text-center"><?= esc($error) ?></h4>
 
                 <form action="<?php echo base_url('admin'); ?>" method="post">
                     <?= csrf_field() ?> <!-- Token oculto para evitar codigo malicioso -->
