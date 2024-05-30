@@ -5,12 +5,10 @@
     <h2 class="text-center"><?= esc($title) ?></h2>
     <a class="btn col-7.5 bgLim text-light mb-2" href="./products/new">Añadir Producto</a>
 
-    <!-- El código de abajo permitirá filtrar por nombre de producto según el javascript del final de esta vista -->
     <input class="form-control mb-3" id="product-search" type="text" placeholder="Buscar productos...">
 
-    <?php if (! empty($products) && is_array($products)): ?> 
+    <?php if (!empty($products) && is_array($products)): ?>
         <div class="container mt-4 mb-4" id="product-list">
-            <!-- Primera fila con background gris claro -->
             <div class="row bg-light text-center">
                 <div class="col-2">
                     <h6>Producto</h6>
@@ -73,15 +71,13 @@
     <?php endif ?>
 </div>
 
-<!-- El siguiente script permite hacer un filtro de los productos a partir de la segunda letra escrita
-al escribir algo en el buscador de productos -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const searchInput = document.getElementById('product-search');
         const productList = document.getElementById('product-list');
         const productItems = productList.getElementsByClassName('product-item');
 
-        searchInput.addEventListener('keyup', function() { //Evento que se dispara cuando se suelta una tecla en el teclado después de haber sido presionada.
+        searchInput.addEventListener('keyup', function() {
             const filter = searchInput.value.toLowerCase();
             Array.from(productItems).forEach(function(item) {
                 const productName = item.querySelector('.product-name').textContent.toLowerCase();

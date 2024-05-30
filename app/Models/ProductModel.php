@@ -32,19 +32,37 @@ class ProductModel extends Model
     {
         $session = session();
         $user = $session->get('user_id');
-
+    
+        // Obtener las secciones del usuario actual
+        $secciones = $this->db->table('secciones')
+                              ->select('id')
+                              ->where('id_usuario', $user)
+                              ->get()
+                              ->getResultArray();
+    
+        // Extraer los ids de las secciones
+        $seccionesIds = array_column($secciones, 'id');
+    
+        // Verificar si hay secciones disponibles
+        if (empty($seccionesIds)) {
+            return []; // No hay secciones para este usuario, por lo que no hay productos que mostrar
+        }
+    
         if ($slug === false) {
             return $this->select('productos.*, secciones.nombre_seccion')
                         ->join('secciones', 'productos.id_seccion = secciones.id')
-                        ->where('secciones.id_usuario', $user)
+                        ->whereIn('productos.id_seccion', $seccionesIds)
                         ->findAll();
         }
-
+    
         return $this->select('productos.*, secciones.nombre_seccion')
                     ->join('secciones', 'productos.id_seccion = secciones.id')
-                    ->where(['slug' => $slug, 'secciones.id_usuario' => $user])
+                    ->where('productos.slug', $slug)
+                    ->whereIn('productos.id_seccion', $seccionesIds)
                     ->first();
     }
+    
+    
 
     public function getById($id)
     {

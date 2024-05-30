@@ -23,7 +23,7 @@
             <?php endforeach ?>
         </div>
     <?php else: ?>
-        <div class="alert alert-info" role="alert">
+        <div class="" role="alert">
             <h4 class="alert-heading">No hay secciones creadas</h4>
             <p>Crea una parte del hogar y empieza a controlar todos tus productos!!.</p>
         </div>
