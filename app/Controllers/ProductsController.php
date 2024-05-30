@@ -97,7 +97,7 @@ class ProductsController extends BaseController
         // Límites de productos según el rol del usuario
         switch ($userRole) {
             case 'Basico':
-                $maxProducts = 5;
+                $maxProducts = 20;
                 break;
             case 'Advanced':
                 $maxProducts = 30;
@@ -107,9 +107,9 @@ class ProductsController extends BaseController
                 $maxProducts = PHP_INT_MAX; // Sin límites
                 break;
             default:
-                $maxProducts = 5; // Valor por defecto en caso de rol desconocido
+                $maxProducts = 20; // Valor por defecto en caso de rol desconocido
                 break;
-                //Pongo 5 para el ejemplo pero son 20 según la web.
+                //Pongo 5 durante la grabación del proyecto solamente.
         }
     
         if ($existingProducts >= $maxProducts) {
