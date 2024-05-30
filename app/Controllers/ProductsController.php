@@ -25,16 +25,34 @@ class ProductsController extends BaseController
     public function index()
     {
         $model = model(ProductModel::class);
+        $session = session();
+        $userId = $session->get('user_id');
+    
+        // Obtener las secciones del usuario actual
+        $seccionModel = new SeccionesModel();
+        $seccionesUsuario = $seccionModel->where('id_usuario', $userId)->findAll();
+        $seccionIds = array_column($seccionesUsuario, 'id');
+    
+        // Obtener los productos de las secciones del usuario
+        $products = $model->whereIn('id_seccion', $seccionIds)->findAll();
+        foreach ($products as &$product) {
+    if (!array_key_exists('nombre_seccion', $product)) {
+        $product['nombre_seccion'] = 'Sección no definida'; // O algún valor por defecto.
+    }
+}
+
+    
         $data = [
-            'products' => $model->getProducts(),
+            'products' => $products,
             'title' => 'Listado de productos',
             'model' => $model // Pasar el modelo a la vista
         ];
-        //var_dump($this->request->getPost()); Comprobar erorres
+    
         return view('templates/menuHeader', $data)
             . view('Products/index')
             . view('templates/footer');
     }
+    
     public function show($id = null){ //Para ver un producto en especifico
         $model = model(ProductModel::class);
         $product = $model->getById($id);
@@ -202,28 +220,40 @@ class ProductsController extends BaseController
             . view('templates/footer');*/
     }
 
-    public function update($id) {
+    public function update($id)
+    {
         helper('form');
+        $session = session();
+        $userId = $session->get('user_id');
+    
         if ($id == null) {
             throw new PageNotFoundException('No se puede actualizar el producto');
         }
+    
         $model = model(ProductModel::class);
-        $Sectionmodel = model(SeccionesModel::class);
-        if ($model->where('id', $id)->find()) {
+        $sectionModel = model(SeccionesModel::class);
+    
+        // Buscar el producto por ID y verificar que pertenece a una sección del usuario actual
+        $product = $model->where(['id' => $id])->first();
+        $section = $sectionModel->where(['id' => $product['id_seccion'], 'id_usuario' => $userId])->first();
+    
+        if ($product && $section) {
             $data = [
-                'products' => $model->where(['id' => $id])->first(),
+                'products' => $product,
                 'title' => 'Actualizar ',
-                'sections' => $Sectionmodel->findAll(), // Cambiado a 'sections'
+                'sections' => $sectionModel->where('id_usuario', $userId)->findAll(), // Filtra las secciones del usuario actual
                 'imagen' => 'Imagen',
                 'documentos' => 'Documentos'
             ];
         } else {
-            throw new PageNotFoundException('El producto seleccionado no existe');
+            throw new PageNotFoundException('El producto seleccionado no existe o no pertenece a una sección del usuario.');
         }
+    
         return view('templates/menuHeader', $data)
             . view('Products/update')
             . view('templates/footer');
     }
+    
     
     public function updatedItem($id) {
         helper('form');
